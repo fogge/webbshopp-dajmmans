@@ -4,8 +4,16 @@ module.exports = class Materiel extends ModelAndRoutes {
 
   static get schema(){
     return {
-      name: String,
-      description: String
+      title: String,
+      description: String,
+      material: String,
+      magicType: [String],
+      imageLink: String,
+      price: Number,
+      vatRate: Number,
+      stockBalance: Number,
+      artNumber: Number,
+      keyword: [String]   
     }
   }
 

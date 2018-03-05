@@ -4,14 +4,18 @@ module.exports = class Book extends ModelAndRoutes {
 
   static get schema(){
     return {
-      author: String,
-      country: String,
-      imageLink: String,
-      language: String,
-      link: String,
-      pages: Number,
       title: String,
-      year: Number
+      author: String,
+      description: String,
+      pages: Number,
+      language: String,
+      magicType: [String],
+      imageLink: String,
+      price: Number,
+      vatRate: Number,
+      stockBalance: Number,
+      artNumber: Number,
+      keyword: [String]
     }
   }
 

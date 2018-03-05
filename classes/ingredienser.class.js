@@ -4,8 +4,16 @@ module.exports = class Ingredienser extends ModelAndRoutes {
 
   static get schema(){
     return {
-      name: String,
-      description: String
+    	title: String,
+    	magicType: [String],
+    	imageLink: String,
+    	price: Number,
+    	vatRate: Number,
+    	country: String,
+    	description: String,
+    	stockBalance: Number,
+    	artNumber: Number,
+    	keyword: [String]
     }
   }
 

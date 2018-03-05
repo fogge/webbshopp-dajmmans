@@ -1,0 +1,122 @@
+[
+	{
+		"title": "Blodkiss",
+  	"magicType": ["Svart, Gul, Röd"],
+  	"imageLink": "../img/blod-kiss.jpg",
+  	"price": 250,
+  	"vatRate": 12,
+  	"country": "Indien",
+  	"description": "Nu har vi återigen denna eftertraktade storsäljare i lager. Oavsett om du ska framkalla demoner eller göra en enklare ritual behövs blodkiss.",
+  	"stockBalance": 23,
+  	"artNumber": 666001,
+  	"keyword": ["Blod, Kiss, Njursvikt, Röd, Gul, Svart, Orange, Ritual"]
+  },
+  {
+		"title": "Aphjärna",
+  	"magicType": ["Svart, Röd"],
+  	"imageLink": "../img/monkeybrain.jpg",
+  	"price": 490,
+  	"vatRate": 12,
+  	"country": "Brasilien",
+  	"description": "Denna delikatess är handplockad från ap-ungar i Brasiliens regnskogar. Utmärkt i diverse trolldrycker samt som komplettering i matlagning.",
+  	"stockBalance": 8,
+  	"artNumber": 666002,
+  	"keyword": ["Svart, Röd, Aphjärna, Apa, Hjärna, Trolldryck, Ritual"]
+  },
+  {
+		"title": "Mald kamelpung",
+  	"magicType": ["Svart, Brun, Grön"],
+  	"imageLink": "../img/kamelpung.jpg",
+  	"price": 375,
+  	"vatRate": 12,
+  	"country": "Somalien",
+  	"description": "Ett måste i varje hobbytrollkarls magiska skafferi. Kamelpung går att använda till allt från att utöva voodoo till att få missväxt att slå in. Bara din fantasi sätter gränser!",
+  	"stockBalance": 17,
+  	"artNumber": 666003,
+  	"keyword": ["Svart, Grön, Brun, Besvärjelse, Trolldryck, Ritual"]
+  },
+  {
+		"title": "4-pack fladdermusvingar",
+  	"magicType": ["Svart, Brun, Röd"],
+  	"imageLink": "../img/fladdermusvinge.png",
+  	"price": 199,
+  	"vatRate": 12,
+  	"country": "Rumänien",
+  	"description": "Populära fladdermusvingar uppfödda på endast ekologiskt foder, för den medvetne magikern",
+  	"stockBalance": 31,
+  	"artNumber": 666004,
+  	"keyword": ["Svart, Röd, Brun, Besvärjelse, Trolldryck, Eko"]
+  },
+  {
+		"title": "Tånaglar från äkta lärare i Javascript",
+  	"magicType": ["Svart, Röd, Gul"],
+  	"imageLink": "../img/toenail.jpg",
+  	"price": 19.90,
+  	"vatRate": 12,
+  	"country": "Sverige",
+  	"description": "För att lyckas med syntaxen i trollformlerna är denna ingrediens helt ovärderlig. Varning, dessa är inte för nybörjare. Måste handskas med stor försiktighet för att undvika konflikter i GitKraken.",
+  	"stockBalance": 2,
+  	"artNumber": 666005,
+  	"keyword": ["Svart, Röd, Gul, Illaluktande, Ritual, Trolldryck"]
+  },
+  {
+		"title": "Råttkung",
+  	"magicType": ["Svart, Brun"],
+  	"imageLink": "../img/ratking.jpg",
+  	"price": 795,
+  	"vatRate": 12,
+  	"country": "Ryssland",
+  	"description": "Åtråvärd inom magiker-kretsar pga dess oerhörda potential när vid framkallning av onda andar.",
+  	"stockBalance": 8,
+  	"artNumber": 666006,
+  	"keyword": ["Svart, Brun, Besvärjelse, Ritual"]
+  },
+  {
+		"title": "Månsken på burk",
+  	"magicType": ["Svart, Gul"],
+  	"imageLink": "../img/moonlight.jpg",
+  	"price": 50,
+  	"vatRate": 25,
+  	"country": "Island",
+  	"description": "Levereras i väl försluten burk för att bibehålla färskheten. Extraherad med stor precision. Går utmärkt att använda som den är eller koka först.",
+  	"stockBalance": 8,
+  	"artNumber": 666007,
+  	"keyword": ["Svart, Gul, Trolldryck"]
+  },
+  {
+		"title": "Getöga",
+  	"magicType": ["Brun, Gul"],
+  	"imageLink": "../img/torn-eye.jpg",
+  	"price": 85,
+  	"vatRate": 12,
+  	"country": "Norge",
+  	"description": "Många använder getöga mest för syns skull vid ritualer. Mer rutinerade utövare ser även andra möjligheter för denna ingrediens.",
+  	"stockBalance": 21,
+  	"artNumber": 666008,
+  	"keyword": ["Brun, Gul, Trolldryck, Ritual"]
+  },
+  {
+		"title": "Fenixfjäder",
+  	"magicType": ["Svart, Röd"],
+  	"imageLink": "../img/phoenix-feather.jpg",
+  	"price": 998,
+  	"vatRate": 25,
+  	"country": "Egypten",
+  	"description": "Exklusiv fjäder från den mytomspunna Fenix. Oumbärlig vid experimenterande med reinkarnation.",
+  	"stockBalance": 4,
+  	"artNumber": 666009,
+  	"keyword": ["Svart, Röd, Reinkarnation, Trolldryck"]
+  },
+  {
+		"title": "Djävulshorn",
+  	"magicType": ["Svart"],
+  	"imageLink": "../img/devil-horns.jpg",
+  	"price": 666,
+  	"vatRate": 25,
+  	"country": "Helvetet",
+  	"description": "Kraftfulla artefakter som tar dina ondskefulla planer till nya nivåer.",
+  	"stockBalance": 6,
+  	"artNumber": 666010,
+  	"keyword": ["Svart, Ritual, Besvärjelse"]
+  }
+]
