@@ -6,3 +6,9 @@ body {
 main {
   flex-grow: 1;
 }
+.carousel-item {
+  height: 400px;
+}
+.banner-row {
+  background-color: black;
+}
