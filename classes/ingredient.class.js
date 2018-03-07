@@ -1,6 +1,6 @@
 const ModelAndRoutes = require('./model-and-routes.class');
 
-module.exports = class Ingredienser extends ModelAndRoutes {
+module.exports = class Ingredient extends ModelAndRoutes {
 
   static get schema(){
     return {

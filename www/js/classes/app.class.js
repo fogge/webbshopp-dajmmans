@@ -1,20 +1,16 @@
 class App extends REST {
 
   constructor() {
+    super();
+    this.start();
 
   }
 
-  start() {
-    $.ajax({
-      url: '/import/books',
-      success: (data) => {
-        console.log("Reset of database", data);
-        // Now run our tests
-        test();
-      }
-    });
+  async start() {
     // Initiate handling of SPA push/pop-state
-    new PopStateHandler(this);
+    this.myIngredients = await Ingredient.find();
+    console.log(this.myIngredients);
+  //  new PopStateHandler(this);
   }
 
 }
