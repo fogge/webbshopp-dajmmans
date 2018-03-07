@@ -115,8 +115,32 @@
   	"vatRate": 25,
   	"country": "Helvetet",
   	"description": "Kraftfulla artefakter som tar dina ondskefulla planer till nya nivåer.",
-  	"stockBalance": 6,
+  	"stockBalance": 0,
   	"artNumber": 666010,
   	"keyword": ["Svart, Ritual, Besvärjelse"]
+  },
+  {
+    "title": "Ruttna ägg",
+    "magicType": ["Gul, Grön, Brun"],
+    "imageLink": "../img/rotten-egg.jpg",
+    "price": 2,
+    "vatRate": 25,
+    "country": "Danmark",
+    "description": "Sprid påskkänsla hos dina värsta fiender. Ruttna ägg har använts i flera sekel som ett bevis på otacksamhet.",
+    "stockBalance": 536,
+    "artNumber": 666011,
+    "keyword": ["Gul, Grön, Brun, Påsk, Ritual, Illaluktande"]
+  },
+  {
+    "title": "Kycklinghuvuden",
+    "magicType": ["Gul, Brun"],
+    "imageLink": "../img/chicken-heads.jpg",
+    "price": 10,
+    "vatRate": 12,
+    "country": "Ungern",
+    "description": "Huvudingrediens som överhuvudtaget aldrig får ta slut. Håll huvudet högt och du kommer lyckas med dina ritualer med hjälp av dessa.",
+    "stockBalance": 247,
+    "artNumber": 666012,
+    "keyword": ["Gul, Brun, Påsk, Ritual"]
   }
 ]
