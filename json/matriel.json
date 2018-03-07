@@ -1,0 +1,122 @@
+ [    
+  {
+    "title": "Kittel \"Standard\"",
+    "description": "Oumbärlig i varje magikers förråd. Denna modell passar nybörjaren såväl som den erfarne. Tåler upp till 1500° C och rymmer ca 40 liter.",
+    "material": "Metall-legering",
+    "magicType": ["Svart, Brun, Röd, Grön, Gul"],
+    "imageLink": "../img/kittel.jpg",
+    "price": 1998,
+    "vatRate": 25,
+    "stockBalance": 18,
+    "artNumber": 666201,
+    "keyword": ["Häxkittel, Svart, Brun, Röd, Grön, Gul, Trolldryck, Trollformel, Ritual, Långkok"]   
+  },
+  {
+    "title": "Kvast i ek",
+    "description": "Snabb och pålitlig kvast med skaft av slitstark ek. Följer din minsta vink utan att tveka. Passa på och anländ till Blåkulla med stil!",
+    "material": "Ek",
+    "magicType": ["Brun"],
+    "imageLink": "../img/kvast-i-ek.jpg",
+    "price": 1500,
+    "vatRate": 25,
+    "stockBalance": 11,
+    "artNumber": 666202,
+    "keyword": ["Brun, Påsk, Ek, Trä"]   
+  },
+  {
+    "title": "Kvast i byggsats",
+    "description": "För entusiasten finns nu möjlighet att bygga din egen kvast. Beskrivning ingår. Går att trimma med de rätta besvärjelserna.",
+    "material": "Bok",
+    "magicType": ["Brun"],
+    "imageLink": "../img/kvast-byggsats.jpg",
+    "price": 899,
+    "vatRate": 25,
+    "stockBalance": 24,
+    "artNumber": 666203,
+    "keyword": ["Brun, Påsk, Bok, Trä"]   
+  },
+  {
+    "title": "Kristallkula",
+    "description": "Redo att spå framtiden. Inställd på en vecka framåt men finns möjlighet att ändra till en månad.",
+    "material": "Kristall",
+    "magicType": ["Svart, Gul"],
+    "imageLink": "../img/kristallkula.jpg",
+    "price": 590,
+    "vatRate": 25,
+    "stockBalance": 37,
+    "artNumber": 666204,
+    "keyword": ["Brun, Kristall"]   
+  },
+  {
+    "title": "Startkit flaskor",
+    "description": "Praktiska flaskor att förvara dina senaste hopkok utan att de tappar effekt. Flaskorna är specialbehandlade för att inte de magiska effekterna ska läcka ut.",
+    "material": "Glas",
+    "magicType": ["Svart, Gul, Brun, Röd, Grön"],
+    "imageLink": "../img/flaskset.jpg",
+    "price": 150,
+    "vatRate": 25,
+    "stockBalance": 10,
+    "artNumber": 666205,
+    "keyword": ["Svart, Gul, Brun, Röd, Grön, Glas"]   
+  },
+  {
+    "title": "Amulett +40 magi",
+    "description": "Förstärk dina krafter med hjälp av denna amulett. Smidd i järn av erfaren runsmed.",
+    "material": "Järn",
+    "magicType": ["Svart, Gul, Brun, Röd, Grön"],
+    "imageLink": "../img/amulet.jpg",
+    "price": 850,
+    "vatRate": 25,
+    "stockBalance": 45,
+    "artNumber": 666206,
+    "keyword": ["Svart, Gul, Brun, Röd, Grön, Järn"]   
+  },
+  {
+    "title": "Ring",
+    "description": "Magisk ring som har otroliga krafter. Varning, vill gärna ta över och kontrollera dig.",
+    "material": "Guld",
+    "magicType": ["Svart, Gul, Brun, Röd, Grön"],
+    "imageLink": "../img/ring.jpg",
+    "price": 15000,
+    "vatRate": 25,
+    "stockBalance": 1,
+    "artNumber": 666207,
+    "keyword": ["Svart, Gul, Brun, Röd, Grön, Guld"]   
+  },
+  {
+    "title": "Osynlighetskappa",
+    "description": "Utomordentlig kappa som ger bäraren möjlighet att bli helt osynlig. One-size.",
+    "material": "Ull",
+    "magicType": ["Gul"],
+    "imageLink": "../img/invisibility_cloak.jpg",
+    "price": 2500,
+    "vatRate": 25,
+    "stockBalance": 5,
+    "artNumber": 666208,
+    "keyword": ["Gul, Osynlig, Ull, Tyg"]   
+  },
+  {
+    "title": "Trollstav \"Nybörjare\"",
+    "description": "Bra trollstav att börja sin magiska bana med. Klarar enklare trollformler såsom litet eldklot och polymorph.",
+    "material": "Ebenholtz",
+    "magicType": ["Svart, Gul, Grön"],
+    "imageLink": "../img/trollstav.jpg",
+    "price": 200,
+    "vatRate": 25,
+    "stockBalance": 67,
+    "artNumber": 666209,
+    "keyword": ["Svart, Gul, Grön, Nybörjare, Trollformel, Ebenholtz, Trä"]   
+  },
+  {
+    "title": "Trollstav \"Erfaren\"",
+    "description": "Får endast användas av rutinerade magiker. Risk för utbrändhet vid oförsiktigt användande. Klarar alla trollformle inklusive Ultima",
+    "material": "Blodbok",
+    "magicType": ["Svart, Gul, Grön, Röd, Brun"],
+    "imageLink": "../img/trollstav-erfaren.jpg",
+    "price": 1000,
+    "vatRate": 25,
+    "stockBalance": 22,
+    "artNumber": 666210,
+    "keyword": ["Svart, Gul, Grön, Röd, Brun, Erfaren, Trollformel, Blodbok, Trä"]   
+  }
+]
