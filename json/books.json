@@ -110,5 +110,33 @@
     "stockBalance": 6,
     "artNumber": 666108,
     "keyword": ["Svart, Röd, Ritual, Besvärjelse"]
+  },
+  {
+    "title": "Satansverserna",
+    "author": "Belsebub",
+    "description": "Uråldrig kunskap för den inbitne fanatikern. Tros ha skrivits av självaste hin håle.",
+    "pages": 666,
+    "language": "Curse",
+    "magicType": ["Svart, Röd"],
+    "imageLink": "../img/satanic.jpg",
+    "price": 129,
+    "vatRate": 6,
+    "stockBalance": 6,
+    "artNumber": 666108,
+    "keyword": ["Svart, Röd, Ritual, Besvärjelse"]
+  },
+  {
+    "title": "Satansverserna",
+    "author": "Belsebub",
+    "description": "Uråldrig kunskap för den inbitne fanatikern. Tros ha skrivits av självaste hin håle.",
+    "pages": 666,
+    "language": "Curse",
+    "magicType": ["Svart, Röd"],
+    "imageLink": "../img/satanic.jpg",
+    "price": 129,
+    "vatRate": 6,
+    "stockBalance": 6,
+    "artNumber": 666108,
+    "keyword": ["Svart, Röd, Ritual, Besvärjelse"]
   }
 ]

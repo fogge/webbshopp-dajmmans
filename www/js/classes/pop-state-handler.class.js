@@ -61,15 +61,13 @@ class PopStateHandler {
     this[methodName]();
 
     // Set the right menu item active
-    this.app.navbar.setActive(url);
+    this.app.nav.setActive(url);
 
   }
 
   //Methods for rendering in our templates in the SPA
 
-  startpage(){
-    
-  }
+  startpage(){}
 
 
 

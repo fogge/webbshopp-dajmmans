@@ -1,0 +1,35 @@
+Object.assign(Header.prototype, { template(){ return `
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <h3 class="my-auto"><a class="navbar-brand" href="#" data-toggle="tooltip" title="Start">Brand</a></h3>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse w-100 flex-md-column" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link py-1 pop" href="#">Materiel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link py-1 pop" href="#">Ingredienser</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link py-1 pop" href="#">Böcker</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link py-1 pop" href="#">Om oss</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link py-1 pop" href="#" data-toggle="tooltip" title="Till varukorg"><i class="fas fa-shopping-cart"></i></a>
+          </li>
+        </ul>
+        <form class="form-inline ml-auto">
+          <div class="input-group">
+            <input type="text" class="form-control border-dark" placeholder="Sök efter en produkt">
+            <div class="input-group-append">
+              <a class="btn btn-outline-secondary pop" type="button" data-toggle="tooltip" title="Sök"><i class="fas fa-search"></i></a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </nav>
+  `;}});
