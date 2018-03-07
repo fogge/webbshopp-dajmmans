@@ -6,3 +6,14 @@ body {
 main {
   flex-grow: 1;
 }
+button {
+  cursor: pointer;
+}
+main .product-avatar > div > div {
+  overflow: hidden;
+}
+main .product-avatar button {
+  background: tomato;
+  display: block;
+  width: 40%;
+}
