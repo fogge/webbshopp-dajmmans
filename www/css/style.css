@@ -6,3 +6,8 @@ body {
 main {
   flex-grow: 1;
 }
+.line {
+  height: 50px;
+  width: 100%;
+  border-top: 1px solid #1f1209;
+}
