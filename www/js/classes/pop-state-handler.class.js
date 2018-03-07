@@ -52,7 +52,7 @@ class PopStateHandler {
     // A small "dictionary" of what method to call
     // on which url
     let urls = {
-      '/': 'startsidan'
+      '/': 'startpage'
 
     };
 
@@ -67,7 +67,9 @@ class PopStateHandler {
 
   //Methods for rendering in our templates in the SPA
 
-
+  startpage(){
+    
+  }
 
 
 

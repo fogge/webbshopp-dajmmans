@@ -1,7 +1,7 @@
 
 //Fix here for our JSON
-const ingredientsJson = require('./json/ingredients.json');
-
+const ingredientJson = require('./json/ingredients.json');
+const booksJson = require('./json/books.json');
 
 
 const express = require('express');
@@ -12,10 +12,15 @@ app.use(express.static('www'));
 
 // Please note that "a Book" here is not really a book
 // but a Mongoose model + setting up routes
-const Ingredients = require('./classes/ingredients.class');
-let ingredients = new Ingredients(app);
+const Ingredient = require('./classes/ingredient.class');
+const Book = require('./classes/book.class');
 
-ingredients.setupImportRoute(ingredientsJson);
+let ingredient = new Ingredient(app);
+let book = new Book(app);
+
+ingredient.setupImportRoute(ingredientJson);
+book.setupImportRoute(booksJson);
+
 
 
 app.listen(3000,()=>{
