@@ -6,25 +6,21 @@ Object.assign(Header.prototype, { template(){ return `
       </button>
       <div class="collapse navbar-collapse w-100 flex-md-column" id="navbarCollapse">
         <ul class="navbar-nav ml-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <a class="nav-link py-1 pop" href="#">Materiel</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link py-1 pop" href="#">Ingredienser</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link py-1 pop" href="#">Böcker</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link py-1 pop" href="#">Om oss</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link py-1 pop" href="#" data-toggle="tooltip" title="Till varukorg"><i class="fas fa-shopping-cart"></i></a>
-          </li>
+          ${this.items.render()}
         </ul>
         <form class="form-inline ml-auto">
-          <div class="input-group">
-            <input type="text" class="form-control border-dark" placeholder="Sök efter en produkt">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Login
+            </button>
+            <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
+              <input type="text" class="form-control" placeholder="Email">
+              <input type="text" class="form-control mt-2" placeholder="Lösenord">
+              <a class="btn bg-primary pop mt-1" type="button" data-toggle="tooltip" title="Logga in">Logga in <i class="fas fa-sign-in-alt"></i></a>
+            </div>
+          </div>
+          <div class="input-group ml-2">
+            <input type="text" class="form-control" placeholder="Sök efter en produkt">
             <div class="input-group-append">
               <a class="btn btn-outline-secondary pop" type="button" data-toggle="tooltip" title="Sök"><i class="fas fa-search"></i></a>
             </div>
