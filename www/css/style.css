@@ -11,3 +11,9 @@ main {
   width: 100%;
   border-top: 1px solid #1f1209;
 }
+.carousel-item {
+  height: 400px;
+}
+.banner-row {
+  background-color: black;
+}
