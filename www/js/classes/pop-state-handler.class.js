@@ -56,6 +56,7 @@ class PopStateHandler {
       '/materiel': 'materiel',
       '/ingredienser': 'ingredienser',
       '/bocker': 'bocker',
+      '/search': 'search',
       '/om_oss': 'about'
     };
 
@@ -71,39 +72,43 @@ class PopStateHandler {
   //Methods for rendering in our templates in the SPA
 
   startpage(){
-    $('.banner-row').empty();
+    this.empty();
     this.app.banner = new Banner(this);
     this.app.banner.render('.banner-row');
   }
 
   materiel(){
-    $('.banner-row').empty();
-    $('main').empty();
+    this.empty();
     this.app.productcategory = new ProductCategory(this);
     this.app.productcategory.render('main', '3');
   }
 
   ingredienser(){
-    $('.banner-row').empty();
-    $('main').empty();
+    this.empty();
     this.app.productcategory = new ProductCategory(this);
     this.app.productcategory.render('main', '3');
   }
 
   bocker(){
-    $('.banner-row').empty();
-    $('main').empty();
+    this.empty();
     this.app.productcategory = new ProductCategory(this);
     this.app.productcategory.render('main', '3');
 
   }
 
   about(){
-    $('.banner-row').empty();
-    $('main').empty();
-
+    this.empty();
   }
 
+  search() {
+    this.empty();
+    this.search = new Search();
+    this.search.render();
+  }
 
+  empty() {
+    $('.banner-row').empty();
+    $('main').empty();
+  }
 
 }
