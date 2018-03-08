@@ -25,6 +25,7 @@ class REST extends Base {
   static async find(query){
     let entity = (this.name + 's').toLowerCase();
     let results = await REST.request(entity,'GET',query,'');
+    console.log(results);
     results = results.result || [results];
     let enriched = [];
     for(let result of results){
@@ -43,10 +44,10 @@ class REST extends Base {
     return new this(result);
   }
 
-  static async request(entity, reqMethod, query, body){
+  static async request(entity, reqMethod, query={}, body={}){
 
     let reqObj = {
-      url: `/${entity}/${query}`, // entity for example "books"
+      url: `/${entity}/${JSON.stringify(query)}`, // entity for example "books"
       method: reqMethod, // POST, GET, PUT, DELETE
       dataType: 'json', // I except JSON back from the server
       data: JSON.stringify(body), // JSON to send to server
@@ -59,7 +60,6 @@ class REST extends Base {
     if(reqMethod != "POST" && reqMethod != "PUT"){
       delete reqObj.data;
     }
-
     return await $.ajax(reqObj);
 
   }
