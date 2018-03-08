@@ -77,7 +77,9 @@ class PopStateHandler {
   }
 
   materiel(){
-    let Materiel = new ProductCategory();
+    $('main').empty();
+    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory.render('main', '3');
   }
 
   ingredienser(){
