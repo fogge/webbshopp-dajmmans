@@ -3,7 +3,6 @@ class App extends REST {
   constructor() {
     super();
     this.start();
-
   }
 
   async start() {
@@ -22,6 +21,11 @@ class App extends REST {
     this.ingredienser = new Ingredient(this);
     this.bocker = new Bocker(this);
     this.about = new About(this);
+
+    // Footer 
+    this.footer = new Footer(this);
+    $('footer').empty();
+    this.footer.render('footer');
 
     this.popState = new PopStateHandler(this);
   }

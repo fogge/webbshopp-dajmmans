@@ -6,3 +6,7 @@ style.css
 css/all\.css
 
 css/variables-and-mixins\.css
+
+*.css
+
+www/css/
