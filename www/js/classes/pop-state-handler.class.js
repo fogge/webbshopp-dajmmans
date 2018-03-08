@@ -56,7 +56,7 @@ class PopStateHandler {
       '/materiel': 'materiel',
       '/ingredienser': 'ingredienser',
       '/bocker': 'bocker',
-      '/om_oss': 'omOss'
+      '/om_oss': 'about'
     };
 
     // Call the right method
@@ -71,11 +71,10 @@ class PopStateHandler {
   //Methods for rendering in our templates in the SPA
 
   startpage(){
-
   }
 
   materiel(){
-
+    
   }
 
   ingredienser(){
@@ -86,7 +85,7 @@ class PopStateHandler {
 
   }
 
-  omOss(){
+  about(){
 
   }
 
