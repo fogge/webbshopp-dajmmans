@@ -77,20 +77,30 @@ class PopStateHandler {
   }
 
   materiel(){
+    $('.banner-row').empty();
     $('main').empty();
     this.app.productcategory = new ProductCategory(this);
     this.app.productcategory.render('main', '3');
   }
 
   ingredienser(){
-
+    $('.banner-row').empty();
+    $('main').empty();
+    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory.render('main', '3');
   }
 
   bocker(){
+    $('.banner-row').empty();
+    $('main').empty();
+    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory.render('main', '3');
 
   }
 
   about(){
+    $('.banner-row').empty();
+    $('main').empty();
 
   }
 
