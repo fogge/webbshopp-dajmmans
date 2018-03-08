@@ -1,4 +1,4 @@
-class Startpage extends REST {
+class OmOss extends REST {
   constructor() {
     super();
   }

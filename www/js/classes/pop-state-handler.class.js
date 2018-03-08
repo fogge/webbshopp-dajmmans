@@ -52,8 +52,11 @@ class PopStateHandler {
     // A small "dictionary" of what method to call
     // on which url
     let urls = {
-      '/': 'startpage'
-
+      '/': 'startpage',
+      '/materiel': 'materiel',
+      '/ingredienser': 'ingredienser',
+      '/bocker': 'bocker',
+      '/om_oss': 'omOss'
     };
 
     // Call the right method
@@ -61,13 +64,31 @@ class PopStateHandler {
     this[methodName]();
 
     // Set the right menu item active
-    this.app.nav.setActive(url);
+    this.app.header.setActive(url);
 
   }
 
   //Methods for rendering in our templates in the SPA
 
-  startpage(){}
+  startpage(){
+
+  }
+
+  materiel(){
+
+  }
+
+  ingredienser(){
+
+  }
+
+  bocker(){
+
+  }
+
+  omOss(){
+
+  }
 
 
 
