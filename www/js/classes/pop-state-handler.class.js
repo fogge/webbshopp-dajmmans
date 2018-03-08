@@ -56,7 +56,7 @@ class PopStateHandler {
       '/materiel': 'materiel',
       '/ingredienser': 'ingredienser',
       '/bocker': 'bocker',
-      '/search': 'search'
+      '/search': 'search',
       '/om_oss': 'about'
     };
 
