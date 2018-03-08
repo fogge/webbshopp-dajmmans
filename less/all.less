@@ -1,5 +1,7 @@
 // Styling for the overall page
-
+* {
+  outline: none!important;
+}
 body {
   display: flex;
   flex-direction: column;
@@ -12,4 +14,8 @@ main {
 
 button {
   cursor: pointer;
+  background: @buttonColor;
+}
+button:hover {
+  background: @buttonColor-hover;
 }
