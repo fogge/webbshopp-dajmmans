@@ -1,3 +1,6 @@
+* {
+  outline: none!important;
+}
 body {
   display: flex;
   flex-direction: column;
@@ -5,6 +8,23 @@ body {
 }
 main {
   flex-grow: 1;
+}
+button {
+  cursor: pointer;
+  background: #ff6347;
+}
+button:hover {
+  background: #ff9579;
+}
+main .product-avatar > div > div {
+  overflow: hidden;
+}
+main .product-avatar button {
+  display: block;
+  width: 40%;
+}
+main .product-avatar .product-title {
+  font-weight: bold;
 }
 .line {
   height: 50px;
