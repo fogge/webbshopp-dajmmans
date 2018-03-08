@@ -71,9 +71,9 @@ class PopStateHandler {
   //Methods for rendering in our templates in the SPA
 
   startpage(){
-    this.banner = new Banner(this);
-    $('banner-row').empty();
-    this.banner.render('banner-row');
+    $('.banner-row').empty();
+    this.app.banner = new Banner(this);
+    this.app.banner.render('.banner-row');
   }
 
   materiel(){
