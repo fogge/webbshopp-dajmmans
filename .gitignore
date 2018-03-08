@@ -2,3 +2,7 @@ node_modules
 .DS_store
 users.json
 style.css
+
+css/all\.css
+
+css/variables-and-mixins\.css
