@@ -74,7 +74,7 @@ class PopStateHandler {
   }
 
   materiel(){
-    
+    let Materiel = new ProductCategory();
   }
 
   ingredienser(){
