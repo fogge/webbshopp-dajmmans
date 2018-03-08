@@ -3,7 +3,6 @@ class App extends REST {
   constructor() {
     super();
     this.start();
-
   }
   
   async start() {
@@ -21,14 +20,12 @@ class App extends REST {
     this.ingredienser = new Ingredient(this);
     this.omOss = new OmOss(this);
 
-    this.popState = new PopStateHandler(this);
-
+    // Footer 
     this.footer = new Footer(this);
     $('footer').empty();
     this.footer.render('footer');
 
-
-    //new PopStateHandler(this);
+    this.popState = new PopStateHandler(this);
   }
 
 }
