@@ -1,5 +1,5 @@
 class Header extends REST {
-  constructor() {
+  constructor(app) {
     super();
     this.app = app;
     this.items = [
