@@ -1,8 +1,26 @@
 Object.assign(Search.prototype, { template(){ return `
-
+<div class="my-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="float-right">
+        <div class="dropdown">
+          <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">Sortera
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li class="ml-3"><a class="pop" href="#">Mest populär</a></li>
+            <li class="ml-3"><a class="pop" href="#">Minst populär</a></li>
+            <li class="ml-3"><a class="pop" href="#">Pris</a></li>
+            <li class="ml-3"><a class="pop" href="#">A-Ö</a></li>
+            <li class="ml-3"><a class="pop" href="#">Ö-A</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row">
     ${this.searchResult.render()}
   </div>
+</div>
 `;}});
 
 
