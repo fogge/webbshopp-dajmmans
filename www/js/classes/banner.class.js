@@ -1,5 +1,6 @@
-class Startpage extends REST {
+class Banner extends REST {
   constructor() {
     super();
+    
   }
 }

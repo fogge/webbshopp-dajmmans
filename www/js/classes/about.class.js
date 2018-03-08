@@ -1,4 +1,4 @@
-class Startpage extends REST {
+class About extends REST {
   constructor() {
     super();
   }
