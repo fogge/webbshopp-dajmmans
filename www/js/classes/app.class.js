@@ -8,7 +8,8 @@ class App extends REST {
   async start() {
     // Initiate handling of SPA push/pop-state
     this.myIngredients = await Ingredient.find();
-
+    
+    
     //Rendering the header
     this.header = new Header(this);
     $('header').empty();
@@ -28,6 +29,7 @@ class App extends REST {
     this.footer.render('footer');
 
     this.popState = new PopStateHandler(this);
+    console.log(this.myIngredients);
   }
 
 }

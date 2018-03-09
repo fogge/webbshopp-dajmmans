@@ -82,7 +82,8 @@ class PopStateHandler {
     this.empty();
     this.app.productcategory = new ProductCategory(this);
     this.app.productcategory.render('main', '3');
-    this.app.productcategory.render('.category-item', '4');
+    this.app.productcategoryItem = new ProductAvatar(this);
+    this.app.productcategoryItem.render('.category-item');
   }
 
   ingredienser(){

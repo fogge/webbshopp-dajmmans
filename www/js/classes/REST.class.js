@@ -25,7 +25,7 @@ class REST extends Base {
   static async find(query){
     let entity = (this.name + 's').toLowerCase();
     let results = await REST.request(entity,'GET',query,'');
-    console.log(results);
+    //console.log(results);
     results = results.result || [results];
     let enriched = [];
     for(let result of results){
