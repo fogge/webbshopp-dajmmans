@@ -1,6 +1,6 @@
 Object.assign(Header.prototype, { template(){ return `
   <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <h3 class="my-auto"><a class="navbar-brand" href="#" data-toggle="tooltip" title="Start">Brand</a></h3>
+      <h3 class="my-auto"><a class="navbar-brand" href="/" data-toggle="tooltip" title="Start">Brand</a></h3>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,7 +22,7 @@ Object.assign(Header.prototype, { template(){ return `
           <div class="input-group ml-2">
             <input type="text" class="form-control" placeholder="Sök efter en produkt">
             <div class="input-group-append">
-              <a class="btn btn-outline-secondary pop" type="button" data-toggle="tooltip" title="Sök"><i class="fas fa-search"></i></a>
+              <a class="btn btn-outline-secondary pop" href="/search" type="button" data-toggle="tooltip" title="Sök"><i class="fas fa-search"></i></a>
             </div>
           </div>
         </form>
