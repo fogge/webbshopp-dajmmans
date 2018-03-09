@@ -57,7 +57,8 @@ class PopStateHandler {
       '/ingredienser': 'ingredienser',
       '/bocker': 'bocker',
       '/search': 'search',
-      '/om_oss': 'about'
+      '/om_oss': 'about',
+      '/kassa' : 'cart'
     };
 
     // Call the right method
@@ -104,6 +105,12 @@ class PopStateHandler {
     this.empty();
     this.search = new Search();
     this.search.render();
+  }
+
+  cart(){
+    this.empty();
+    this.cart = new Cart();
+    this.cart.render();
   }
 
   empty() {
