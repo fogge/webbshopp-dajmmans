@@ -103,8 +103,7 @@ class PopStateHandler {
 
   search() {
     this.empty();
-    this.search = new Search();
-    this.search.render();
+    this.search = new Search(Search.searchQuery);
   }
 
   cart(){
