@@ -6,9 +6,9 @@ class Search extends REST {
   }
 
   async getSearchResult() {
+    let query = Search.searchQuery;
+    // Hardcoded search on ingredients collection with title
     let searchResultFromMongo = await Ingredient.request('ingredients', 'get', {title: Search.searchQuery});
-    // Get import/searchresults from database, now only an hardcoded object return
-    let array = [];
     searchResultFromMongo.result.forEach( (product) => {
       this.searchResult.push(new ProductAvatar(product));
     })
