@@ -1,6 +1,8 @@
 //main: style.less
 // Styling for the overall page
-
+* {
+  outline: none!important;
+}
 body {
   display: flex;
   flex-direction: column;
@@ -9,4 +11,12 @@ body {
 
 main {
   flex-grow: 1;
+}
+
+button {
+  cursor: pointer;
+  background: @buttonColor;
+}
+button:hover {
+  background: @buttonColor-hover;
 }
