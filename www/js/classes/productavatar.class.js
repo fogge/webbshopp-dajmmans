@@ -1,7 +1,8 @@
 class ProductAvatar extends REST {
-  constructor(app) {
+  constructor(product) {
     super();
-    this.app = app;
-    console.log('what the hell is this?', this);
+    for (let value in product) {
+      this[value] = product[value];
+    }
   }
 }
