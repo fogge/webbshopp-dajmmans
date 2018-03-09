@@ -4,6 +4,5 @@ class CartItem extends REST {
     for (let value in product) {
       this[value] = product[value]
     }
-    console.log(this);
   }
 }
