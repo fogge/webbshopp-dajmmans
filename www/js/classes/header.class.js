@@ -21,8 +21,10 @@ class Header extends REST {
   setupHandler() {
     $(document).on('click', '.searchbtn', (event) => {
       event.preventDefault();
-      Search.searchQuery = $('.inputsearch').val();
-      $('.searchbtn').val('');
+      this.search = new Search($('.inputsearch').val());
+      $('.inputsearch').val('');
     })
   }
 }
+
+

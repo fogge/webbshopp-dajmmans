@@ -105,8 +105,8 @@ class PopStateHandler {
   }
 
   search() {
+    console.log('hejhej');
     this.empty();
-    this.search = new Search(Search.searchQuery);
   }
 
   cart(){

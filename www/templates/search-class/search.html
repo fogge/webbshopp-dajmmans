@@ -2,6 +2,7 @@ Object.assign(Search.prototype, { template(){ return `
 <div class="my-4">
   <div class="row">
     <div class="col-12">
+      <h1>Dina sökresultat</h1>
       <div class="float-right">
         <div class="dropdown">
           <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">Sortera
@@ -18,7 +19,7 @@ Object.assign(Search.prototype, { template(){ return `
     </div>
   </div>
   <div class="row">
-    ${this.searchResult.render()}
+    ${this.searchResult.length == 0 ? 'Tyvärr så gav inte din idiotiska sökning någon resultat på vår fantatiska sida om magiska ting.' : this.searchResult.render()}
   </div>
 </div>
 `;}});
