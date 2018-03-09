@@ -4,15 +4,15 @@ Object.assign(ProductAvatar.prototype, { template(){ return `
       <div class="d-flex flex-column p-md-2 bg-white">
         <div class="m-2 m-md-2">
           <div>
-            <img src="/img/blod-kiss.jpg" class="img-fluid">
+            <img src="${this.imageLink}" class="img-fluid">
           </div>
           <div class="text-center">
-            <a href="#" class="pop d-block mt-2 product-title">${this.app.title}</a>
-            <span>${this.app.price}:-</span>
+            <a href="#" class="pop d-block mt-2 product-title">${this.title}</a>
+            <span>${this.price}:-</span>
           </div>
           <div class="d-flex justify-content-between">
             <div class="p-2 w-100 text-center">
-              ${this.app.stock == 0 ? 
+              ${this.stock == 0 ? 
                 '<i class="fas fa-times-circle text-danger"></i>' :
                 '<i class="fas fa-check-circle text-success"></i>'}
                 Lagerstatus
