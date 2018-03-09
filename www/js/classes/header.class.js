@@ -9,11 +9,20 @@ class Header extends REST {
       new HeaderItem('Ingredienser', '/ingredienser'),
       new HeaderItem('Om oss', '/om_oss')
     ];
-
+    this.setupHandler();
   }
+
   async setActive(url) {
     for (let item of this.items) {
       item.active = url == item.url;
     }
+  }
+
+  setupHandler() {
+    $(document).on('click', '.searchbtn', (event) => {
+      event.preventDefault();
+      Search.searchQuery = $('.inputsearch').val();
+      $('.searchbtn').val('');
+    })
   }
 }
