@@ -1,19 +1,19 @@
 class Search extends REST {
-  constructor() {
+  constructor(query) {
     super();
+    this.query = query;
     this.searchResult = [];
     this.getSearchResult();
   }
 
   async getSearchResult() {
-    let query = Search.searchQuery;
     // Hardcoded search on ingredients collection with title
     // let searchResultFromMongo = await Ingredient.request('ingredients', 'GET', `title[$regex]=${Search.searchQuery}`);
-    let searchResultFromMongo = await Ingredient.find('title=Blodkiss');
+    let searchResultFromMongo = await Ingredient.find({title: {$regex: this.query}});
     await console.log('searchResultFromMongo', searchResultFromMongo);
-    // searchResultFromMongo.result.forEach( (product) => {
-    //   this.searchResult.push(new ProductAvatar(product));
-    // })
+    searchResultFromMongo.forEach( (product) => {
+      this.searchResult.push(new ProductAvatar(product.result));
+    })
     return await this.render();
   }
 }
