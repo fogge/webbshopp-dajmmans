@@ -17,5 +17,3 @@ class Search extends REST {
     return await this.render();
   }
 }
-
-
