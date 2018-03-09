@@ -1,4 +1,4 @@
-class REST extends Base {
+class REST extends Base{
 
   constructor(obj){
     super();
@@ -23,14 +23,33 @@ class REST extends Base {
   }
 
   static async find(query){
+
+    if(typeof query == 'object'){
+      query = JSON.stringify(query,(key,val) => {
+        if(val && val.constructor === RegExp){
+          val = val + '';
+          val = val.split('/');
+          let op = val.pop();
+          val = val.join('/');
+          val = val.substr(1, val.length - 1);
+
+          val = {$regex: val, $options: op};
+        }
+        return val;
+      });
+    }
     let entity = (this.name + 's').toLowerCase();
     let results = await REST.request(entity,'GET',query,'');
-    console.log(results);
+    await console.log('result', results);
+    let orgresults = results;
     results = results.result || [results];
+    delete orgresults.result;
     let enriched = [];
     for(let result of results){
       enriched.push(new this(result));
     }
+    enriched.info = orgresults;
+    await console.log('enriched', enriched);
     return enriched;
   }
 
@@ -47,7 +66,7 @@ class REST extends Base {
   static async request(entity, reqMethod, query={}, body={}){
 
     let reqObj = {
-      url: `/${entity}/${JSON.stringify(query)}`, // entity for example "books"
+      url: `/${entity}/${query}`, // entity for example "books"
       method: reqMethod, // POST, GET, PUT, DELETE
       dataType: 'json', // I except JSON back from the server
       data: JSON.stringify(body), // JSON to send to server
@@ -60,6 +79,7 @@ class REST extends Base {
     if(reqMethod != "POST" && reqMethod != "PUT"){
       delete reqObj.data;
     }
+
     return await $.ajax(reqObj);
 
   }
