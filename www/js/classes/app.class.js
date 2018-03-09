@@ -15,19 +15,17 @@ class App extends REST {
     this.header.render('header');
 
     //Rendering the footer
-
+    this.footer = new Footer(this);
+    $('footer').empty();
+    this.footer.render('footer');
+    
     this.startPage = new Startpage(this);
     this.materiel = new Materiel(this);
     this.ingredienser = new Ingredient(this);
     this.bocker = new Bocker(this);
     this.about = new About(this);
 
-    // Footer
-    this.footer = new Footer(this);
-    $('footer').empty();
-    this.footer.render('footer');
-
-    new PopStateHandler(this);
+    this.popState = new PopStateHandler(this);
   }
 
 }

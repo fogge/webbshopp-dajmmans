@@ -74,8 +74,11 @@ class PopStateHandler {
 
   startpage(){
     this.empty();
-    this.app.banner = new Banner(this);
+    this.app.banner = new Banner();
     this.app.banner.render('.banner-row');
+
+
+    this.app.startPage.render('main');
   }
 
   materiel(){
