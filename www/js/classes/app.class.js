@@ -22,12 +22,12 @@ class App extends REST {
     this.bocker = new Bocker(this);
     this.about = new About(this);
 
-    // Footer 
+    // Footer
     this.footer = new Footer(this);
     $('footer').empty();
     this.footer.render('footer');
 
-    this.popState = new PopStateHandler(this);
+    new PopStateHandler(this);
   }
 
 }
