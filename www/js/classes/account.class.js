@@ -1,4 +1,4 @@
-class User extends REST {
+class Account extends REST {
   constructor() {
     super();
 

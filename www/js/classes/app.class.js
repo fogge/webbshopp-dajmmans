@@ -21,8 +21,9 @@ class App extends REST {
     this.ingredienser = new Ingredient(this);
     this.bocker = new Bocker(this);
     this.about = new About(this);
+    this.account = new Account(this);
 
-    // Footer 
+    // Footer
     this.footer = new Footer(this);
     $('footer').empty();
     this.footer.render('footer');

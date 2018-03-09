@@ -10,6 +10,7 @@ class Header extends REST {
       new HeaderItem('Om oss', '/om_oss')
     ];
     this.setupHandler();
+    this.setupHandlerRegister();
   }
 
   async setActive(url) {
@@ -23,6 +24,12 @@ class Header extends REST {
       event.preventDefault();
       Search.searchQuery = $('.inputsearch').val();
       $('.searchbtn').val('');
-    })
+    });
+  }
+
+  setupHandlerRegister(){
+    $(document).on('click', '.register', (event) =>{
+      event.preventDefault();
+    });
   }
 }

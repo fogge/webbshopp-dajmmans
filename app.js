@@ -45,9 +45,6 @@ ingredient.setupImportRoute(ingredientJson);
 book.setupImportRoute(booksJson);
 materiel.setupImportRoute(materielJson);
 
-app.get(/^[^\.]*$/, (req, res) => {
- res.sendFile(__dirname + '/www/index.html');
-});
 
 const User = require('./classes/user.class');
 let u = new User(app);
@@ -55,6 +52,9 @@ global.User = u.myModel;
 const LoginHandler = require('./classes/login-handler.class');
 new LoginHandler(app);
 
+app.get(/^[^\.]*$/, (req, res) => {
+ res.sendFile(__dirname + '/www/index.html');
+});
 // Start the Express app on port 3000
 app.listen(3000,()=>{
   console.log("Listening on port 3000!");
