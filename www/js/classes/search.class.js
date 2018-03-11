@@ -2,18 +2,93 @@ class Search extends REST {
   constructor(query) {
     super();
     this.query = query;
+    this.sort = 'Falling';
     this.searchResult = [];
     this.getSearchResult();
+    this.setupHandler();
   }
 
   async getSearchResult() {
     // Hardcoded search on ingredients collection with title
     // let searchResultFromMongo = await Ingredient.request('ingredients', 'GET', `title[$regex]=${Search.searchQuery}`);
-    let searchResultFromMongo = await Ingredient.find({title: {$regex: this.query}});
-    await console.log('searchResultFromMongo', searchResultFromMongo);
-    searchResultFromMongo.forEach( (product) => {
-      this.searchResult.push(new ProductAvatar(product.result));
-    })
+    const mongoCollection = String($('#search-in-category').val());
+    const searchObj = {title: {$regex: this.query, $options: 'i'}};
+    let mongoResult;
+    if(mongoCollection === 'Ingredient') mongoResult = await Ingredient.find(searchObj);
+    if(mongoCollection === 'Materiel') mongoResult = await Materiel.find(searchObj);
+    if(mongoCollection === 'Book') mongoResult = await Book.find(searchObj);
+    if(mongoCollection === 'All') mongoResult = await All.find(searchObj);
+    
+    try {
+      mongoResult.forEach( (product) => {
+        this.searchResult.push(new ProductAvatar(product.result));
+      });
+    } catch(e){
+      console.error('Problem med collections \n', e);
+    }
+
     return await this.render();
+  }
+  
+  sortPriceLow() {
+    this.searchResult.sort((a,b) => {
+     return a.price - b.price;
+    });
+  }
+
+  sortPriceHigh() {
+    this.searchResult.sort((a,b) => {
+     return b.price - a.price;
+    });
+  }
+
+  sortNameLow() {
+    this.searchResult.sort((a,b) => {
+     if (a.title > b.title) {
+       return 1;
+     }
+     if (a.title < b.title) {
+       return -1;
+     }
+     return 0;
+    });
+  }
+
+  sortNameHigh() {
+    this.searchResult.sort((a,b) => {
+     if (a.title < b.title) {
+       return 1;
+     }
+     if (a.title > b.title) {
+       return -1;
+     }
+     return 0;
+    });
+  }
+
+  setupHandler() {
+    $(document).on('click', '#sortPriceLow', (e) => {
+      e.preventDefault();
+      this.sortPriceLow();
+      this.render();
+    });
+
+    $(document).on('click', '#sortPriceHigh', (e) => {
+      e.preventDefault();
+      this.sortPriceHigh();
+      this.render();
+    });
+
+    $(document).on('click', '#sortNameLow', (e) => {
+      e.preventDefault();
+      this.sortNameLow();
+      this.render();
+    });
+
+    $(document).on('click', '#sortNameHigh', (e) => {
+      e.preventDefault();
+      this.sortNameHigh();
+      this.render();
+    });
   }
 }

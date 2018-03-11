@@ -105,7 +105,6 @@ class PopStateHandler {
   }
 
   search() {
-    console.log('hejhej');
     this.empty();
   }
 

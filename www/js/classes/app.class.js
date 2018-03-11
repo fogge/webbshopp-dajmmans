@@ -22,7 +22,7 @@ class App extends REST {
     this.startPage = new Startpage(this);
     this.materiel = new Materiel(this);
     this.ingredienser = new Ingredient(this);
-    this.bocker = new Bocker(this);
+    this.Book = new Book(this);
     this.about = new About(this);
 
     this.popState = new PopStateHandler(this);
