@@ -21,8 +21,16 @@ Object.assign(Header.prototype, { template(){ return `
           </div>
           <form>
             <div class="input-group m-0 mt-2 mt-md-0">
+              <div class="input-group-prepend">
+                <select class="custom-select" id="search-in-category">
+                  <option value="All">Alla kategorier (fungerar ej än)</option>
+                  <option value="Materiel">Materiel</option>
+                  <option value="Ingredient" selected>Ingredienser</option>
+                  <option value="Book">Böcker</option>
+                </select>
+              </div>
               <input type="text" class="form-control inputsearch" placeholder="Sök efter en produkt">
-              <div class="input-group-append">
+              <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary pop searchbtn" href="/search" type="submit" data-toggle="tooltip" title="Sök"><i class="fas fa-search"></i></button>
               </div>
             </div>
