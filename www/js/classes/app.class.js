@@ -3,6 +3,8 @@ class App extends REST {
   constructor() {
     super();
     this.start();
+    this.cart = [];
+    this.setupHandler();
   }
 
   async start() {
@@ -26,6 +28,17 @@ class App extends REST {
     this.about = new About(this);
 
     this.popState = new PopStateHandler(this);
+  }
+
+  setupHandler() {
+    $(document).on('click', '.searchbtn', (event) => {
+      event.preventDefault();
+      this.search = new Search($('.inputsearch').val(), this);
+      $('.banner-row').empty();
+      $('main').empty();
+      this.search.render();
+      $('.inputsearch').val('');
+    })
   }
 
 }
