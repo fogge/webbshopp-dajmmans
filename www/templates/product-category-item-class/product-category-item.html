@@ -7,7 +7,7 @@ Object.assign(ProductAvatar.prototype, { template(){ return `
         <img src="${this.materiel.imageLink}" class="img-fluid">
       </div>
       <div class="text-center">
-        <a href="/produkt" class="pop d-block mt-2  product-title">${this.materiel.title}</a>
+        <a href="/produkt" id="${this.materiel._id}" class="pop d-block mt-2 product-title">${this.materiel.title}</a>
         <span>${this.materiel.price}:-</span>
       </div>
       <div class="d-flex justify-content-between">

@@ -106,7 +106,7 @@ class PopStateHandler {
 
   product(){
     this.empty();
-    this.app.productPage.render('main')
+    //this.app.productPage.render('main');
   }
 
   about(){
