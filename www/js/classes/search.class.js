@@ -2,8 +2,10 @@ class Search extends REST {
   constructor(query) {
     super();
     this.query = query;
+    this.sort = 'Falling';
     this.searchResult = [];
     this.getSearchResult();
+    this.setupHandler();
   }
 
   async getSearchResult() {
@@ -26,5 +28,67 @@ class Search extends REST {
     }
 
     return await this.render();
+  }
+  
+  sortPriceLow() {
+    this.searchResult.sort((a,b) => {
+     return a.price - b.price;
+    });
+  }
+
+  sortPriceHigh() {
+    this.searchResult.sort((a,b) => {
+     return b.price - a.price;
+    });
+  }
+
+  sortNameLow() {
+    this.searchResult.sort((a,b) => {
+     if (a.title > b.title) {
+       return 1;
+     }
+     if (a.title < b.title) {
+       return -1;
+     }
+     return 0;
+    });
+  }
+
+  sortNameHigh() {
+    this.searchResult.sort((a,b) => {
+     if (a.title < b.title) {
+       return 1;
+     }
+     if (a.title > b.title) {
+       return -1;
+     }
+     return 0;
+    });
+  }
+
+  setupHandler() {
+    $(document).on('click', '#sortPriceLow', (e) => {
+      e.preventDefault();
+      this.sortPriceLow();
+      this.render();
+    });
+
+    $(document).on('click', '#sortPriceHigh', (e) => {
+      e.preventDefault();
+      this.sortPriceHigh();
+      this.render();
+    });
+
+    $(document).on('click', '#sortNameLow', (e) => {
+      e.preventDefault();
+      this.sortNameLow();
+      this.render();
+    });
+
+    $(document).on('click', '#sortNameHigh', (e) => {
+      e.preventDefault();
+      this.sortNameHigh();
+      this.render();
+    });
   }
 }
