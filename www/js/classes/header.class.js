@@ -22,6 +22,9 @@ class Header extends REST {
     $(document).on('click', '.searchbtn', (event) => {
       event.preventDefault();
       this.search = new Search($('.inputsearch').val());
+      $('.banner-row').empty();
+      $('main').empty();
+      this.search.render();
       $('.inputsearch').val('');
     })
   }
