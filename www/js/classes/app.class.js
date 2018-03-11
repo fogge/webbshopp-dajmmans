@@ -24,7 +24,8 @@ class App extends REST {
     this.bocker = new Bocker(this);
     this.productPage = new ProductPage(this);
     this.about = new About(this);
-
+    this.admin = new Admin(this);
+    
     // Footer 
     this.footer = new Footer(this);
     $('footer').empty();
