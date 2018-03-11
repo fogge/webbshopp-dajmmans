@@ -56,6 +56,7 @@ class PopStateHandler {
       '/materiel': 'materiel',
       '/ingredienser': 'ingredienser',
       '/bocker': 'bocker',
+      '/produkt': 'product',
       '/search': 'search',
       '/om_oss': 'about',
       '/kassa' : 'cart'
@@ -101,6 +102,11 @@ class PopStateHandler {
     this.app.productcategory = new ProductCategory(this);
     this.app.productcategory.render('main', '3');
 
+  }
+
+  product(){
+    this.empty();
+    this.app.productPage.render('main')
   }
 
   about(){

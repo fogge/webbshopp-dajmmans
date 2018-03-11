@@ -1,6 +1,6 @@
-class Productpage extends REST {
+class ProductPage extends REST {
   constructor() {
-    
+    super();
   }
   
 }
