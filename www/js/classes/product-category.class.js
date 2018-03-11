@@ -1,5 +1,5 @@
 class ProductCategory extends REST {
-  constructor(){
+  constructor(app){
     super();
   }
 

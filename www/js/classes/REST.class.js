@@ -27,11 +27,13 @@ class REST extends Base {
     let results = await REST.request(entity,'GET',query,'');
     //console.log(results);
     results = results.result || [results];
-    let enriched = [];
-    for(let result of results){
-      enriched.push(new this(result));
-    }
-    return enriched;
+    // let enriched = [];
+    // for(let result of results){
+    //   enriched.push(new this(result));
+    // }
+    //console.log(enriched);
+    
+    return results;
   }
 
   static async findOne(query){
