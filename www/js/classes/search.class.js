@@ -67,27 +67,10 @@ class Search extends REST {
   }
 
   setupHandler() {
-    $(document).on('click', '#sortPriceLow', (e) => {
+    $(document).on('click', '#sortPriceLow, #sortPriceHigh, #sortNameLow, #sortNameHigh', (e) => {
       e.preventDefault();
-      this.sortPriceLow();
-      this.render();
-    });
-
-    $(document).on('click', '#sortPriceHigh', (e) => {
-      e.preventDefault();
-      this.sortPriceHigh();
-      this.render();
-    });
-
-    $(document).on('click', '#sortNameLow', (e) => {
-      e.preventDefault();
-      this.sortNameLow();
-      this.render();
-    });
-
-    $(document).on('click', '#sortNameHigh', (e) => {
-      e.preventDefault();
-      this.sortNameHigh();
+      let method = $(e.target).attr('id');
+      this[method]();
       this.render();
     });
   }
