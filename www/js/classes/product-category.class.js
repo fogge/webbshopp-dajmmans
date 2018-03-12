@@ -1,16 +1,9 @@
 class ProductCategory extends REST {
-  constructor(app){
+  constructor(app, category){
     super();
     this.app = app;
     this.myProducts = [];
-    this.checkCategory();
-  }
-
-  checkCategory(){
-    let url = location.pathname;
-    if (url == '/ingredienser') {this.getRightCategory(Ingredient);}
-    else if (url == '/bocker') {this.getRightCategory(Book);}
-    else if (url == '/materiel') {this.getRightCategory(Materiel);}
+    this.getRightCategory(category)
   }
 
   async getRightCategory(category){
@@ -23,8 +16,9 @@ class ProductCategory extends REST {
     } catch(e){
       console.error('Problem med collections \n', e);
     }
-
-    this.myProducts.render();
+    
+    $('main').empty();
+    this.render('main', '3');
   }
 
 }
