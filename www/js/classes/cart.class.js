@@ -37,4 +37,6 @@ class Cart extends REST {
     }
     return Math.round( totalVat * 10 ) / 10;
   }
+
+  
 }
