@@ -19,6 +19,13 @@ class PopStateHandler {
 
   addEventHandler(){
 
+    // Our search function
+    $(document).on('click', '.searchbtn', (event) => {
+      event.preventDefault();
+      this.search();
+      $('.inputsearch').val('');
+    });
+
     // make "that" the PopStateHandler object
     // (since this will be the a tag inside the click function)
     let that = this;
@@ -83,19 +90,19 @@ class PopStateHandler {
 
   materiel(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Materiel);
     this.app.productcategory.render('main', '3');
   }
 
   ingredienser(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Ingredient);
     this.app.productcategory.render('main', '3');
   }
 
   bocker(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Book);
     this.app.productcategory.render('main', '3');
 
   }
@@ -106,12 +113,13 @@ class PopStateHandler {
 
   search() {
     this.empty();
+    this.app.search = new Search($(document).find('.inputsearch').val(), this.app);
+    this.app.search.render();
   }
 
   cart(){
     this.empty();
-    this.cart = new Cart();
-    this.cart.render();
+    this.app.cart = new Cart(this.app);
   }
 
   empty() {

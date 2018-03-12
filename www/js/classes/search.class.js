@@ -3,7 +3,6 @@ class Search extends REST {
     super();
     this.app = app;
     this.query = query;
-    this.sort = 'Falling';
     this.searchResult = [];
     this.getSearchResult();
     this.setupHandler();
