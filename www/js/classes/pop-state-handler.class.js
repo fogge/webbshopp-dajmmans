@@ -58,7 +58,8 @@ class PopStateHandler {
       '/bocker': 'bocker',
       '/search': 'search',
       '/om_oss': 'about',
-      '/kassa' : 'cart'
+      '/kassa' : 'cart',
+      '/mina_sidor' : 'user'
     };
 
     // Call the right method
@@ -112,6 +113,12 @@ class PopStateHandler {
     this.empty();
     this.cart = new Cart();
     this.cart.render();
+  }
+
+  user(){
+    this.empty();
+    this.app.userPage = new Userpage(this);
+    this.app.userPage.render('main', '1');
   }
 
   empty() {
