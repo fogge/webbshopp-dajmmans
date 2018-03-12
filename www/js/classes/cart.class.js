@@ -1,16 +1,6 @@
 class Cart extends REST {
-  constructor(app) {
-    super();
-    this.app = app;
-    this.cartItems = this.app.shoppingCart;
-    this.render();
-
-  }
-
-  newInstances() {
-    this.app.cart.forEach((item) => {
-      this.cartItems.push(new CartItem(item, this.app));
-    });
-    this.render();
+  constructor() {
+    super()
+    this.cartItems = [new CartItem({title : 'Blodkiss', price : 199, artNumber : 123215, image : '/img/blod-kiss.jpg', description : 'Funko POP! Games: Kingdom Hearts: Organization 13 Mickey (Exclusive)'})];
   }
 }

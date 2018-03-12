@@ -1,7 +1,6 @@
 Object.assign(HeaderItem.prototype, { template(){ return `
 	<li class="nav-item ${this.active ? 'active' : ''}">
-  	<a class="nav-link py-1 pop ${this.name == 'Kassa' ? ' btn btn-outline-secondary': ''}" href="${this.url}">
-      ${this.name == 'Kassa' ? `<i class="fas fa-shopping-cart"></i> <span class="badge badge-pill badge-danger">${this.app.shoppingCart.length}</span>` : `${this.name}`}
+  	<a class="nav-link py-1 pop" href="${this.url}">${this.name}
     	${this.active ? '<span class="sr-only">(current)</span>' : ''}
   	</a>
 	</li>

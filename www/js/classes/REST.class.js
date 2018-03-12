@@ -38,10 +38,10 @@ class REST extends Base{
         return val;
       });
     }
-    
+
     let entity = (this.name + 's').toLowerCase();
     let results = await REST.request(entity,'GET',query,'');
-    console.log(results);
+    let orgresults = results;
     results = results.result || [results];
     delete orgresults.result;
     let enriched = [];
