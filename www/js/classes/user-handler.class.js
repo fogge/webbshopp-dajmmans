@@ -1,4 +1,4 @@
-class UserHandler {
+class UserHandler extends REST{
 
   static async check(){
     return await User.find('');
