@@ -66,7 +66,8 @@ class PopStateHandler {
       '/search': 'search',
       '/om_oss': 'about',
       '/kassa' : 'cart',
-      '/mina_sidor' : 'user'
+      '/mina_sidor' : 'user',
+      '/mina_sidor2' : 'user2'
     };
 
     // Call the right method
@@ -127,6 +128,12 @@ class PopStateHandler {
     this.empty();
     this.app.userPage = new Userpage(this);
     this.app.userPage.render('main', '1');
+  }
+
+  user2(){
+    this.empty();
+    this.app.userPage = new Userpage(this);
+    this.app.userPage.render('main', '2');
   }
 
   empty() {

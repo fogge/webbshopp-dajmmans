@@ -1,0 +1,18 @@
+Object.assign(Userpage.prototype, { template2(){ return `
+<div class="my-4">
+  <div class="row">
+    <div class="col-12">
+    	<h3 class="mt-5 mb-4">Dina uppgifter:</h3>
+    	<h5 class="mb-3">Användarnamn: $ {this.user.name}</h5>
+    	<h5 class="mb-3">Leveransadress: $ {this.user.address}</h5>
+    	<h5 class="mb-3">Postnummer: $ {this.user.zipcode}</h5>
+    	<h5 class="mb-3">Ort: $ {this.user.ziparea}</h5>
+    	<h5 class="mb-3">Mailadress: $ {this.user.email}</h5>
+    	<h5 class="mb-3">Telefonnummer: $ {this.user.phone}</h5>
+    	<h5 class="mb-3">Lösenord: $ {this.user.password}</h5>
+    </div>
+  </div>
+</div>
+`;}});
+
+
