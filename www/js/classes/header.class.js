@@ -7,9 +7,9 @@ class Header extends REST {
       new HeaderItem('Materiel', '/materiel'),
       new HeaderItem('Böcker', '/bocker'),
       new HeaderItem('Ingredienser', '/ingredienser'),
-      new HeaderItem('Om oss', '/om_oss')
+      new HeaderItem('Om oss', '/om_oss'),
+      new HeaderItem('Kassa', '/kassa', this.app)
     ];
-    this.setupHandler();
   }
 
   async setActive(url) {
@@ -17,12 +17,6 @@ class Header extends REST {
       item.active = url == item.url;
     }
   }
-
-  setupHandler() {
-    $(document).on('click', '.searchbtn', (event) => {
-      event.preventDefault();
-      Search.searchQuery = $('.inputsearch').val();
-      $('.searchbtn').val('');
-    })
-  }
 }
+
+
