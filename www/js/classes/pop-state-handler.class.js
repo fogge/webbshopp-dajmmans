@@ -92,19 +92,19 @@ class PopStateHandler {
 
   materiel(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Materiel);
     this.app.productcategory.render('main', '3');
   }
 
   ingredienser(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Ingredient);
     this.app.productcategory.render('main', '3');
   }
 
   bocker(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Book);
     this.app.productcategory.render('main', '3');
 
   }
