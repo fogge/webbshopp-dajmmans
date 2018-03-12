@@ -3,7 +3,8 @@ class ProductCategory extends REST {
     super();
     this.app = app;
     this.myProducts = [];
-    this.getRightCategory(category)
+    this.getRightCategory(category);
+    this.category = category;
   }
 
   async getRightCategory(category){
@@ -16,7 +17,7 @@ class ProductCategory extends REST {
     } catch(e){
       console.error('Problem med collections \n', e);
     }
-    
+
     $('main').empty();
     this.render('main', '3');
   }
