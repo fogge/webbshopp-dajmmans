@@ -18,7 +18,10 @@ Object.assign(CartItem.prototype, { template(){ return `
         <input disabled type="text" class="form-control btn-cart-width" placeholder="0">
         <button type="button" class="btn btn-cart btn-cart-width p-0"><strong>+</strong></button>
       </div>
-      <h4 class="text-danger mr-2 mb-2 m-0 mt-auto">${this.price}:-</h4>
+      <div class="d-flex flex-column align-items-end">
+        <h4 class="text-danger">${this.price} kr</h4>
+        <p class="text-muted">Varav moms: ${this.getVatPerItem()} kr</p>
+      </div>
     </div>
     </div>
   </div>
