@@ -1,14 +1,14 @@
 Object.assign(Header.prototype, { template(){ return `
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <h3 class="my-auto"><a class="navbar-brand pop" href="/" data-toggle="tooltip" title="Start">Brand</a></h3>
+  <nav class="navbar navbar-expand-md navbar-light bg-light pl-5 pr-5">
+      <h3 class="my-auto"><a class="navbar-brand pop" href="/" data-toggle="tooltip" title="Start"><img src="/img/logo.png" class="img-fluid"></a></h3>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse w-100 flex-md-column" id="navbarCollapse">
-        <ul class="navbar-nav ml-auto mb-2 mb-md-0">
+        <ul class="navbar-nav ml-auto mb-md-0">
           ${this.items.render()}
         </ul>
-        <form class="form-inline ml-auto">
+        <form class="form-inline ml-auto mt-3 mr-md-2">
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Login
@@ -20,12 +20,20 @@ Object.assign(Header.prototype, { template(){ return `
               <a class="btn pop mt-1 register" type="button" data-toggle="tooltip" title="Skapa konto" href="/konto">Skapa konto</a>
             </div>
           </div>
-          <div class="input-group ml-2">
-            <input type="text" class="form-control inputsearch" placeholder="Sök efter en produkt">
-            <div class="input-group-append">
-              <a class="btn btn-outline-secondary pop searchbtn" href="/search" type="button" data-toggle="tooltip" title="Sök"><i class="fas fa-search"></i></a>
+            <div class="input-group m-0 mt-2 mt-md-0">
+              <div class="input-group-prepend">
+                <select class="custom-select" id="search-in-category">
+                  <option value="All">Alla kategorier (fungerar ej än)</option>
+                  <option value="Materiel">Materiel</option>
+                  <option value="Ingredient" selected>Ingredienser</option>
+                  <option value="Book">Böcker</option>
+                </select>
+              </div>
+              <input type="text" class="form-control inputsearch" placeholder="Sök efter en produkt">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary pop searchbtn" href="/search" type="submit" data-toggle="tooltip" title="Sök"><i class="fas fa-search"></i></button>
+              </div>
             </div>
-          </div>
         </form>
       </div>
     </nav>
