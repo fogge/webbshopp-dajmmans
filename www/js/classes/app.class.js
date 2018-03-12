@@ -21,7 +21,8 @@ class App extends REST {
     this.ingredienser = new Ingredient(this);
     this.bocker = new Bocker(this);
     this.about = new About(this);
-    this.account = new Account(this);
+    this.login = new Login(this);
+    this.register = new Register(this);
 
     // Footer
     this.footer = new Footer(this);

@@ -59,7 +59,8 @@ class PopStateHandler {
       '/search': 'search',
       '/om_oss': 'about',
       '/kassa' : 'cart',
-      '/konto': 'account'
+      '/login': 'login',
+      '/konto': 'register'
     };
 
     // Call the right method
@@ -113,10 +114,16 @@ class PopStateHandler {
     this.cart.render();
   }
 
-  account(){
+  login(){
     this.empty();
-    this.account = new Account(this);
-    this.account.render('main');
+    this.app.login = new Login(this);
+    this.app.login.render('main');
+  }
+
+  register(){
+    this.empty();
+    this.app.register = new Register(this);
+    this.app.register.render('main');
   }
 
   empty() {
