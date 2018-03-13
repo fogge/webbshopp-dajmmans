@@ -13,12 +13,25 @@ class Search extends REST {
     // let searchResultFromMongo = await Ingredient.request('ingredients', 'GET', `title[$regex]=${Search.searchQuery}`);
     const mongoCollection = String($('#search-in-category').val());
     const searchObj = {title: {$regex: this.query, $options: 'i'}};
-    let mongoResult;
+    let mongoResult = [];
     if(mongoCollection === 'Ingredient') mongoResult = await Ingredient.find(searchObj);
     if(mongoCollection === 'Materiel') mongoResult = await Materiel.find(searchObj);
     if(mongoCollection === 'Book') mongoResult = await Book.find(searchObj);
-    if(mongoCollection === 'All') mongoResult = await All.find(searchObj);
+    if(mongoCollection === 'All') {
+      // let ingredients = await Ingredient.find(searchObj);
+      // let materiels = await Materiel.find(searchObj);
+      // let books = await Book.find(searchObj);
+      // mongoResult.push(...ingredients, ...materiels, ...books);
+
+      async function getData(searchObj) {
+        return mongoResult = await new All(searchObj);
+      } 
+      
+      mongoResult = await getData(searchObj);
+      mongoResult = mongoResult.mongoResult;
+    }
     
+    console.log('mitt mongoresultat', mongoResult);
     try {
       mongoResult.forEach( (product) => {
         this.searchResult.push(new ProductAvatar(product.result, this.app));
