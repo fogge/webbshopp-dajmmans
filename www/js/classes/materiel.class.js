@@ -1,5 +1,8 @@
 class Materiel extends REST {
-  constructor() {
-    super()
+  constructor(result){
+    super();
+    this.result = result;
+    Materiel.title = 'Materiel';
   }
+
 }

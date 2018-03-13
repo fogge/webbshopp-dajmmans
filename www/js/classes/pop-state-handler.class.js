@@ -19,6 +19,13 @@ class PopStateHandler {
 
   addEventHandler(){
 
+    // Our search function
+    $(document).on('click', '.searchbtn', (event) => {
+      event.preventDefault();
+      this.search();
+      $('.inputsearch').val('');
+    });
+
     // make "that" the PopStateHandler object
     // (since this will be the a tag inside the click function)
     let that = this;
@@ -84,7 +91,7 @@ class PopStateHandler {
 
   materiel(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Materiel);
     this.app.productcategory.render('main', '3');
     
     this.app.productcategoryItem = new ProductAvatar(this);
@@ -93,19 +100,21 @@ class PopStateHandler {
 
   ingredienser(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Ingredient);
     this.app.productcategory.render('main', '3');
   }
 
   bocker(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Book);
     this.app.productcategory.render('main', '3');
 
   }
 
   product(){
     this.empty();
+    // typeof this.app.productPage == 'undefined' ? this.app.productPage = new ProductPage(this.app) : null;
+    this.app.productPage = new ProductPage(this.app);
     //this.app.productPage.render('main');
   }
 
@@ -114,14 +123,14 @@ class PopStateHandler {
   }
 
   search() {
-    console.log('hejhej');
     this.empty();
+    this.app.search = new Search($(document).find('.inputsearch').val(), this.app);
+    this.app.search.render();
   }
 
   cart(){
     this.empty();
-    this.cart = new Cart();
-    this.cart.render();
+    this.app.cart = new Cart(this.app);
   }
 
   empty() {

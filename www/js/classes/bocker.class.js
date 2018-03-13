@@ -1,5 +1,8 @@
-class Bocker extends REST {
-  constructor() {
-    super()
+class Book extends REST {
+  constructor(result){
+    super();
+    this.result = result;
+    Book.title = 'Böcker';
   }
+
 }

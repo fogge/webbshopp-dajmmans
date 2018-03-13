@@ -3,6 +3,7 @@ class App extends REST {
   constructor() {
     super();
     this.start();
+    this.shoppingCart = [];
   }
 
   async start() {
@@ -21,7 +22,7 @@ class App extends REST {
     this.startPage = new Startpage(this);
     this.materiel = new Materiel(this);
     this.ingredienser = new Ingredient(this);
-    this.bocker = new Bocker(this);
+    this.Book = new Book(this);
     this.productPage = new ProductPage(this);
     this.about = new About(this);
 

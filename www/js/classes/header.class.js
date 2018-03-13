@@ -7,23 +7,15 @@ class Header extends REST {
       new HeaderItem('Materiel', '/materiel'),
       new HeaderItem('Böcker', '/bocker'),
       new HeaderItem('Ingredienser', '/ingredienser'),
-      new HeaderItem('Om oss', '/om_oss')
+      new HeaderItem('Om oss', '/om_oss'),
+      new HeaderItem('Kassa', '/kassa', this.app)
     ];
-    this.setupHandler();
   }
 
   async setActive(url) {
     for (let item of this.items) {
       item.active = url == item.url;
     }
-  }
-
-  setupHandler() {
-    $(document).on('click', '.searchbtn', (event) => {
-      event.preventDefault();
-      this.search = new Search($('.inputsearch').val());
-      $('.inputsearch').val('');
-    })
   }
 }
 
