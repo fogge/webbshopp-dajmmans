@@ -18,20 +18,9 @@ class Search extends REST {
     if(mongoCollection === 'Materiel') mongoResult = await Materiel.find(searchObj);
     if(mongoCollection === 'Book') mongoResult = await Book.find(searchObj);
     if(mongoCollection === 'All') {
-      // let ingredients = await Ingredient.find(searchObj);
-      // let materiels = await Materiel.find(searchObj);
-      // let books = await Book.find(searchObj);
-      // mongoResult.push(...ingredients, ...materiels, ...books);
-
-      async function getData(searchObj) {
-        return mongoResult = await new All(searchObj);
-      } 
-      
-      mongoResult = await getData(searchObj);
-      mongoResult = mongoResult.mongoResult;
+      let all = new All();
+      mongoResult = await all.getResult(searchObj);
     }
-    
-    console.log('mitt mongoresultat', mongoResult);
     try {
       mongoResult.forEach( (product) => {
         this.searchResult.push(new ProductAvatar(product.result, this.app));
