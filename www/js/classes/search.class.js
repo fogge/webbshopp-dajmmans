@@ -31,48 +31,12 @@ class Search extends REST {
 
     return await this.render();
   }
-  
-  sortPriceLow() {
-    this.searchResult.sort((a,b) => {
-     return a.price - b.price;
-    });
-  }
-
-  sortPriceHigh() {
-    this.searchResult.sort((a,b) => {
-     return b.price - a.price;
-    });
-  }
-
-  sortNameLow() {
-    this.searchResult.sort((a,b) => {
-     if (a.title > b.title) {
-       return 1;
-     }
-     if (a.title < b.title) {
-       return -1;
-     }
-     return 0;
-    });
-  }
-
-  sortNameHigh() {
-    this.searchResult.sort((a,b) => {
-     if (a.title < b.title) {
-       return 1;
-     }
-     if (a.title > b.title) {
-       return -1;
-     }
-     return 0;
-    });
-  }
 
   setupHandler() {
-    $(document).on('click', '#sortPriceLow, #sortPriceHigh, #sortNameLow, #sortNameHigh', (e) => {
+    $(document).on('click', '#sortPriceLow, #sortPriceHigh, #sortNameLow, #sortNameHigh, #sortSold', (e) => {
       e.preventDefault();
       let method = $(e.target).attr('id');
-      this[method]();
+      this[method](this.searchResult);
       this.render();
     });
   }

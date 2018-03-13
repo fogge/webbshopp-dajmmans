@@ -11,6 +11,7 @@ module.exports = class Materiel extends ModelAndRoutes {
       imageLink: String,
       price: Number,
       vatRate: Number,
+      soldAmount: String,
       stockBalance: Number,
       artNumber: Number,
       keyword: [String]   
