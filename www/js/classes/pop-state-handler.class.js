@@ -111,7 +111,7 @@ class PopStateHandler {
   product(){
     this.empty();
     // typeof this.app.productPage == 'undefined' ? this.app.productPage = new ProductPage(this.app) : null;
-    this.app.productPage = new ProductPage(this.app);
+    //this.app.productPage = new ProductPage(this.app);
     //this.app.productPage.render('main');
   }
 
