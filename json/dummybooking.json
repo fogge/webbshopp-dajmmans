@@ -1,0 +1,32 @@
+[
+	{
+		"orderno": 123456,
+    "products": ["Ruttna ägg, Mald kamelpung"],
+    "status": "Mottagen",
+    "orderdate": "2018-03-11",
+    "customerid": "Dajmman Dajmmsson",
+    "shippingdate": "2018-05-12",
+    "price": 500,
+    "vat": 125
+  },
+  {
+		"orderno": 555555,
+    "products": ["Tånaglar"],
+    "status": "Mottagen",
+    "orderdate": "2018-03-11",
+    "customerid": "Dajmman Dajmmsson",
+    "shippingdate": "2018-05-12",
+    "price": 500,
+    "vat": 125
+  },
+  {
+		"orderno": 999999,
+    "products": ["Trollstav"],
+    "status": "Mottagen",
+    "orderdate": "2018-03-11",
+    "customerid": "Dajmman Dajmmsson",
+    "shippingdate": "2018-05-12",
+    "price": 500,
+    "vat": 125
+  }
+]
