@@ -121,10 +121,9 @@ class Base{
   }
 
   // Product-pages
-  makeProductUrl(url){
-    url = url.toLowerCase();
-    url = url.replace(/[#|_|å|ä|ö|.|,|/|+|-|=|*| |-]/g,'');
-    return url;
+  makeProductUrl(urlId){
+    urlId = urlId.substr(urlId.length - 10);
+    return urlId;
   }
 
 }

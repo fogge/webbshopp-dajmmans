@@ -4,7 +4,7 @@ class ProductPage extends REST {
     this.productSelected;
     this.productId;
     this.clickEvents();
-    this.product = product;    
+    this.product = product;
   }
 
   clickEvents(){
@@ -13,15 +13,15 @@ class ProductPage extends REST {
       that.productId = $(this).attr('id');
       that.getProduct(that.productId);
     });
-    
+
   }
   async getProduct(productId){
-    
+
     let products = await this.product.productcategory.myProducts;
     this.productSelected = await products.find( selectedProduct => selectedProduct._id === productId);
 
     $('main').empty();
     this.render('main');
   }
-  
+
 }
