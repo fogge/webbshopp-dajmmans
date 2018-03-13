@@ -13,7 +13,6 @@ module.exports = class Book extends ModelAndRoutes {
       imageLink: String,
       price: Number,
       vatRate: Number,
-      soldAmount: Number,
       stockBalance: Number,
       artNumber: Number,
       keyword: [String]

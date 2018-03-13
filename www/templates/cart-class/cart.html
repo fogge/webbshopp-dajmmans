@@ -2,7 +2,7 @@ Object.assign(Cart.prototype, { template(){ return `
   <div class="mt-2">
     <div id="accordion-cart">
       <a class="" data-toggle="collapse" data-target="#cart-order-collapse" aria-expanded="true" aria-controls="cart-order-collapse">
-      <div class="card">
+      <div class="card cart-body">
         <div class="card-header d-flex flex-nowrap justify-content-between" id="headingOne">
           <h5 class="mb-0">
             Din order
@@ -22,7 +22,7 @@ Object.assign(Cart.prototype, { template(){ return `
             <div class="col-12 d-flex justify-content-between p-0 pl-3 mt-2">
               <div class="ml-auto d-flex flex-column align-items-end">
                 <h5>Totalt ${this.getTotalPrice()} kr</h5>
-                <p class="text-muted">Varav moms: ${this.getTotalVat()} kr</p>
+                <p>Varav moms: ${this.getTotalVat()} kr</p>
                 <h5>Fri frakt</h5>
                 <h3>TOTALPRIS <span class="text-success">${this.getTotalPrice()} kr</span></h3>
                 <button class="btn btn-success p-2 pr-4 pl-4 mt-3">Till betalning</button>
@@ -35,7 +35,7 @@ Object.assign(Cart.prototype, { template(){ return `
   </div>
 
 
-  <div class="row mt-2 border border-light rounded p-4 mx-0">
+  <div class="row mt-2 border border-dark rounded p-4 mx-0">
     <div class="adress-form-container col-12 col-md-6">
       <h5>Adress</h5>
       <input type="email" class="form-adress-cart col-12 border-bottom-0 top-form-rounded" id="" placeholder="Enter email">
@@ -58,7 +58,7 @@ Object.assign(Cart.prototype, { template(){ return `
       </div>
 
     </div>
-    <div class="checkout-summery col-12 mt-4 mt-md-0 col-md-6">
+    <div class="checkout-summery col-12 mt-4 mt-md-0 col-md-6 mb-1">
       <h5>Betal-/kreditkort</h5>
       <input type="text" class="form-adress-cart col-12 rounded" id="" placeholder="Kortnummer">
       <div class="form-group d-flex flex-nowrap justify-content-between col-12 m-0 p-0 mt-2">

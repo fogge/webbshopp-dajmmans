@@ -10,8 +10,7 @@ module.exports = class Ingredient extends ModelAndRoutes {
     	price: Number,
     	vatRate: Number,
     	country: String,
-			description: String,
-			soldAmount: Number,
+    	description: String,
     	stockBalance: Number,
     	artNumber: Number,
     	keyword: [String]
