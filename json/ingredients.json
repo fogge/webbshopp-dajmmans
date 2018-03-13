@@ -6,7 +6,8 @@
   	"price": 250,
   	"vatRate": 12,
   	"country": "Indien",
-  	"description": "Nu har vi återigen denna eftertraktade storsäljare i lager. Oavsett om du ska framkalla demoner eller göra en enklare ritual behövs blodkiss.",
+		"description": "Nu har vi återigen denna eftertraktade storsäljare i lager. Oavsett om du ska framkalla demoner eller göra en enklare ritual behövs blodkiss.",
+		"soldAmount": 0,
   	"stockBalance": 23,
   	"artNumber": 666001,
   	"keyword": ["Blod, Kiss, Njursvikt, Röd, Gul, Svart, Orange, Ritual"]
@@ -18,7 +19,8 @@
   	"price": 490,
   	"vatRate": 12,
   	"country": "Brasilien",
-  	"description": "Denna delikatess är handplockad från ap-ungar i Brasiliens regnskogar. Utmärkt i diverse trolldrycker samt som komplettering i matlagning.",
+		"description": "Denna delikatess är handplockad från ap-ungar i Brasiliens regnskogar. Utmärkt i diverse trolldrycker samt som komplettering i matlagning.",
+		"soldAmount": 0,
   	"stockBalance": 8,
   	"artNumber": 666002,
   	"keyword": ["Svart, Röd, Aphjärna, Apa, Hjärna, Trolldryck, Ritual"]
@@ -30,7 +32,8 @@
   	"price": 375,
   	"vatRate": 12,
   	"country": "Somalien",
-  	"description": "Ett måste i varje hobbytrollkarls magiska skafferi. Kamelpung går att använda till allt från att utöva voodoo till att få missväxt att slå in. Bara din fantasi sätter gränser!",
+		"description": "Ett måste i varje hobbytrollkarls magiska skafferi. Kamelpung går att använda till allt från att utöva voodoo till att få missväxt att slå in. Bara din fantasi sätter gränser!",
+		"soldAmount": 0,
   	"stockBalance": 17,
   	"artNumber": 666003,
   	"keyword": ["Svart, Grön, Brun, Besvärjelse, Trolldryck, Ritual"]
@@ -42,7 +45,8 @@
   	"price": 199,
   	"vatRate": 12,
   	"country": "Rumänien",
-  	"description": "Populära fladdermusvingar uppfödda på endast ekologiskt foder, för den medvetne magikern",
+		"description": "Populära fladdermusvingar uppfödda på endast ekologiskt foder, för den medvetne magikern",
+		"soldAmount": 0,
   	"stockBalance": 31,
   	"artNumber": 666004,
   	"keyword": ["Svart, Röd, Brun, Besvärjelse, Trolldryck, Eko"]
@@ -54,7 +58,8 @@
   	"price": 19.90,
   	"vatRate": 12,
   	"country": "Sverige",
-  	"description": "För att lyckas med syntaxen i trollformlerna är denna ingrediens helt ovärderlig. Varning, dessa är inte för nybörjare. Måste handskas med stor försiktighet för att undvika konflikter i GitKraken.",
+		"description": "För att lyckas med syntaxen i trollformlerna är denna ingrediens helt ovärderlig. Varning, dessa är inte för nybörjare. Måste handskas med stor försiktighet för att undvika konflikter i GitKraken.",
+		"soldAmount": 0,
   	"stockBalance": 2,
   	"artNumber": 666005,
   	"keyword": ["Svart, Röd, Gul, Illaluktande, Ritual, Trolldryck"]
@@ -66,7 +71,8 @@
   	"price": 795,
   	"vatRate": 12,
   	"country": "Ryssland",
-  	"description": "Åtråvärd inom magiker-kretsar pga dess oerhörda potential när vid framkallning av onda andar.",
+		"description": "Åtråvärd inom magiker-kretsar pga dess oerhörda potential när vid framkallning av onda andar.",
+		"soldAmount": 0,
   	"stockBalance": 8,
   	"artNumber": 666006,
   	"keyword": ["Svart, Brun, Besvärjelse, Ritual"]
@@ -78,7 +84,8 @@
   	"price": 50,
   	"vatRate": 25,
   	"country": "Island",
-  	"description": "Levereras i väl försluten burk för att bibehålla färskheten. Extraherad med stor precision. Går utmärkt att använda som den är eller koka först.",
+		"description": "Levereras i väl försluten burk för att bibehålla färskheten. Extraherad med stor precision. Går utmärkt att använda som den är eller koka först.",
+		"soldAmount": 0,
   	"stockBalance": 8,
   	"artNumber": 666007,
   	"keyword": ["Svart, Gul, Trolldryck"]
@@ -90,7 +97,8 @@
   	"price": 85,
   	"vatRate": 12,
   	"country": "Norge",
-  	"description": "Många använder getöga mest för syns skull vid ritualer. Mer rutinerade utövare ser även andra möjligheter för denna ingrediens.",
+		"description": "Många använder getöga mest för syns skull vid ritualer. Mer rutinerade utövare ser även andra möjligheter för denna ingrediens.",
+		"soldAmount": 0,
   	"stockBalance": 21,
   	"artNumber": 666008,
   	"keyword": ["Brun, Gul, Trolldryck, Ritual"]
@@ -102,7 +110,8 @@
   	"price": 998,
   	"vatRate": 25,
   	"country": "Egypten",
-  	"description": "Exklusiv fjäder från den mytomspunna Fenix. Oumbärlig vid experimenterande med reinkarnation.",
+		"description": "Exklusiv fjäder från den mytomspunna Fenix. Oumbärlig vid experimenterande med reinkarnation.",
+		"soldAmount": 4,
   	"stockBalance": 4,
   	"artNumber": 666009,
   	"keyword": ["Svart, Röd, Reinkarnation, Trolldryck"]
@@ -114,7 +123,8 @@
   	"price": 666,
   	"vatRate": 25,
   	"country": "Helvetet",
-  	"description": "Kraftfulla artefakter som tar dina ondskefulla planer till nya nivåer.",
+		"description": "Kraftfulla artefakter som tar dina ondskefulla planer till nya nivåer.",
+		"soldAmount": 3,
   	"stockBalance": 0,
   	"artNumber": 666010,
   	"keyword": ["Svart, Ritual, Besvärjelse"]
@@ -126,7 +136,8 @@
     "price": 2,
     "vatRate": 25,
     "country": "Danmark",
-    "description": "Sprid påskkänsla hos dina värsta fiender. Ruttna ägg har använts i flera sekel som ett bevis på otacksamhet.",
+		"description": "Sprid påskkänsla hos dina värsta fiender. Ruttna ägg har använts i flera sekel som ett bevis på otacksamhet.",
+		"soldAmount": 2,
     "stockBalance": 536,
     "artNumber": 666011,
     "keyword": ["Gul, Grön, Brun, Påsk, Ritual, Illaluktande"]
@@ -138,7 +149,8 @@
     "price": 10,
     "vatRate": 12,
     "country": "Ungern",
-    "description": "Huvudingrediens som överhuvudtaget aldrig får ta slut. Håll huvudet högt och du kommer lyckas med dina ritualer med hjälp av dessa.",
+		"description": "Huvudingrediens som överhuvudtaget aldrig får ta slut. Håll huvudet högt och du kommer lyckas med dina ritualer med hjälp av dessa.",
+		"soldAmount": 1,
     "stockBalance": 247,
     "artNumber": 666012,
     "keyword": ["Gul, Brun, Påsk, Ritual"]
