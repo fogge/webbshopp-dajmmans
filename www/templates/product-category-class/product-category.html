@@ -1,33 +1,34 @@
 Object.assign(ProductCategory.prototype, { template3(){ return `
-    <div class="row">
-      <div class="col-12 col-lg-4">
-        <img src="/img/category.jpg" alt="En fin bild på produktkategorin" class="img-fluid">
+    <div class="row product-header mt-2">
+      <div class="col-12 col-lg-4 mt-2">
+        <img src="${this.category.img}" alt="En fin bild på produktkategorin" class="img-fluid">
       </div>
       <div class="col-12 col-lg-8">
-        <h2 class="mt-5">${this.category.title}</h2>
-        <p>Spicy jalapeno bacon ipsum dolor amet hamburger rump turducken, cow beef ribs leberkas tri-tip sirloin strip steak ribeye turkey corned beef prosciutto brisket. Chuck pancetta filet mignon, pork belly tongue chicken pork chop turkey jerky prosciutto bacon capicola. Ball tip shoulder beef tri-tip, ham hock andouille frankfurter bresaola drumstick. Flank alcatra turducken pork jerky. Pastrami short loin meatloaf cupim capicola beef ribs prosciutto shankle shank t-bone tenderloin chicken. Boudin strip steak bresaola hamburger short ribs ball tip meatball pork belly pig jowl chicken frankfurter ribeye.</p>
+        <h2 class="mt-5">${this.category.title} ${this.category.icon}</h2>
+        <p>${this.category.breadText}</p>
       </div>
-      <div class="col-12">
+      <div class="col-12 mt-2">
         <div class="line"></div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-2">
       <div class="col-12">
         <div class="float-right">
           <div class="dropdown">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">Sortera
             <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li class="ml-3"><a id="sortPriceLow" href="#">Lägsta pris</a></li>
-              <li class="ml-3"><a id="sortPriceHigh" href="#">Högsta pris</a></li>
-              <li class="ml-3"><a id="sortNameLow" href="#">A-Ö</a></li>
-              <li class="ml-3"><a id="sortNameHigh" href="#">Ö-A</a></li>
+              <li class="ml-3"><a class="pop" href="#">Mest populär</a></li>
+              <li class="ml-3"><a class="pop" href="#">Minst populär</a></li>
+              <li class="ml-3"><a class="pop" href="#">Pris</a></li>
+              <li class="ml-3"><a class="pop" href="#">A-Ö</a></li>
+              <li class="ml-3"><a class="pop" href="#">Ö-A</a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="row">${this.myProducts.render()}</div>
+    <div class="row product-body mt-2">${this.myProducts.render()}</div>
     `;}});
