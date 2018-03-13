@@ -31,7 +31,7 @@ class Search extends REST {
   }
 
   setupHandler() {
-    $(document).on('click', '#sortPriceLow, #sortPriceHigh, #sortNameLow, #sortNameHigh', (e) => {
+    $(document).on('click', '#sortPriceLow, #sortPriceHigh, #sortNameLow, #sortNameHigh, #sortSold', (e) => {
       e.preventDefault();
       let method = $(e.target).attr('id');
       this[method](this.searchResult);
