@@ -16,12 +16,10 @@ app.use(express.static('www'));
 const Ingredient = require('./classes/ingredient.class');
 const Book = require('./classes/book.class');
 const Materiel = require('./classes/materiel.class');
-const Order = require('./classes/order.class');
 
 let ingredient = new Ingredient(app);
 let book = new Book(app);
 let materiel = new Materiel(app);
-let order = new Order(app);
 
 ingredient.setupImportRoute(ingredientJson);
 book.setupImportRoute(booksJson);
