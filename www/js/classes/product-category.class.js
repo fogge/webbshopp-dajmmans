@@ -5,6 +5,7 @@ class ProductCategory extends REST {
     this.myProducts = [];
     this.getRightCategory(category);
     this.category = category;
+    this.setupHandler();
   }
 
   async getRightCategory(category){
@@ -20,6 +21,17 @@ class ProductCategory extends REST {
 
     $('main').empty();
     this.render('main', '3');
+
+  }
+
+  setupHandler() {
+    $(document).on('click', '#sortPriceLow, #sortPriceHigh, #sortNameLow, #sortNameHigh', (e) => {
+      e.preventDefault();
+      let method = $(e.target).attr('id');
+      this[method](this.myProducts);
+      $('main').empty();
+      this.render('main', '3');
+    });
   }
 
 }
