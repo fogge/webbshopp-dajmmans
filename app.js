@@ -3,6 +3,7 @@
 const ingredientJson = require('./json/ingredients.json');
 const booksJson = require('./json/books.json');
 const materielJson = require('./json/matriel.json');
+const dummybookingJson = require('./json/dummybooking.json');
 
 
 const express = require('express');
@@ -26,6 +27,7 @@ let order = new Order(app);
 ingredient.setupImportRoute(ingredientJson);
 book.setupImportRoute(booksJson);
 materiel.setupImportRoute(materielJson);
+order.setupImportRoute(dummybookingJson);
 
 app.get(/^[^\.]*$/, (req, res) => {
  res.sendFile(__dirname + '/www/index.html');
