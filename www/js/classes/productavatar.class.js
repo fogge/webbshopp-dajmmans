@@ -5,7 +5,6 @@ class ProductAvatar extends REST {
     for (let value in product) {
       this[value] = product[value];
     }
-
   }
 
   click() {
@@ -13,6 +12,6 @@ class ProductAvatar extends REST {
       this.app.shoppingCart.push(new CartItem(this));
       this.app.header.render();
     }
-  }  
+  } 
 
 }
