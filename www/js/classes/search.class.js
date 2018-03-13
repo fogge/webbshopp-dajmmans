@@ -30,20 +30,6 @@ class Search extends REST {
     return await this.render();
   }
 
-
-
-  sortSold(){
-    this.searchResult.sort((a,b) => {
-      if (a.soldAmount < b.soldAmount) {
-        return 1;
-      }
-      if (a.soldAmount > b.soldAmount) {
-        return -1;
-      }
-      return 0;
-    });
-  }
-
   setupHandler() {
     $(document).on('click', '#sortPriceLow, #sortPriceHigh, #sortNameLow, #sortNameHigh, #sortSold', (e) => {
       e.preventDefault();

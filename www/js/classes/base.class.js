@@ -109,4 +109,16 @@ class Base{
     });
   }
 
+  sortSold(){
+    this.searchResult.sort((a,b) => {
+      if (a.soldAmount < b.soldAmount) {
+        return 1;
+      }
+      if (a.soldAmount > b.soldAmount) {
+        return -1;
+      }
+      return 0;
+    });
+  }
+
 }
