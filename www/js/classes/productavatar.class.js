@@ -5,7 +5,6 @@ class ProductAvatar extends REST {
     for (let value in product) {
       this[value] = product[value];
     }
-    console.log('avatar');
     
   }
 
@@ -15,13 +14,6 @@ class ProductAvatar extends REST {
       this.app.header.render();
     }
 
-    let that = this;
-    $(document).on("click", '.product-title', function () {
-      that.productId = $(this).attr('id');
-      that.app.productPage.getProduct(that.productId);
-      //that.app.productPage = new ProductPage(this.app);
-     // that.getProduct(that.productId);
-    });
   } 
 
 }
