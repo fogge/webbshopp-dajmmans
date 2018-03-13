@@ -66,8 +66,20 @@ class Search extends REST {
     });
   }
 
+  sortSold(){
+    this.searchResult.sort((a,b) => {
+      if (a.soldAmount < b.soldAmount) {
+        return 1;
+      }
+      if (a.soldAmount > b.soldAmount) {
+        return -1;
+      }
+      return 0;
+    });
+  }
+
   setupHandler() {
-    $(document).on('click', '#sortPriceLow, #sortPriceHigh, #sortNameLow, #sortNameHigh', (e) => {
+    $(document).on('click', '#sortPriceLow, #sortPriceHigh, #sortNameLow, #sortNameHigh, #sortSold', (e) => {
       e.preventDefault();
       let method = $(e.target).attr('id');
       this[method]();
