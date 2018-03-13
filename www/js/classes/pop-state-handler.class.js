@@ -63,6 +63,7 @@ class PopStateHandler {
       '/materiel': 'materiel',
       '/ingredienser': 'ingredienser',
       '/bocker': 'bocker',
+      '/produkt': 'product',
       '/search': 'search',
       '/om_oss': 'about',
       '/kassa' : 'cart'
@@ -90,21 +91,28 @@ class PopStateHandler {
 
   materiel(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Materiel);
     this.app.productcategory.render('main', '3');
   }
 
   ingredienser(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Ingredient);
     this.app.productcategory.render('main', '3');
   }
 
   bocker(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Book);
     this.app.productcategory.render('main', '3');
 
+  }
+
+  product(){
+    this.empty();
+    // typeof this.app.productPage == 'undefined' ? this.app.productPage = new ProductPage(this.app) : null;
+    this.app.productPage = new ProductPage(this.app);
+    //this.app.productPage.render('main');
   }
 
   about(){
