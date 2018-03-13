@@ -1,4 +1,4 @@
-class REST extends Base {
+class REST extends Base{
 
   constructor(obj){
     super();
@@ -44,13 +44,13 @@ class REST extends Base {
     //await console.log('result', results);
     let orgresults = results;
     results = results.result || [results];
-    // let enriched = [];
-    // for(let result of results){
-    //   enriched.push(new this(result));
-    // }
-    //console.log(enriched);
-    
-    return results;
+    delete orgresults.result;
+    let enriched = [];
+    for(let result of results){
+      enriched.push(new this(result));
+    }
+    enriched.info = orgresults;
+    return enriched;
   }
 
   static async findOne(query){
@@ -66,7 +66,7 @@ class REST extends Base {
   static async request(entity, reqMethod, query={}, body={}){
 
     let reqObj = {
-      url: `/${entity}/${JSON.stringify(query)}`, // entity for example "books"
+      url: `/${entity}/${query}`, // entity for example "books"
       method: reqMethod, // POST, GET, PUT, DELETE
       dataType: 'json', // I except JSON back from the server
       data: JSON.stringify(body), // JSON to send to server
@@ -79,6 +79,7 @@ class REST extends Base {
     if(reqMethod != "POST" && reqMethod != "PUT"){
       delete reqObj.data;
     }
+
     return await $.ajax(reqObj);
 
   }
