@@ -4,7 +4,7 @@ class Login extends REST {
     let that = this;
 
     $(document).on('submit', '#loginForm', function(e) {
-      console.log('wsdfgh');
+      console.log('Logged in');
      e.preventDefault();
      that.loginUser();
    });
@@ -15,5 +15,6 @@ class Login extends REST {
     let password = $('#loginPassword').val();
 
     let result = await UserHandler.login(email, password);
+    $('#loginSuccess').removeClass('d-none');
   }
 }

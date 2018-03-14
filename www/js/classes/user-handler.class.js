@@ -14,10 +14,15 @@ class UserHandler {
     return await Logout.find('');
   }
 
-  static async register(email, password) {
+  static async register(email, password, firstName, lastName, adress, postnr, postOrt) {
     return await User.create({
       email: email,
-      password: password
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      adress: adress,
+      postnr: postnr,
+      postOrt: postOrt
     });
   }
 

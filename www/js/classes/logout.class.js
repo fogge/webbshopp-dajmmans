@@ -3,7 +3,7 @@ class Logout extends REST {
     super();
     let that = this;
     $(document).on('click', '#logoutBtn', function(e) {
-      console.log('wsdfgh');
+      console.log('Logged out');
      e.preventDefault();
      that.logoutUser();
    });
@@ -11,6 +11,8 @@ class Logout extends REST {
 
   async logoutUser(){
     let result = await UserHandler.logout(User);
+    $('#logoutSuccess').removeClass('d-none');
+    setTimeout(() => {$('#logoutSuccess').addClass('d-none');}, 2000);
   }
 
 

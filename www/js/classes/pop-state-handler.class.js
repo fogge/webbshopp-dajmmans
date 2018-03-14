@@ -68,7 +68,8 @@ class PopStateHandler {
       '/om_oss': 'about',
       '/kassa' : 'cart',
       '/login': 'login',
-      '/register': 'register'
+      '/register': 'register',
+      '/mina_sidor': 'userPage'
     };
 
     // Call the right method
@@ -138,6 +139,11 @@ class PopStateHandler {
     this.empty();
     this.app.register = new Register(this.app);
     this.app.register.render();
+  }
+
+  userPage(){
+    this.empty();
+    this.app.user = new User(this.app);
   }
 
   cart(){
