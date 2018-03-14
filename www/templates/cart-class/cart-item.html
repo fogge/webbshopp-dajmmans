@@ -13,16 +13,16 @@ Object.assign(CartItem.prototype, { template(){ return `
       <p class="fas fa-times align-self-start mr-2 mt-2 m-0 ml-auto delete-cart-item"></p>
     </div>
 
-    <div class="col-12 d-flex justify-content-between p-0 pl-3 mt-2">
+    <div class="col-12 d-flex justify-content-between p-0 pl-3 mt-2 flex-column flex-md-row">
       <div class="btn-group d-flex" role="group" aria-label="">
-        <button type="button" class="btn btn-cart btn-cart-width p-0 cart-item-button-minus" data-id=${this._id}>-</button>
-        <input disabled type="text" class="form-control btn-cart-width" placeholder="${this.quantity}">
-        <button type="button" class="btn btn-cart btn-cart-width p-0 cart-item-button-plus" data-id=${this._id}>+</button>
+        <button type="button" class="btn p-0 cart-item-button-minus fas fa-minus" data-id=${this._id}> </button>
+        <input disabled type="text" class="form-control placeholder-cart" placeholder="${this.quantity}">
+        <button type="button" class="btn p-0 cart-item-button-plus fas fa-plus" data-id=${this._id}> </button>
       </div>
-      <div class="d-flex flex-column align-items-end">
+      <div class="d-flex flex-column align-items-end mr-2">
         ${this.stockWarning ? `
         <div class="bg-warning alert-warning p-2">Obs! Endast ${this.stockBalance} kvar</div>` : `I lager ${this.stockBalance < 5 ? `${this.stockBalance}` : ''}`}
-        <h4 class="text-danger">${this.price} kr</h4>
+        <h4 class="text-danger">${this.price} kr / st</h4>
         <p class="text-muted">Varav moms: ${this.getVatPerItem()} kr</p>
       </div>
     </div>
