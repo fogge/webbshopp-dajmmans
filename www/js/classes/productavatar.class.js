@@ -10,7 +10,7 @@ class ProductAvatar extends REST {
   }
 
   click() {
-    if ($(event.target).hasClass('addToCart') && this.stockBalance) {
+    if ($(event.target).hasClass('addToCart') && this.stockBalance) {   
       const checkShoppingCart = (checkObj) => {
         for (let product of this.app.shoppingCart) {
           if (product._id == checkObj._id) {
@@ -23,8 +23,8 @@ class ProductAvatar extends REST {
       if (this.app.shoppingCart == [] || checkShoppingCart(this)) this.app.shoppingCart.push({_id: this._id, quantity: this.quantity});
 
       this.app.header.render();
-      $(event.target).addClass("bg-success").text('Tillagd').delay(1000).queue(function(next) {
-        $(this).removeClass('bg-success').text('Köp');
+      $(event.target).addClass("btn-danger").text('Tillagd').delay(1000).queue(function(next) {
+        $(this).removeClass('btn-danger').text('Köp');
         next();
       });
     }

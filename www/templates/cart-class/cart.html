@@ -13,10 +13,8 @@ Object.assign(Cart.prototype, { template(){ return `
 
         <div id="cart-order-collapse" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion-cart">
           <div class="card-body">
-
             ${this.cartItems.render()}
 
-            <hr class="mt-4 mb-4">
 
 
             <div class="col-12 d-flex justify-content-between p-0 pl-3 mt-2">
@@ -25,7 +23,7 @@ Object.assign(Cart.prototype, { template(){ return `
                 <p>Varav moms: ${this.getTotalVat()} kr</p>
                 <h5>Fri frakt</h5>
                 <h3>TOTALPRIS <span class="text-success">${this.getTotalPrice()} kr</span></h3>
-                <a class="" data-toggle="collapse" data-target="#cart-order-collapse" aria-expanded="true" aria-controls="cart-order-collapse"><button class="btn btn-success p-2 pr-4 pl-4 mt-3 payment-button">Till betalning</button></a>
+                <button class="btn btn-success p-2 pr-4 pl-4 mt-3" data-toggle="collapse" data-target="#cart-order-collapse">Till betalning</button>
               </div>
             </div>
           </div>
@@ -35,49 +33,61 @@ Object.assign(Cart.prototype, { template(){ return `
   </div>
 
 
-  <div class="row mt-2 form-container p-4 mx-0 mb-3 ">
-    <div class="adress-form-container col-12 col-md-6">
-      <h5>Adress</h5>
-      <input type="email" class="form-adress-cart col-12 border-bottom-0 top-form-rounded" id="" placeholder="Email">
-      <div class="form-group d-flex flex-nowrap col-12 m-0 p-0">
-        <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="" placeholder="Förnamn">
-        <input type="text" class="form-adress-cart col-6 border-bottom-0" id="" placeholder="Efternamn">
+  <div class="row my-2 border border-dark rounded p-4 mx-0">
+    <!-- <form> -->
+      <div class="adress-form-container col-12 col-md-6">
+        <h5>Adress</h5>
+        <input type="email" class="form-adress-cart col-12 border-bottom-0 top-form-rounded" id="" placeholder="Epost" required>
+        <div class="form-group d-flex flex-nowrap col-12 m-0 p-0">
+          <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="" placeholder="Förnamn" required>
+          <input type="text" class="form-adress-cart col-6 border-bottom-0" id="" placeholder="Efternamn" required>
+        </div>
+
+        <input type="text" class="form-adress-cart col-12 border-bottom-0" id="" placeholder="Adress" required>
+
+        <div class="form-group d-flex flex-nowrap col-12 m-0 p-0">
+          <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="" placeholder="Postnr" required>
+          <input type="text" class="form-adress-cart col-6 border-bottom-0" id="" placeholder="Ort" required>
+        </div>
+
+        <input type="text" class="form-adress-cart col-12 border-bottom-0" id="" placeholder="Sverige" disabled>
+
+        <div class="form-group m-0">
+          <input type="text" class="form-adress-cart border-bottom col-12 bottom-form-rounded" id="" placeholder="Telefon" required>
+        </div>
+
       </div>
+      <div class="checkout-summery col-12 mt-4 mt-md-0 col-md-6 mb-1">
+        <h5>Betal-/kreditkort</h5>
+        <input type="text" class="form-adress-cart col-12 rounded" id="" placeholder="Kortnummer">
+        <div class="form-group d-flex flex-nowrap justify-content-between col-12 m-0 p-0 mt-2">
+          <input type="text" class="form-adress-cart col-5 rounded" id="" placeholder="Kortdatum mm/yy">
+          <input type="text" class="form-adress-cart col-5 rounded" id="" placeholder="CVC">
+        </div>
 
-      <input type="text" class="form-adress-cart col-12 border-bottom-0" id="" placeholder="Adress">
+        <div class="mx-auto col-6 d-flex justify-content-around mt-4 pl-0">
+          <img src="/img/cart_images/visa.png" class="payment-card">
+          <img src="/img/cart_images/mastercard.png" class="payment-card">
+          <img src="/img/cart_images/amex.png" class="payment-card">
+        </div>
+        <div class="d-flex col-12 justify-content-end pr-0 checkout-buttons">
+          <button class="btn btn-danger mr-3 pl-5 pr-5">Ångra</button>
+          <button class="btn btn-success p-2 pl-5 pr-5 confirmorder" type="submit">Betala</button>
+        </div>
 
-      <div class="form-group d-flex flex-nowrap col-12 m-0 p-0">
-        <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="" placeholder="Postnummer">
-        <input type="text" class="form-adress-cart col-6 border-bottom-0" id="" placeholder="Ort">
-      </div>
-
-      <input type="text" class="form-adress-cart col-12 border-bottom-0" id="" placeholder="Land">
-
-      <div class="form-group m-0">
-        <input type="text" class="form-adress-cart border-bottom col-12 bottom-form-rounded" id="" placeholder="Telefon">
       </div>
 
     </div>
-    <div class="checkout-summery col-12 mt-4 mt-md-0 col-md-6 mb-1">
-      <h5>Betal-/kreditkort</h5>
-      <input type="text" class="form-adress-cart col-12 rounded" id="" placeholder="Kortnummer">
-      <div class="form-group d-flex flex-nowrap justify-content-between col-12 m-0 p-0 mt-2">
-        <input type="text" class="form-adress-cart col-5 rounded" id="" placeholder="Kortdatum mm/yy">
-        <input type="text" class="form-adress-cart col-5 rounded" id="" placeholder="CVC">
-      </div>
+  <!-- </form> -->
 
-      <div class="mx-auto col-6 d-flex justify-content-around mt-4 pl-0">
-        <img src="/img/cart_images/visa.png" class="payment-card">
-        <img src="/img/cart_images/mastercard.png" class="payment-card">
-        <img src="/img/cart_images/amex.png" class="payment-card">
+<!-- Modala confirma order -->
+<div class="modal fade" id="confirmorder" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        Tack för din beställning!
       </div>
-      <div class="d-flex col-12 justify-content-end pr-0 checkout-buttons">
-        <button class="btn btn-danger mr-3 pl-5 pr-5">Ångra</button>
-        <button class="btn btn-success p-2 pl-5 pr-5">Betala</button>
-      </div>
-
     </div>
-
   </div>
-
+</div>
 `;}});

@@ -43,6 +43,37 @@ class Cart extends REST {
     return totalVat += '0';
   }
 
+  approveCustomerData() {
 
+     return true;
+  }
 
+  async confirmOrder() {
+
+    if(this.app.shoppingCart.length !== 0 && this.approveCustomerData()) {
+      
+      this.app.shoppingCart = [];
+      this.cartItems = [];
+      
+      let order = await Order.create({ 
+      orderno: 123, 
+      products: ["String"], 
+      status: "String", 
+      orderdate: Date.now(), 
+      customerid: "String", 
+      price: 123, 
+      vat: Number 
+    } );
+      console.log('din beställning är lagd', order);
+      $('#confirmorder').modal('show');
+    }
+
+  }
+
+  click () {
+    if ($(event.target).hasClass('confirmorder')) {
+      this.confirmOrder();
+    }
+  }
+  
 }
