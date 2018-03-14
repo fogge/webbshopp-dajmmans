@@ -28,6 +28,6 @@ class ProductAvatar extends REST {
         next();
       });
     }
-  } 
+  }
 
 }
