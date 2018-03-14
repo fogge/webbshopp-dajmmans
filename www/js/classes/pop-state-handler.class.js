@@ -16,7 +16,6 @@ class PopStateHandler extends REST {
     window.addEventListener('popstate', () => this.changePage());
   }
 
-
   addEventHandler(){
     // Our search function
     $(document).on('click', '.searchbtn', (event) => {
@@ -34,7 +33,6 @@ class PopStateHandler extends REST {
       // Create a push state event
       let href = $(this).attr('href');
       history.pushState(null, null, href);
-
       // Call the changePage function
       that.changePage();
 
@@ -49,6 +47,7 @@ class PopStateHandler extends REST {
   changePage(){
     // React on page changed
     // (replace part of the DOM etc.)
+        
     // Get the current url
     let url = location.pathname;
     // Change which menu link that is active
@@ -61,15 +60,36 @@ class PopStateHandler extends REST {
       '/materiel': 'materiel',
       '/ingredienser': 'ingredienser',
       '/bocker': 'bocker',
-      '/produkt': 'product',
       '/search': 'search',
       '/om_oss': 'about',
       '/kassa' : 'cart'
     };
-
+    
+    //looping through ID
+    for (let i = 0; i < All.allProducts.length; i++){
+      //console.log(url);
+      let url = `/${All.allProducts[i].result._id}`;
+      let target = 'product';
+      Object.assign(urls, {[url] : target});
+    }
+  
     // Call the right method
     let methodName = urls[url];
-    this[methodName]();
+    
+    
+    if (methodName =='product') {
+      let productId = url.substr(1);
+      this[methodName](productId);
+    }
+    else{
+      this[methodName]();
+    }
+
+    // if (url.split('/')[2] == 'product') {
+    //   methodName = 'product';
+    // }
+
+    
 
     // Set the right menu item active
     this.app.header.setActive(url);
@@ -106,16 +126,17 @@ class PopStateHandler extends REST {
 
   }
 
-  // Is this the product-page??
-  product(){
+  product(productId){
     this.empty();
-    // typeof this.app.productPage == 'undefined' ? this.app.productPage = new ProductPage(this.app) : null;
     this.app.productPage = new ProductPage(this.app);
-    //this.app.productPage.render('main');
+    this.app.productPage.getProduct(productId);
+    this.app.productPage.render('main');
   }
 
   about(){
     this.empty();
+    this.app.about = new About(this);
+    this.app.about.render('main')
   }
 
   search() {
