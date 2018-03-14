@@ -10,13 +10,16 @@ class CartItem extends REST {
   }
 
   getVatPerItem(){
+    let vat = 0;
     if (this.vatRate == 6) {
-      return Math.round((this.price * 0.0566) * 10) / 10;
+      vat += Math.round((this.price * 0.0566) * 10) / 10;
     } else if (this.vatRate == 12) {
-      return Math.round((this.price * 0.1071) * 10) / 10;
+      vat += Math.round((this.price * 0.1071) * 10) / 10;
     } else {
-      return Math.round((this.price * 0.2) * 10) / 10;
+      vat += Math.round((this.price * 0.2) * 10) / 10;
     }
+    console.log(vat);
+    return vat += '0';
   }
 
   renderCart(){
