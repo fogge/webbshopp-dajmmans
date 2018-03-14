@@ -4,10 +4,10 @@ Object.assign(ProductCategory.prototype, { template3(){ return `
         <img src="${this.category.img}" alt="En fin bild på produktkategorin" class="img-fluid">
       </div>
       <div class="col-12 col-lg-8">
-        <h2 class="mt-5">${this.category.title} ${this.category.icon}</h2>
+        <h2 class="mt-5"> ${this.category.icon} &nbsp; ${this.category.title}</h2>
         <p>${this.category.breadText}</p>
       </div>
-      <div class="col-12 mt-2">
+      <div class="col-12 my-4">
         <div class="line"></div>
       </div>
     </div>

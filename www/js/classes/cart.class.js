@@ -53,7 +53,7 @@ class Cart extends REST {
       
       this.app.shoppingCart = [];
       this.cartItems = [];
-      let date = Date.now();
+      
       let order = await Order.create({ 
       orderno: 123, 
       products: ["String"], 
