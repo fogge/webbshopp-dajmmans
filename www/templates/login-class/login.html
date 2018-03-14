@@ -1,8 +1,18 @@
 Object.assign(Login.prototype, { template(){ return `
-  <div class="mt-2">
-    <input type="text" class="form-control" placeholder="Email">
-    <input type="text" class="form-control mt-2" placeholder="Lösenord">
-    <a class="btn bg-primary pop mt-1" type="button" data-toggle="tooltip" title="Logga in">Logga in <i class="fas fa-sign-in-alt"></i></a>
-    <a class="pop btn bg-primary text-dark" data-toggle="tooltip" title="Skapa nytt konto" href="/register">Skapa konto</a>
-  </div>
+  <form class="mt-2" id="loginForm" role="form" >
+        <p class="text-dark border border-danger text-center mt-2 d-none" id="checkInput">Lösenordet måste vara minst sex tecken långt!</p>
+        <p id="loginSuccess" class="text-dark text-center border border-success d-none">Registreringen lyckades! Du når din profil under "Mitt konto".</p>
+        <div class="form-group">
+          <label for="exampleInputEmail1">E-postadress</label>
+          <input type="email" class="form-control" required id="loginEmail" aria-describedby="emailHelp" placeholder="t.ex. svensson@gmail.com">
+          <p class="text-dark border border-danger text-center mt-2 d-none" id="userNameTaken">Användarnamnet är upptaget, fyll i ett nytt!</p>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Ange ett lösenord</label>
+          <input type="password" class="form-control" id="loginPassword" placeholder="Lösenord">
+        </div>
+        <input type="submit" class="btn btn-success login btn-block mb-3" value="Logga in"></input>
+      </form>
+      <a class="pop btn bg-primary text-dark mt-3" type="button" data-toggle="tooltip" title="Skapa nytt konto" href="/register">Skapa konto</a>
+
 `;}});

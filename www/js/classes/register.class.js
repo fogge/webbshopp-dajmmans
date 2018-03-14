@@ -13,8 +13,8 @@ class Register extends REST {
 
   async registerUser(){
 
-    let email = $('#email').val();
-    let password = $('#password').val();
+    let email = $('#registerEmail').val();
+    let password = $('#registerPassword').val();
 
     let result = await UserHandler.register(email, password);
   }
