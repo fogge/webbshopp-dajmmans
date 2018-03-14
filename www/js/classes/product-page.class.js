@@ -1,32 +1,16 @@
 class ProductPage extends REST {
-  constructor(product) {
+  constructor(app) {
     super();
-    this.productSelected;
-    this.productId;
-    this.clickEvents();
-    this.product = product;  
-    console.log('product page');
-      
+    this.app = app;
+    //this.clickEvents();
   }
 
-  clickEvents(){
-    let that = this;
-    
-    $(document).on("click", '.product-title', function () {
-      that.productId = $(this).attr('id');
-      console.log(that.productId);
-      
-      that.getProduct(that.productId);
-    });
-    
-  }
+  
   async getProduct(productId){
-    let products =  await this.product.productcategory.myProducts;
-    this.productSelected =  await products.find( selectedProduct => selectedProduct._id === productId);
-    await console.log(this.productSelected);
-   
-    //$('main').empty();
-   // this.render('main');
+    
+    this.productSelected = All.allProducts.find( selectedProduct => selectedProduct.result._id === productId);
+    this.productSelected = this.productSelected.result;
+    
   }
   
 }

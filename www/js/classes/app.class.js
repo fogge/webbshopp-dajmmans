@@ -10,6 +10,10 @@ class App extends REST {
     // Initiate handling of SPA push/pop-state
     this.myIngredients = await Ingredient.find();
 
+    this.all = new All;
+    All.allProducts = await this.all.getResult({});
+    console.log(All.allProducts);
+    
     //Rendering the header
     this.header = new Header(this);
     $('header').empty();

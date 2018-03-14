@@ -11,6 +11,7 @@ class ProductCategory extends REST {
   async getRightCategory(category){
     let collection = await category.find({});
 
+
     try {
       collection.forEach( (product) => {
         this.myProducts.push(new ProductAvatar(product.result, this.app));
@@ -18,20 +19,19 @@ class ProductCategory extends REST {
     } catch(e){
       console.error('Problem med collections \n', e);
     }
-
+    console.log(this.myProducts)
     $('main').empty();
     this.render('main', '3');
+  }
 
-    }
-
-    setupHandler() {
-      $(document).on('click', '#sortPriceLow, #sortPriceHigh, #sortNameLow, #sortNameHigh, #sortSold', (e) => {
-        e.preventDefault();
-        let method = $(e.target).attr('id');
-        this[method](this.myProducts);
-        $('main').empty();
-        this.render('main', '3');
-      });
-    }
+  setupHandler() {
+    $(document).on('click', '#sortPriceLow, #sortPriceHigh, #sortNameLow, #sortNameHigh, #sortSold', (e) => {
+      e.preventDefault();
+      let method = $(e.target).attr('id');
+      this[method](this.myProducts);
+      $('main').empty();
+      this.render('main', '3');
+    });
+  }
 
 }

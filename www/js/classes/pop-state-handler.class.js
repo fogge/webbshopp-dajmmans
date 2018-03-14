@@ -18,7 +18,6 @@ class PopStateHandler {
   }
 
   addEventHandler(){
-
     // Our search function
     $(document).on('click', '.searchbtn', (event) => {
       event.preventDefault();
@@ -35,7 +34,6 @@ class PopStateHandler {
       // Create a push state event
       let href = $(this).attr('href');
       history.pushState(null, null, href);
-
       // Call the changePage function
       that.changePage();
 
@@ -48,7 +46,7 @@ class PopStateHandler {
   changePage(){
     // React on page changed
     // (replace part of the DOM etc.)
-
+        
     // Get the current url
     let url = location.pathname;
 
@@ -63,15 +61,36 @@ class PopStateHandler {
       '/materiel': 'materiel',
       '/ingredienser': 'ingredienser',
       '/bocker': 'bocker',
-      '/produkt': 'product',
       '/search': 'search',
       '/om_oss': 'about',
       '/kassa' : 'cart'
     };
 
+    //looping through ID
+    for (let i = 0; i < All.allProducts.length; i++){
+      let url = `/${All.allProducts[i].result._id}`;
+      let target = 'product';
+      Object.assign(urls, {[url] : target})
+    }
+
+    console.log(urls[url]);
+  
     // Call the right method
     let methodName = urls[url];
-    this[methodName]();
+
+    if (methodName =='product') {
+      let productId = url.substr(1);
+      this[methodName](productId);
+    }
+    else{
+      this[methodName]();
+    }
+
+    // if (url.split('/')[2] == 'product') {
+    //   methodName = 'product';
+    // }
+
+    
 
     // Set the right menu item active
     this.app.header.setActive(url);
@@ -108,11 +127,22 @@ class PopStateHandler {
 
   }
 
-  product(){
+  product(productId){
+    console.log(productId);
+    
+    // const [ ,category, , productId] = location.pathname.split('/');
+
+    // let categoryClass;
+    // if (category == 'bocker') { categoryClass = Book; }
+    // else if (category == 'ingredienser') { categoryClass = Ingredient; }
+    // else if (category == 'materiel') { categoryClass = Materiel; } 
+    
+    // this.app.productcategory = new ProductCategory(this.app, categoryClass);
+    
     this.empty();
-    // typeof this.app.productPage == 'undefined' ? this.app.productPage = new ProductPage(this.app) : null;
-    //this.app.productPage = new ProductPage(this.app);
-    //this.app.productPage.render('main');
+    this.app.productPage = new ProductPage(this.app);
+    this.app.productPage.getProduct(productId);
+    this.app.productPage.render('main');
   }
 
   about(){
