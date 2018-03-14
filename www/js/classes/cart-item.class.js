@@ -25,16 +25,31 @@ class CartItem extends REST {
   }
 
   eventHandler(){
-    $(document).on('click', '#cart-item-button-plus', () => {
-      this.quantity += 1;
-      console.log(this.quantity);
-      this.renderCart();
-    });
+      $(document).on('click', '#cart-item-button-plus', () => {
+        if (this.stockBalance == this.quantity) {
+          return null;
+        } 
+        else {
+          this.quantity += 1;
+          console.log(this.quantity);
+          this.renderCart();
+        }
+      });
 
-    $(document).on('click', '#cart-item-button-minus', () => {
-      this.quantity -= 1;
-      console.log(this.quantity);
-      this.renderCart();
-    });
+
+      $(document).on('click', '#cart-item-button-minus', () => {
+        if (this.quantity == 1) {
+          return null;
+        }
+        else {
+          this.quantity -= 1;
+          console.log(this.quantity);
+          this.renderCart();
+        }
+      });
+
   }
+
+
+
 }
