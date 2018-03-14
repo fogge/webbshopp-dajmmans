@@ -67,14 +67,6 @@ class PopStateHandler extends REST {
       '/kassa' : 'cart'
     };
 
-    //  Looping all product-urls to urls
-    for (let i = 0; i < All.allProducts.length; i++){
-      let url = `/${All.allProducts[i].result._id}`;
-      let target = 'productPage';
-      Object.assign(urls, {[url] : target})
-    }
-    // End of loop
-
     // Call the right method
     let methodName = urls[url];
     this[methodName]();
@@ -120,11 +112,6 @@ class PopStateHandler extends REST {
     // typeof this.app.productPage == 'undefined' ? this.app.productPage = new ProductPage(this.app) : null;
     this.app.productPage = new ProductPage(this.app);
     //this.app.productPage.render('main');
-  }
-
-  productPage(){
-    let id = location.pathname;
-    this.app.productPage = new ProductPage(id);
   }
 
   about(){
