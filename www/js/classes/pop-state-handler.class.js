@@ -128,16 +128,6 @@ class PopStateHandler {
   }
 
   product(productId){
-    console.log(productId);
-    
-    // const [ ,category, , productId] = location.pathname.split('/');
-
-    // let categoryClass;
-    // if (category == 'bocker') { categoryClass = Book; }
-    // else if (category == 'ingredienser') { categoryClass = Ingredient; }
-    // else if (category == 'materiel') { categoryClass = Materiel; } 
-    
-    // this.app.productcategory = new ProductCategory(this.app, categoryClass);
     
     this.empty();
     this.app.productPage = new ProductPage(this.app);
