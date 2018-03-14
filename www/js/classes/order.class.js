@@ -1,6 +1,1 @@
-class Order extends REST {
-  constructor(){
-    super();
-  }
-
-}
+class Order extends REST {}

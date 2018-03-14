@@ -53,16 +53,16 @@ class Cart extends REST {
       
       this.app.shoppingCart = [];
       this.cartItems = [];
-      let order = await Order.create({
-      orderno: "Number",
-      products: ["String"],
-      status: "String",
-      orderdate: "Date",
-      customerid: "String",
-      shippingdate: new Date(),
-      price: 123,
-      vat: 123
-    });
+      let date = Date.now();
+      let order = await Order.create({ 
+      orderno: 123, 
+      products: ["String"], 
+      status: "String", 
+      orderdate: Date.now(), 
+      customerid: "String", 
+      price: 123, 
+      vat: Number 
+    } );
       console.log('din beställning är lagd', order);
       $('#confirmorder').modal('show');
     }
