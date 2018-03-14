@@ -1,27 +1,35 @@
 class ProductPage extends REST {
-  constructor(product) {
+  constructor(app) {
     super();
-    this.productSelected;
-    this.productId;
-    this.clickEvents();
-    this.product = product;    
+    this.app = app;
   }
 
-  clickEvents(){
-    let that = this;
-    $(document).on("click", '.product-title', function () {
-      that.productId = $(this).attr('id');
-      that.getProduct(that.productId);
-    });
-    
-  }
   async getProduct(productId){
-    
-    let products = await this.product.productcategory.myProducts;
-    this.productSelected = await products.find( selectedProduct => selectedProduct._id === productId);
-
-    $('main').empty();
-    this.render('main');
+    this.productId = productId;
+    this.productSelected = All.allProducts.find( selectedProduct => selectedProduct.result._id === productId);
+    this.productSelected = this.productSelected.result;
+    this.productSelected.quantity = 1;
   }
-  
+
+  click() {
+    if ($(event.target).hasClass('addToCart') && this.productSelected.stockBalance) {
+      const checkShoppingCart = (checkObj) => {
+        for (let product of this.app.shoppingCart) {
+          if (product._id == checkObj._id) {
+            product.quantity += 1;
+            return false;
+          }
+        }
+        return true;
+      }
+      if (this.app.shoppingCart == [] || checkShoppingCart(this)) this.app.shoppingCart.push({_id: this.productSelected._id, quantity: this.productSelected.quantity});
+
+      this.app.header.render();
+      $(event.target).addClass("bg-success").text('Tillagd').delay(1000).queue(function(next) {
+        $(this).removeClass('bg-success').text('Köp');
+        next();
+      });
+    }
+  }
+
 }
