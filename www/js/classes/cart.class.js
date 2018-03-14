@@ -49,11 +49,23 @@ class Cart extends REST {
      return true;
   }
 
-  confirmOrder() {
+  async confirmOrder() {
 
     if(this.app.shoppingCart.length !== 0 && this.approveCustomerData()) {
-      console.log('din beställning är lagd', this.app.shoppingCart);
       
+      this.app.shoppingCart = [];
+      this.cartItems = [];
+      let order = await Order.create({
+      orderno: "Number",
+      products: ["String"],
+      status: "String",
+      orderdate: "Date",
+      customerid: "String",
+      shippingdate: new Date(),
+      price: 123,
+      vat: 123
+    });
+      console.log('din beställning är lagd', order);
       $('#confirmorder').modal('show');
     }
 
