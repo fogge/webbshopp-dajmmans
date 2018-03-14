@@ -17,7 +17,6 @@ class Cart extends REST {
       if (searchObj.stockBalance - item.quantity < 0) searchObj.stockWarning = true;
       this.cartItems.push(new CartItem(searchObj));
     }
-    console.log(this.cartItems)
     return this.render();
   }
 
@@ -45,5 +44,25 @@ class Cart extends REST {
     return Math.round( totalVat * 10 ) / 10;
   }
 
+  approveCustomerData() {
+
+     return true;
+  }
+
+  confirmOrder() {
+
+    if(this.app.shoppingCart.length !== 0 && this.approveCustomerData()) {
+      console.log('din beställning är lagd', this.app.shoppingCart);
+      
+      $('#confirmorder').modal('show');
+    }
+
+  }
+
+  click () {
+    if ($(event.target).hasClass('confirmorder')) {
+      this.confirmOrder();
+    }
+  }
   
 }

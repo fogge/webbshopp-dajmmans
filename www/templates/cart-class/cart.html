@@ -35,7 +35,7 @@ Object.assign(Cart.prototype, { template(){ return `
   </div>
 
 
-  <div class="row mt-2 border border-dark rounded p-4 mx-0">
+  <div class="row my-2 border border-dark rounded p-4 mx-0">
     <div class="adress-form-container col-12 col-md-6">
       <h5>Adress</h5>
       <input type="email" class="form-adress-cart col-12 border-bottom-0 top-form-rounded" id="" placeholder="Enter email">
@@ -73,11 +73,21 @@ Object.assign(Cart.prototype, { template(){ return `
       </div>
       <div class="d-flex col-12 justify-content-end pr-0 checkout-buttons">
         <button class="btn btn-danger mr-3 pl-5 pr-5">Ångra</button>
-        <button class="btn btn-success p-2 pl-5 pr-5">Betala</button>
+        <button class="btn btn-success p-2 pl-5 pr-5 confirmorder">Betala</button>
       </div>
 
     </div>
 
   </div>
 
+<!-- Modala confirma order -->
+<div class="modal fade" id="confirmorder" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        Tack för din beställning!
+      </div>
+    </div>
+  </div>
+</div>
 `;}});
