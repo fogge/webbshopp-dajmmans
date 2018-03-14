@@ -21,7 +21,7 @@ class Cart extends REST {
   getTotalPrice(){
     let totalPrice = 0;
     for (let cartItem of this.cartItems) {
-      totalPrice += cartItem.price;
+      totalPrice += cartItem.price * cartItem.quantity;
     }
     return totalPrice;
   }
@@ -32,14 +32,15 @@ class Cart extends REST {
     for (let cartItem of this.cartItems) {
       // Calculating vat off the set price
       if (cartItem.vatRate == 6) {
-        totalVat += cartItem.price * 0.0566;
+        totalVat += (cartItem.price * 0.0566) * cartItem.quantity;
       } else if (cartItem.vatRate == 12) {
-        totalVat += cartItem.price * 0.1071;
+        totalVat += (cartItem.price * 0.1071) * cartItem.quantity;
       } else {
-        totalVat += cartItem.price * 0.2;
+        totalVat += (cartItem.price * 0.2) * cartItem.quantity;
       }
     }
-    return Math.round( totalVat * 10 ) / 10;
+    totalVat = Math.round( totalVat * 10 ) / 10;
+    return totalVat += '0';
   }
 
   approveCustomerData() {

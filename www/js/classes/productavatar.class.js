@@ -11,7 +11,6 @@ class ProductAvatar extends REST {
 
   click() {
     if ($(event.target).hasClass('addToCart') && this.stockBalance) {   
-       
       const checkShoppingCart = (checkObj) => {
         for (let product of this.app.shoppingCart) {
           if (product._id == checkObj._id) {

@@ -1,10 +1,10 @@
 Object.assign(Cart.prototype, { template(){ return `
-  <div class="mt-2">
+  <div class="mt-3">
     <div id="accordion-cart">
       <a class="" data-toggle="collapse" data-target="#cart-order-collapse" aria-expanded="true" aria-controls="cart-order-collapse">
       <div class="card cart-body">
         <div class="card-header d-flex flex-nowrap justify-content-between" id="headingOne">
-          <h5 class="mb-0">
+          <h5 class="mb-0  ">
             Din order
           </h5>
           <h5 class="text-success">${this.getTotalPrice()} kr</h5>
@@ -18,7 +18,7 @@ Object.assign(Cart.prototype, { template(){ return `
 
 
             <div class="col-12 d-flex justify-content-between p-0 pl-3 mt-2">
-              <div class="ml-auto d-flex flex-column align-items-end">
+              <div class="ml-auto d-flex flex-column align-items-end ">
                 <h5>Totalt ${this.getTotalPrice()} kr</h5>
                 <p>Varav moms: ${this.getTotalVat()} kr</p>
                 <h5>Fri frakt</h5>
