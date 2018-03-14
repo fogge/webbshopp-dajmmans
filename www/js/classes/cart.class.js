@@ -4,10 +4,7 @@ class Cart extends REST {
     this.app = app;
     this.cartItems = [];
     this.getCartItems();
-
   }
-
-
 
   async getCartItems() {
     let all = new All();

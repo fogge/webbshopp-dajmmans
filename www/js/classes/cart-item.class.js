@@ -5,7 +5,6 @@ class CartItem extends REST {
       // This if statement is for fixing a bug in Base, else This gets wrong template
       if (value !== 'template') this[value] = product[value];
     }
-    this.eventHandler();
     this.cart = cart;
   }
 
@@ -24,31 +23,33 @@ class CartItem extends REST {
     this.cart.render('main');
   }
 
-  eventHandler(){
-      $(document).on('click', '#cart-item-button-plus', () => {
-        if (this.stockBalance == this.quantity) {
-          return null;
-        } 
-        else {
-          this.quantity += 1;
-          console.log(this.quantity);
-          this.renderCart();
-        }
-      });
+  click(event){
+    if ($(event.target).hasClass('cart-item-button-plus')) {
+      if (this.stockBalance == this.quantity) {
+        return null;
+      }
+      else {
+        let shoppingCartGlobal = this.cart.app.shoppingCart.find((m) => this._id == m._id);
+        shoppingCartGlobal.quantity += 1;
+        this.quantity += 1;
+        this.renderCart();
+      }
+    }
 
-
-      $(document).on('click', '#cart-item-button-minus', () => {
-        if (this.quantity == 1) {
-          return null;
-        }
-        else {
-          this.quantity -= 1;
-          console.log(this.quantity);
-          this.renderCart();
-        }
-      });
-
+    if ($(event.target).hasClass('cart-item-button-minus')) {
+      if (this.quantity == 1) {
+        return null;
+      }
+      else {
+        let shoppingCartGlobal = this.cart.app.shoppingCart.find((m) => this._id == m._id);
+        shoppingCartGlobal.quantity -= 1;
+        this.quantity -= 1;
+        this.renderCart();
+      }
+    }
   }
+
+
 
 
 
