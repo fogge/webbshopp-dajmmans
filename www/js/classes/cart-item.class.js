@@ -6,6 +6,7 @@ class CartItem extends REST {
       if (value !== 'template') this[value] = product[value];
     }
     this.cart = cart;
+    this.eventHandlers();
   }
 
   getVatPerItem(){
@@ -22,6 +23,19 @@ class CartItem extends REST {
     $('main').empty();
     this.cart.render('main');
   }
+
+
+  eventHandlers(){
+    $(document).on('mouseenter', '.delete-cart-item', function(){
+      $(this).closest(".cartitem-containers").addClass('cartitem-container-hover');
+      $(this).addClass('hover-delete-item');
+    })
+    $(document).on('mouseleave', '.delete-cart-item', function(){
+      $(this).closest(".cartitem-containers").removeClass('cartitem-container-hover');
+      $(this).removeClass('hover-delete-item');
+    })
+  }
+
 
   click(event){
     if ($(event.target).hasClass('cart-item-button-plus')) {
@@ -46,6 +60,15 @@ class CartItem extends REST {
         this.quantity -= 1;
         this.renderCart();
       }
+    }
+
+    if ($(event.target).hasClass('delete-cart-item')) {
+      let globalShoppingIndex = this.cart.app.shoppingCart.findIndex(x => x._id==this._id);
+      let cartShoppingIndex = this.cart.cartItems.findIndex(x => x._id==this._id);
+      this.cart.app.shoppingCart.splice(globalShoppingIndex, 1);
+      this.cart.cartItems.splice(cartShoppingIndex, 1);
+      this.renderCart();
+      this.cart.app.header.render();
     }
   }
 
