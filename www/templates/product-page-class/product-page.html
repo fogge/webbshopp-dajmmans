@@ -4,19 +4,19 @@ Object.assign(ProductPage.prototype, { template(){ return `
 			<img src="${this.productSelected.imageLink}" class="img-fluid" alt="Responsive image">
 		</div>
 		<div class="col-6">
-			<div class="card">
+			<div class="card lala p-0">
 				<div class="card-header">
-					<h2 class="card-title align-self-center py-2 m-0">${this.productSelected.title}</h2>
+					<h2 class="card-title align-self-center py-2 m-0"><u>${this.productSelected.title}</u></h2>
 				</div>
 				<div class="card-body">
 					<h4 class="card-text font-weight-light">Pris: <span class="font-weight-bold">${this.productSelected.price} SEK</span></h4>
-					<p class="card-text d-lg-inline mr-lg-4 text-muted">Lagerstatus: ${this.productSelected.stockBalance}</p>
+					<p class="card-text d-lg-inline mr-lg-4">Lagerstatus: ${this.productSelected.stockBalance}</p>
 					<button class="addToCart">Köp</button>
 				</div>
-				</div>
-				<div class="card mt-4">
+			</div>
+			<div class="card mt-4 lala p-0">
 				<div class="card-header">
-					Produktbeskrivning
+					<u>Produktbeskrivning</u>
 				</div>
 				<div class="card-body">
 					<p class="card-text">
@@ -24,7 +24,7 @@ Object.assign(ProductPage.prototype, { template(){ return `
 					</p>
 					
 				</div>
-				</div>
+			</div>
 		</div>
 	</div>
 `;}});

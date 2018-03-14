@@ -65,19 +65,19 @@ class PopStateHandler {
       '/om_oss': 'about',
       '/kassa' : 'cart'
     };
-
+    
     //looping through ID
     for (let i = 0; i < All.allProducts.length; i++){
+      //console.log(url);
       let url = `/${All.allProducts[i].result._id}`;
       let target = 'product';
-      Object.assign(urls, {[url] : target})
+      Object.assign(urls, {[url] : target});
     }
-
-    console.log(urls[url]);
   
     // Call the right method
     let methodName = urls[url];
-
+    
+    
     if (methodName =='product') {
       let productId = url.substr(1);
       this[methodName](productId);

@@ -2,7 +2,6 @@ class ProductPage extends REST {
   constructor(app) {
     super();
     this.app = app;
-    //this.clickEvents();
   }
 
   
@@ -12,5 +11,12 @@ class ProductPage extends REST {
     this.productSelected = this.productSelected.result;
     
   }
+  click() {
+    if ($(event.target).hasClass('addToCart')) {
+      this.app.shoppingCart.push(new CartItem(this));
+      this.app.header.render();
+    }
+
+  } 
   
 }

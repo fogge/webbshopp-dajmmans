@@ -19,7 +19,6 @@ class ProductCategory extends REST {
     } catch(e){
       console.error('Problem med collections \n', e);
     }
-    console.log(this.myProducts)
     $('main').empty();
     this.render('main', '3');
   }

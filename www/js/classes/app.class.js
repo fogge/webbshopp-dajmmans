@@ -12,7 +12,6 @@ class App extends REST {
 
     this.all = new All;
     All.allProducts = await this.all.getResult({});
-    console.log(All.allProducts);
     
     //Rendering the header
     this.header = new Header(this);
