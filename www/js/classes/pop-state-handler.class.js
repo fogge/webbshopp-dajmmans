@@ -128,7 +128,6 @@ class PopStateHandler {
   }
 
   product(productId){
-    
     this.empty();
     this.app.productPage = new ProductPage(this.app);
     this.app.productPage.getProduct(productId);
@@ -137,6 +136,8 @@ class PopStateHandler {
 
   about(){
     this.empty();
+    this.app.about = new About(this);
+    this.app.about.render('main')
   }
 
   search() {
