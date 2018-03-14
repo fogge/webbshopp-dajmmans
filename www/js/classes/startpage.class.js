@@ -2,26 +2,22 @@ class Startpage extends REST {
   constructor(app) {
     super();
   	this.homepageAvatars = [];
-		this.result = All.allProducts.filter(ingredients => 'Ingredient' == ingredients.constructor.name).splice(0, 4);			
-		this.result.concat(All.allProducts.filter(materiel => 'Matriel' == materiel.constructor.name).splice(0, 4));			
-		// result = All.allProducts.filter(book => 'Book' == book.constructor.name).splice(0, 4);			
-		console.log("this.result", this.result)
 		
-		console.log(All.allProducts);  
+		let result1 = All.allProducts.filter(ingredients => 'Ingredient' == ingredients.constructor.name).splice(0, 4);			
+		let result2 = All.allProducts.filter(materiel => 'Materiel' == materiel.constructor.name).splice(0, 4);			
+		let result3 = All.allProducts.filter(book => 'Book' == book.constructor.name).splice(0, 4);			
+		this.result = result1.concat(result2, result3);
+  	
   	this.renderAvatarsStartpage();
 	}
-
-
 
   renderAvatarsStartpage(){
   	for(let product of this.result) {
 	  	console.log("product",product.result)
 	  	this.homepageAvatars.push(new ProductAvatar(product.result, this.app));
-
   	}
-
-
-
 	}
   
+
+
 }
