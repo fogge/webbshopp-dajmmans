@@ -12,6 +12,7 @@ class Cart extends REST {
       let searchObj = await all.getResult({_id: item._id});
       searchObj = searchObj[0].result;
       searchObj.quantity = item.quantity;
+      if (searchObj.stockBalance - item.quantity < 0) searchObj.stockWarning = true;
       this.cartItems.push(new CartItem(searchObj, this));
     }
     return this.render();

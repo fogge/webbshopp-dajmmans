@@ -8,6 +8,7 @@ Object.assign(CartItem.prototype, { template(){ return `
         <h4>${this.title}</h4>
         <p class="m-0">${this.description}</p>
         <p class="text-muted m-0">Artikelnr: ${this.artNumber}</p>
+
       </div>
       <p class="fas fa-times align-self-start mr-2 mt-2 m-0 ml-auto delete-cart-item"></p>
     </div>
@@ -19,6 +20,8 @@ Object.assign(CartItem.prototype, { template(){ return `
         <button type="button" class="btn btn-cart btn-cart-width p-0 cart-item-button-plus" data-id=${this._id}>+</button>
       </div>
       <div class="d-flex flex-column align-items-end">
+        ${this.stockWarning ? `
+        <div class="bg-warning alert-warning p-2">Obs! Endast ${this.stockBalance} kvar</div>` : `I lager ${this.stockBalance < 5 ? `${this.stockBalance}` : ''}`}
         <h4 class="text-danger">${this.price} kr</h4>
         <p class="text-muted">Varav moms: ${this.getVatPerItem()} kr</p>
       </div>

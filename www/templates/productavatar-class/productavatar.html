@@ -19,7 +19,7 @@ Object.assign(ProductAvatar.prototype, { template(){ return `
                 '<i class="fas fa-check-circle text-success"></i>'}
                 Lagerstatus
               </div>
-            <button class="addToCart">Köp</button>
+            <button class="addToCart ${this.stockBalance <= 0 ? ' bg-secondary" disabled' : '"'} " >Köp</button>
           </div>
         </div>
       </div>
