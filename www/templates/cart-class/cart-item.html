@@ -1,11 +1,11 @@
 Object.assign(CartItem.prototype, { template(){ return `
 
-  <div class="bg-light d-flex text-dark align-items-center mb-1 p-4 cartitem-containers">
+  <div class="text-dark d-flex align-items-center mb-1 pl-3 pr-3 pt-2 pb-0 cartitem-containers">
     <div class="picture-cart col-4 col-md-2 p-0"><img class="img-fluid cartitem-image" src="${this.imageLink}"></div>
     <div class="col-8 col-md-10 p-0">
     <div class="info-cart col-12 d-flex p-0 pl-3">
       <div class="d-flex flex-column">
-        <h4>${this.title}</h4>
+        <h4 class="mt-3">${this.title}</h4>
         <p class="m-0">${this.description}</p>
         <p class="text-muted m-0">Artikelnr: ${this.artNumber}</p>
 
