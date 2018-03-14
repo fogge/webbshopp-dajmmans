@@ -16,7 +16,6 @@ class Header extends REST {
     for (let item of this.items) {
       item.active = url == item.url;
     }
+    this.app.header.render();
   }
 }
-
-
