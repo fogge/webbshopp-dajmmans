@@ -10,15 +10,14 @@ Object.assign(CartItem.prototype, { template(){ return `
         <p class="text-muted m-0">Artikelnr: ${this.artNumber}</p>
 
       </div>
-      <p class="fas fa-times align-self-start mr-2 mt-2 m-0 ml-auto"></p>
+      <p class="fas fa-times align-self-start mr-2 mt-2 m-0 ml-auto delete-cart-item"></p>
     </div>
 
     <div class="col-12 d-flex justify-content-between p-0 pl-3 mt-2">
       <div class="btn-group d-flex" role="group" aria-label="">
-        <button type="button" class="btn btn-cart btn-cart-width p-0"><strong>-</strong></button>
-        <input disabled type="text" class="form-control btn-cart-width" placeholder="0">
-        <button type="button" class="btn btn-cart btn-cart-width p-0"><strong>+</strong></button>
-        
+        <button type="button" class="btn btn-cart btn-cart-width p-0 cart-item-button-minus" data-id=${this._id}>-</button>
+        <input disabled type="text" class="form-control btn-cart-width" placeholder="${this.quantity}">
+        <button type="button" class="btn btn-cart btn-cart-width p-0 cart-item-button-plus" data-id=${this._id}>+</button>
       </div>
       <div class="d-flex flex-column align-items-end">
         ${this.stockWarning ? `

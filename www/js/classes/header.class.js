@@ -3,7 +3,7 @@ class Header extends REST {
     super();
     this.app = app;
     this.items = [
-      new HeaderItem('Startpage', '/'),
+      new HeaderItem('Start', '/'),
       new HeaderItem('Materiel', '/materiel'),
       new HeaderItem('Böcker', '/bocker'),
       new HeaderItem('Ingredienser', '/ingredienser'),

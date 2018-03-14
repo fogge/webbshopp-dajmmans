@@ -6,6 +6,7 @@ class ProductAvatar extends REST {
     for (let value in product) {
       this[value] = product[value];
     }
+
   }
 
   click() {
@@ -19,7 +20,7 @@ class ProductAvatar extends REST {
           }
         }
         return true;
-      }   
+      }
       if (this.app.shoppingCart == [] || checkShoppingCart(this)) this.app.shoppingCart.push({_id: this._id, quantity: this.quantity});
 
       this.app.header.render();
@@ -27,6 +28,7 @@ class ProductAvatar extends REST {
         $(this).removeClass('bg-success').text('Köp');
         next();
       });
-    }  
+    }
   }
+
 }
