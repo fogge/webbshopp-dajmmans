@@ -66,7 +66,9 @@ class PopStateHandler {
       '/produkt': 'product',
       '/search': 'search',
       '/om_oss': 'about',
-      '/kassa' : 'cart'
+      '/kassa' : 'cart',
+      '/login': 'login',
+      '/register': 'register'
     };
 
     // Call the right method
@@ -123,6 +125,18 @@ class PopStateHandler {
     this.empty();
     this.app.search = new Search($(document).find('.inputsearch').val(), this.app);
     this.app.search.render();
+  }
+
+  login(){
+    this.empty();
+    this.app.login = new Login(this.app);
+    this.app.login.render();
+  }
+
+  register(){
+    this.empty();
+    this.app.register = new Register(this.app);
+    this.app.register.render();
   }
 
   cart(){

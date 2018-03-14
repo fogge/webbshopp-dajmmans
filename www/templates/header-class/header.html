@@ -9,18 +9,13 @@ Object.assign(Header.prototype, { template(){ return `
           ${this.items.render()}
         </ul>
         <form class="form-inline ml-auto mt-3 mr-md-2">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="login-btn mr-1">
+            <a class="btn btn-secondary pop" type="button" href="/login" aria-haspopup="true" aria-expanded="false">
               Login
-            </button>
-            <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
-              <input type="text" class="form-control" placeholder="Email">
-              <input type="text" class="form-control mt-2" placeholder="Lösenord">
-              <a class="btn bg-primary pop mt-1" type="button" data-toggle="tooltip" title="Logga in">Logga in <i class="fas fa-sign-in-alt"></i></a>
-            </div>
+            </a>
           </div>
             <div class="input-group m-0 mt-2 mt-md-0">
-              <div class="input-group-prepend">
+              <div class="input-group-prepend mr-1">
                 <select class="custom-select" id="search-in-category">
                   <option value="All" selected>Alla kategorier</option>
                   <option value="Materiel">Materiel</option>

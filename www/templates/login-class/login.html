@@ -1,0 +1,8 @@
+Object.assign(Login.prototype, { template(){ return `
+  <div class="mt-2">
+    <input type="text" class="form-control" placeholder="Email">
+    <input type="text" class="form-control mt-2" placeholder="Lösenord">
+    <a class="btn bg-primary pop mt-1" type="button" data-toggle="tooltip" title="Logga in">Logga in <i class="fas fa-sign-in-alt"></i></a>
+    <a class="pop btn bg-primary text-dark" data-toggle="tooltip" title="Skapa nytt konto" href="/register">Skapa konto</a>
+  </div>
+`;}});

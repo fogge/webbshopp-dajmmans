@@ -19,13 +19,15 @@ class App extends REST {
     this.footer = new Footer(this);
     $('footer').empty();
     this.footer.render('footer');
-    
+
     this.startPage = new Startpage(this);
     this.materiel = new Materiel(this);
     this.ingredienser = new Ingredient(this);
     this.Book = new Book(this);
     // this.productPage = new ProductPage(this);
     this.about = new About(this);
+    this.login = new Login(this);
+    this.register = new Register(this);
 
     this.popState = new PopStateHandler(this);
   }
