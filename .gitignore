@@ -2,6 +2,3 @@ node_modules
 .DS_store
 users.json
 www/css/style.css
-package-lock\.json
-
-package\.json
