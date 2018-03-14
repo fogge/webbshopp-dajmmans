@@ -4,68 +4,48 @@ class Userpage extends REST {
   	this.app = app;
   	this.searchResult = [];
 		this.getOrders();
+		this.co = 0;
 
   }
   
   async getOrders() {
   	let user = 'Dajmman Dajmmsson';
   	let orders = await Order.find({customerid: user});
-  	console.log( orders);
+  	// console.log( orders);
   	this.sortOrders(orders);
   	}
 
 	sortOrders(orders){
-		console.log('träff' + orders)
 		let activeOrders = [];
   	let oldOrders = [];
-  	let nowDate = new Date;
-  	console.log(nowDate);
-  	orders.forEach( (product) => {
-  		if( +product.result.orderdate > +nowDate){
-  		console.log('Gamla ordrar' + product.result.orderdate);
-  		}
-	});
+  	
+  	let nowDate = new Date();
+        let month = nowDate.getMonth() + 1;
+        if (month < 10) {
+            month = "0" + month;
+        }
+        let day = nowDate.getDate();
+        if (day < 10) {
+            day = "0" + day;
+        }
+        let dateString = `${nowDate.getFullYear()}-${month}-${day}`
+        this.renderOrders(orders, dateString);
+	}
 
+	async renderOrders(orders, dateString){
+		
+    try {
+
+			orders.forEach( (product) => {
+				this.co++;
+  			let userpageItem = new UserpageItem(product.result, this.app, this.co);
+  			this.searchResult.push(userpageItem);
+  		});
+		} catch (e) {
+  			console.error('Strul med rendering');
+  		}
+  		return await this.render('main', 1);
+
+	};
   	
   }
-
-  /*async getSearchResult() {
-
-    let searchResultFromMongo = await Ingredient.request('ingredients', 'get', {});
-    searchResultFromMongo.result.forEach( (product) => {
-      this.searchResult.push(new ProductAvatar(product));
-    })
-    return this.render();
-  }*/
-
-}
-
-
-/*
-const searchObj = {title: {$regex: this.query, $options: 'i'}};
-    let mongoResult;
-    if(mongoCollection === 'Ingredient') mongoResult = await Ingredient.find(searchObj);
-    */
-
-
-
-
-/*
-class Startpage extends REST {
-  constructor() {
-    super();
-  	this.searchResult = [];
-    this.getSearchResult();
-  }
-
-  async getSearchResult() {
-
-    // Hardcoded search on ingredients collection with title
-    let searchResultFromMongo = await Ingredient.request('ingredients', 'get', {});
-    searchResultFromMongo.result.forEach( (product) => {
-      this.searchResult.push(new ProductAvatar(product));
-    })
-    return this.render();
-  }
-}
-*/

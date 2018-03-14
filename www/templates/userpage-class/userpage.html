@@ -4,96 +4,14 @@ Object.assign(Userpage.prototype, { template1(){ return `
     <div class="col-12">
     	<h3 class="text-center mt-5 mb-5">Du är inloggad som: ${this.user}</h3>
     	<h5 class="mb-3">Dina aktuella ordrar:</h5>
-      <div id="accordion">
-			  <div class="card">
-			    <div class="card-header" id="headingOne">
-			      <h5 class="mb-0">
-			        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-			          Beställning #${this.ordernummer}:
-			        </button>
-			      </h5>
-			    </div>
-			    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-			      <div class="card-body">
-			        <p>Beställningsdag: 2018-03-10</p>
-			        <p>Referens till produkten: object_ID</p>
-			        <p>Status: Behandlad</p>
-			        <p>Totalpris: 500 bagis</p>
-			      </div>
-			    </div>
-			  </div>
-			  <div class="card">
-			    <div class="card-header" id="headingTwo">
-			      <h5 class="mb-0">
-			        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-			          Beställning #${this.nästa_ordernummer}:
-			        </button>
-			      </h5>
-			    </div>
-			    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-			      <div class="card-body">
-			      	<p>Beställningsdag: 2018-03-11</p>
-			        <p>Referens till produkten: object_ID</p>
-			        <p>Status: Mottagen</p>
-			        <p>Totalpris: 300 bagis</p>
-			      </div>
-			    </div>
-			  </div>
-			</div>
+      <div id="accordion" class="active-orders">
+			  
+			 ${this.searchResult.render()}
 
 			<h5 class="mb-3 mt-5">Orderhistorik:</h5>
-      <div id="accordion">
-			  <div class="card">
-			    <div class="card-header" id="historyOne">
-			      <h5 class="mb-0">
-			        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseOne">
-			          Beställning #${this.gammaltordernummer}:
-			        </button>
-			      </h5>
-			    </div>
-			    <div id="collapseThree" class="collapse" aria-labelledby="historyOne" data-parent="#accordion">
-			      <div class="card-body">
-			        <p>Beställningsdag: 2018-02-11</p>
-			        <p>Referens till produkten: object_ID</p>
-			        <p>Status: Skickad</p>
-			        <p>Totalpris: 666 bagis</p>
-			      </div>
-			    </div>
-			  </div>
-			  <div class="card">
-			    <div class="card-header" id="historyTwo">
-			      <h5 class="mb-0">
-			        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
-			          Beställning #${this.nästagammlaordernummer}:
-			        </button>
-			      </h5>
-			    </div>
-			    <div id="collapseFour" class="collapse" aria-labelledby="historyTwo" data-parent="#accordion">
-			      <div class="card-body">
-			        <p>Beställningsdag: 2018-01-11</p>
-			        <p>Referens till produkten: object_ID</p>
-			        <p>Status: Skickad</p>
-			        <p>Totalpris: 666 bagis</p>
-			      </div>
-			    </div>
-			  </div>
-			  <div class="card">
-			    <div class="card-header" id="historyThree">
-			      <h5 class="mb-0">
-			        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
-			          Beställning #${this.nästagammlaordernummer}:
-			        </button>
-			      </h5>
-			    </div>
-			    <div id="collapseFive" class="collapse" aria-labelledby="historyThree" data-parent="#accordion">
-			      <div class="card-body">
-			        <p>Beställningsdag: 2017-12-12</p>
-			        <p>Referens till produkten: object_ID</p>
-			        <p>Status: Skickad</p>
-			        <p>Totalpris: 666 bagis</p>
-			      </div>
-			    </div>
-			  </div>
+      <div id="accordion" class="history-orders">
+			  
+
 			</div>
 
     </div>
