@@ -26,7 +26,7 @@ class App extends REST {
     this.Book = new Book(this);
     // this.productPage = new ProductPage(this);
     this.about = new About(this);
-    this.userpage = new Userpage(this);
+    //this.userpage = new Userpage(this);
 
     this.popState = new PopStateHandler(this);
   }

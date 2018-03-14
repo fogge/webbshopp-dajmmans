@@ -3,14 +3,14 @@ Object.assign(UserpageItem.prototype, { template(){ return `
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse${this.co}" aria-expanded="false" aria-controls="collapse${this.co}">
-          Beställning #${this.product.orderno} <b> Varan är: ${this.product.status}</b>
+          Beställning #${this.product.orderno} <b>Ordern är: ${this.product.status}</b>
         </button>
       </h5>
     </div>
     <div id="collapse${this.co}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
+      	<p>${this.product.products.length == 1 ? 'Produkt' : 'Produkter'}: ${this.product.products}</p>
         <p>Beställd: ${this.product.orderdate}</p>
-        <p>Referens till produkten: ${this.product.products}</p>
         <p>Totalpris: ${this.product.price}</p>
       </div>
     </div>

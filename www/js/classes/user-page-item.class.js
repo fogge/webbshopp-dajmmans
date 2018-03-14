@@ -9,6 +9,7 @@ class UserpageItem extends REST {
       this[value] = product[value];
     }
     this.product.orderdate = this.product.orderdate.substring(0,10)
+    console.log(this.product.products.length);
   }
 
 }

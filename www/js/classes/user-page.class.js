@@ -2,7 +2,8 @@ class Userpage extends REST {
   constructor(app) {
   	super();
   	this.app = app;
-  	this.searchResult = [];
+  	this.activeOrders = [];
+  	this.oldOrders = [];
 		this.getOrders();
 		this.co = 0;
 
@@ -11,12 +12,10 @@ class Userpage extends REST {
   async getOrders() {
   	let user = 'Dajmman Dajmmsson';
   	let orders = await Order.find({customerid: user});
-  	// console.log( orders);
   	this.sortOrders(orders);
   	}
 
 	sortOrders(orders){
-		let activeOrders = [];
   	let oldOrders = [];
   	
   	let nowDate = new Date();
@@ -38,12 +37,18 @@ class Userpage extends REST {
 
 			orders.forEach( (product) => {
 				this.co++;
-  			let userpageItem = new UserpageItem(product.result, this.app, this.co);
-  			this.searchResult.push(userpageItem);
+				this.user = product.result.customerid;
+				let userpageItem = new UserpageItem(product.result, this.app, this.co);
+				if(product.result.status == 'Skickad'){
+  				this.oldOrders.push(userpageItem);
+				} else {
+  				this.activeOrders.push(userpageItem);
+  			}
   		});
 		} catch (e) {
-  			console.error('Strul med rendering');
+  			console.error('Strul med rendering, försök igen!', (e));
   		}
+  		$('main').empty();
   		return await this.render('main', 1);
 
 	};

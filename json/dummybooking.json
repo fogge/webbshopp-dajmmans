@@ -21,8 +21,8 @@
     },
     {
 	"orderno": 123456,
-    "products": ["Ruttna ägg, Mald kamelpung"],
-    "status": "Mottagen",
+    "products": ["Ruttna ägg", " Mald kamelpung"],
+    "status": "Behandlad",
     "orderdate": "2018-03-11",
     "customerid": "Dajmman Dajmmsson",
     "shippingdate": "2018-05-10",
@@ -32,7 +32,7 @@
     {
 	"orderno": 555555,
     "products": ["Tånaglar"],
-    "status": "Mottagen",
+    "status": "Behandlad",
     "orderdate": "2018-03-12",
     "customerid": "Dajmman Dajmmsson",
     "shippingdate": "2018-05-12",
