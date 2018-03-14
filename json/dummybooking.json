@@ -5,7 +5,6 @@
     "status": "Skickad",
     "orderdate": "2018-01-11",
     "customerid": "Dajmman Dajmmsson",
-    "shippingdate": "2018-02-10",
     "price": 500,
     "vat": 125
     },
@@ -15,7 +14,6 @@
     "status": "Skickad",
     "orderdate": "2018-02-12",
     "customerid": "Dajmman Dajmmsson",
-    "shippingdate": "2018-03-10",
     "price": 500,
     "vat": 125
     },
@@ -25,7 +23,6 @@
     "status": "Behandlad",
     "orderdate": "2018-03-11",
     "customerid": "Dajmman Dajmmsson",
-    "shippingdate": "2018-05-10",
     "price": 500,
     "vat": 125
     },
@@ -35,7 +32,6 @@
     "status": "Behandlad",
     "orderdate": "2018-03-12",
     "customerid": "Dajmman Dajmmsson",
-    "shippingdate": "2018-05-12",
     "price": 500,
     "vat": 125
     },
@@ -45,7 +41,6 @@
     "status": "Mottagen",
     "orderdate": "2018-03-13",
     "customerid": "Dajmman Dajmmsson",
-    "shippingdate": "2018-05-14",
     "price": 500,
     "vat": 125
     }

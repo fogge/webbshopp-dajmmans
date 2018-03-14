@@ -160,7 +160,7 @@ class PopStateHandler extends REST {
 
   userPage(){
     this.empty();
-    this.app.user = new User(this.app);
+    this.app.user = new Userpage(this.app);
   }
 
   cart(){
