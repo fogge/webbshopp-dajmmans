@@ -1,17 +1,29 @@
 //main: style.less
-.btn-cart-width {
-  width: 40px;
+//main: style.less
+
+.placeholder-cart {
+  width: 45px;
   height: 40px;
   text-align: center;
 }
 
-.btn-cart {
-  background: #D3D3D3;
-  font-size: 1.5em;
+.set-cursor-pointer {
+  cursor: pointer;
 }
 
 .cartitem-containers {
   border-radius: 25px;
+  background-color: rgb(220,220,220);
+  button {
+    background-color: @bodyBg-colour;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    color: white;
+  }
+  button:hover {
+    background-color: @bodyBg-colour + 50;
+  }
 }
 
 .cartitem-image {
@@ -24,11 +36,11 @@
 }
 
 .top-form-rounded {
-  border-radius: 10px 10px 0 0;
+  border-radius: 5px 5px 0 0;
 }
 
 .bottom-form-rounded {
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 5px 5px;
 }
 
 .payment-card {
@@ -45,10 +57,21 @@
   right: 1em;
 }
 
-.accordion-cart{
-  background-color: @bodyBg-colour;
+.form-container, .cart-body {
+  background: @bodyBg-colour;
+  border-radius: 5px;
+  color: rgb(240,240,240);
+
 }
 
-.cart-body{
-  background-color: @bodyBg-colour;
+.hover-delete-item {
+  color: #be0000 !important;
+}
+
+.delete-cart-item {
+  cursor: pointer;
+}
+
+.cartitem-container-hover {
+  box-shadow: inset 0 0 10px 5px #580000;
 }

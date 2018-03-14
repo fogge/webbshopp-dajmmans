@@ -1,25 +1,28 @@
 Object.assign(CartItem.prototype, { template(){ return `
 
-  <div class="bg-light d-flex text-dark align-items-center mt-3 p-2 cartitem-containers">
+  <div class="text-dark d-flex align-items-center mb-1 pl-3 pr-3 pt-2 pb-0 cartitem-containers">
     <div class="picture-cart col-4 col-md-2 p-0"><img class="img-fluid cartitem-image" src="${this.imageLink}"></div>
     <div class="col-8 col-md-10 p-0">
     <div class="info-cart col-12 d-flex p-0 pl-3">
       <div class="d-flex flex-column">
-        <h4>${this.title}</h4>
+        <h4 class="mt-3">${this.title}</h4>
         <p class="m-0">${this.description}</p>
         <p class="text-muted m-0">Artikelnr: ${this.artNumber}</p>
+
       </div>
-      <p class="fas fa-times align-self-start mr-2 mt-2 m-0 ml-auto"></p>
+      <p class="fas fa-times align-self-start mr-2 mt-2 m-0 ml-auto delete-cart-item"></p>
     </div>
 
-    <div class="col-12 d-flex justify-content-between p-0 pl-3 mt-2">
+    <div class="col-12 d-flex justify-content-between p-0 pl-3 mt-2 flex-column flex-md-row">
       <div class="btn-group d-flex" role="group" aria-label="">
-        <button type="button" class="btn btn-cart btn-cart-width p-0"><strong>-</strong></button>
-        <input disabled type="text" class="form-control btn-cart-width" placeholder="0">
-        <button type="button" class="btn btn-cart btn-cart-width p-0"><strong>+</strong></button>
+        <button type="button" class="btn p-0 cart-item-button-minus fas fa-minus" data-id=${this._id}> </button>
+        <input disabled type="text" class="form-control placeholder-cart" placeholder="${this.quantity}">
+        <button type="button" class="btn p-0 cart-item-button-plus fas fa-plus" data-id=${this._id}> </button>
       </div>
-      <div class="d-flex flex-column align-items-end">
-        <h4 class="text-danger">${this.price} kr</h4>
+      <div class="d-flex flex-column align-items-end mr-2">
+        ${this.stockWarning ? `
+        <div class="bg-warning alert-warning p-2">Obs! Endast ${this.stockBalance} kvar</div>` : `I lager ${this.stockBalance < 5 ? `${this.stockBalance}` : ''}`}
+        <h4 class="text-danger">${this.price} kr / st</h4>
         <p class="text-muted">Varav moms: ${this.getVatPerItem()} kr</p>
       </div>
     </div>

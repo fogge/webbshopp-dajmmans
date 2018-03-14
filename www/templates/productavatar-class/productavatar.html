@@ -4,10 +4,12 @@ Object.assign(ProductAvatar.prototype, { template(){ return `
       <div class="d-flex flex-column p-md-2">
         <div class="m-2 m-md-2 lala">
           <div>
-            <img src="${this.imageLink}" class="img-fluid">
+            <a href="/${this._id}" id="${this._id}" class="pop d-block mt-2 product-title">
+              <img src="${this.imageLink}" class="img-fluid">
+            </a>
           </div>
           <div class="text-center">
-            <a href="/produkt" id="${this._id}" class="pop d-block mt-2 product-title">${this.title}</a>
+            <a href="/${this._id}" id="${this._id}" class="pop d-block mt-2 product-title">${this.title}</a>
             <span>${this.price}:-</span>
           </div>
           <div class="d-flex justify-content-between">
@@ -17,7 +19,7 @@ Object.assign(ProductAvatar.prototype, { template(){ return `
                 '<i class="fas fa-check-circle text-success"></i>'}
                 Lagerstatus
               </div>
-            <button class="addToCart">Köp</button>
+            <button class="addToCart btn btn-success ${this.stockBalance <= 0 ? ' bg-secondary" disabled' : '"'} " >Köp</button>
           </div>
         </div>
       </div>

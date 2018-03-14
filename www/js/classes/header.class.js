@@ -3,7 +3,7 @@ class Header extends REST {
     super();
     this.app = app;
     this.items = [
-      new HeaderItem('Startpage', '/'),
+      new HeaderItem('Start', '/'),
       new HeaderItem('Materiel', '/materiel'),
       new HeaderItem('Böcker', '/bocker'),
       new HeaderItem('Ingredienser', '/ingredienser'),
@@ -16,7 +16,6 @@ class Header extends REST {
     for (let item of this.items) {
       item.active = url == item.url;
     }
+    this.app.header.render();
   }
 }
-
-

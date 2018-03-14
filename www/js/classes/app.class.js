@@ -10,6 +10,9 @@ class App extends REST {
     // Initiate handling of SPA push/pop-state
     this.myIngredients = await Ingredient.find();
 
+    this.all = new All;
+    All.allProducts = await this.all.getResult({});
+    
     //Rendering the header
     this.header = new Header(this);
     $('header').empty();
@@ -19,15 +22,12 @@ class App extends REST {
     this.footer = new Footer(this);
     $('footer').empty();
     this.footer.render('footer');
-    
+
     this.startPage = new Startpage(this);
     this.materiel = new Materiel(this);
     this.ingredienser = new Ingredient(this);
     this.Book = new Book(this);
-    // this.productPage = new ProductPage(this);
-    this.about = new About(this);
-    //this.userpage = new Userpage(this);
-
+   
     this.popState = new PopStateHandler(this);
   }
 
