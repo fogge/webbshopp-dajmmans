@@ -22,7 +22,7 @@ class App extends REST {
     this.footer = new Footer(this);
     $('footer').empty();
     this.footer.render('footer');
-    
+
     this.startPage = new Startpage(this);
     this.materiel = new Materiel(this);
     this.ingredienser = new Ingredient(this);

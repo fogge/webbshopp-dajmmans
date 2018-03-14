@@ -70,7 +70,7 @@ class Base{
   }
 
   // Global methods
-  // Search-methods 
+  // Search-methods
 
   sortPriceLow(arrayOfObjects) {
     arrayOfObjects.sort((a,b) => {
@@ -118,6 +118,12 @@ class Base{
      }
      return 0;
     });
+  }
+
+  // Product-pages
+  makeProductUrl(urlId){
+    urlId = urlId.substr(urlId.length - 10);
+    return urlId;
   }
 
 }
