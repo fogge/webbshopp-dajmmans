@@ -4,6 +4,7 @@ class Cart extends REST {
     this.app = app;
     this.cartItems = [];
     this.getCartItems();
+
   }
 
 
@@ -14,9 +15,8 @@ class Cart extends REST {
       let searchObj = await all.getResult({_id: item._id});
       searchObj = searchObj[0].result;
       searchObj.quantity = item.quantity;
-      this.cartItems.push(new CartItem(searchObj));
+      this.cartItems.push(new CartItem(searchObj, this));
     }
-    console.log(this.cartItems)
     return this.render();
   }
 
@@ -44,5 +44,6 @@ class Cart extends REST {
     return Math.round( totalVat * 10 ) / 10;
   }
 
-  
+
+
 }

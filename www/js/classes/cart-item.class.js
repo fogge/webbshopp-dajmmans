@@ -1,10 +1,12 @@
 class CartItem extends REST {
-  constructor(product) {
+  constructor(product, cart) {
     super();
     for (let value in product) {
       // This if statement is for fixing a bug in Base, else This gets wrong template
       if (value !== 'template') this[value] = product[value];
     }
+    this.eventHandler();
+    this.cart = cart;
   }
 
   getVatPerItem(){
@@ -15,5 +17,24 @@ class CartItem extends REST {
     } else {
       return Math.round((this.price * 0.2) * 10) / 10;
     }
+  }
+
+  renderCart(){
+    $('main').empty();
+    this.cart.render('main');
+  }
+
+  eventHandler(){
+    $(document).on('click', '#cart-item-button-plus', () => {
+      this.quantity += 1;
+      console.log(this.quantity);
+      this.renderCart();
+    });
+
+    $(document).on('click', '#cart-item-button-minus', () => {
+      this.quantity -= 1;
+      console.log(this.quantity);
+      this.renderCart();
+    });
   }
 }
