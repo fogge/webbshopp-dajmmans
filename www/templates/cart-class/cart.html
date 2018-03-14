@@ -1,10 +1,10 @@
 Object.assign(Cart.prototype, { template(){ return `
-  <div class="mt-2">
+  <div class="mt-3">
     <div id="accordion-cart">
       <a class="" data-toggle="collapse" data-target="#cart-order-collapse" aria-expanded="true" aria-controls="cart-order-collapse">
       <div class="card cart-body">
         <div class="card-header d-flex flex-nowrap justify-content-between" id="headingOne">
-          <h5 class="mb-0">
+          <h5 class="mb-0  ">
             Din order
           </h5>
           <h5 class="text-success">${this.getTotalPrice()} kr</h5>
@@ -13,19 +13,19 @@ Object.assign(Cart.prototype, { template(){ return `
 
         <div id="cart-order-collapse" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion-cart">
           <div class="card-body">
-            <hr>
+
             ${this.cartItems.render()}
 
-            <hr>
+            <hr class="mt-4 mb-4">
 
 
             <div class="col-12 d-flex justify-content-between p-0 pl-3 mt-2">
-              <div class="ml-auto d-flex flex-column align-items-end">
+              <div class="ml-auto d-flex flex-column align-items-end ">
                 <h5>Totalt ${this.getTotalPrice()} kr</h5>
                 <p>Varav moms: ${this.getTotalVat()} kr</p>
                 <h5>Fri frakt</h5>
                 <h3>TOTALPRIS <span class="text-success">${this.getTotalPrice()} kr</span></h3>
-                <button class="btn btn-success p-2 pr-4 pl-4 mt-3">Till betalning</button>
+                <a class="" data-toggle="collapse" data-target="#cart-order-collapse" aria-expanded="true" aria-controls="cart-order-collapse"><button class="btn btn-success p-2 pr-4 pl-4 mt-3 payment-button">Till betalning</button></a>
               </div>
             </div>
           </div>
@@ -35,10 +35,10 @@ Object.assign(Cart.prototype, { template(){ return `
   </div>
 
 
-  <div class="row mt-2 border border-dark rounded p-4 mx-0">
+  <div class="row mt-2 form-container p-4 mx-0 mb-3 ">
     <div class="adress-form-container col-12 col-md-6">
       <h5>Adress</h5>
-      <input type="email" class="form-adress-cart col-12 border-bottom-0 top-form-rounded" id="" placeholder="Enter email">
+      <input type="email" class="form-adress-cart col-12 border-bottom-0 top-form-rounded" id="" placeholder="Email">
       <div class="form-group d-flex flex-nowrap col-12 m-0 p-0">
         <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="" placeholder="Förnamn">
         <input type="text" class="form-adress-cart col-6 border-bottom-0" id="" placeholder="Efternamn">
