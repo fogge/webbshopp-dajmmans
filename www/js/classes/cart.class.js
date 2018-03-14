@@ -2,17 +2,23 @@ class Cart extends REST {
   constructor(app) {
     super();
     this.app = app;
-    this.cartItems = this.app.shoppingCart;
-    this.render();
+    this.cartItems = [];
+    this.getCartItems();
   }
 
-  newInstances() {
-    this.app.cart.forEach((item) => {
-      this.cartItems.push(new CartItem(item, this.app));
-    });
-    this.render();
-  }
 
+
+  async getCartItems() {
+    let all = new All();
+    for (let item of this.app.shoppingCart) {
+      let searchObj = await all.getResult({_id: item._id});
+      searchObj = searchObj[0].result;
+      searchObj.quantity = item.quantity;
+      this.cartItems.push(new CartItem(searchObj));
+    }
+    console.log(this.cartItems)
+    return this.render();
+  }
 
   getTotalPrice(){
     let totalPrice = 0;
