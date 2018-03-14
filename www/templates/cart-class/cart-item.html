@@ -14,10 +14,10 @@ Object.assign(CartItem.prototype, { template(){ return `
     </div>
 
     <div class="col-12 d-flex justify-content-between p-0 pl-3 mt-2 flex-column flex-md-row">
-      <div class="btn-group d-flex" role="group" aria-label="">
-        <button type="button" class="btn p-0 cart-item-button-minus fas fa-minus" data-id=${this._id}> </button>
+      <div class="btn-group d-flex addminus" role="group" aria-label="">
+        <button type="button" class="btn p-2 cart-item-button-minus fas fa-minus" data-id=${this._id}> </button>
         <input disabled type="text" class="form-control placeholder-cart" placeholder="${this.quantity}">
-        <button type="button" class="btn p-0 cart-item-button-plus fas fa-plus" data-id=${this._id}> </button>
+        <button type="button" class="btn p-2 cart-item-button-plus fas fa-plus" data-id=${this._id}> </button>
       </div>
       <div class="d-flex flex-column align-items-end mr-2">
         ${this.stockWarning ? `

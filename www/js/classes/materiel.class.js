@@ -7,7 +7,7 @@ class Materiel extends REST {
     Är du en erfaren eller nybörjare? Vi har allt materiel som du kan tänkas behöva till dom bästa priserna på webben.
     `;
     Materiel.img = '/img/materiel.jpg';
-    Materiel.icon = `<i class="fas fa-quidditch"></i>`;
+    Materiel.icon = `<i class="fas fa-quidditch awesomeness"></i>`;
   }
 
 }
