@@ -47,7 +47,7 @@ class PopStateHandler extends REST {
   changePage(){
     // React on page changed
     // (replace part of the DOM etc.)
-        
+
     // Get the current url
     let url = location.pathname;
     // Change which menu link that is active
@@ -67,19 +67,18 @@ class PopStateHandler extends REST {
       '/register': 'register',
       '/mina_sidor': 'userPage'
     };
-    
+
     //looping through ID
     for (let i = 0; i < All.allProducts.length; i++){
-      //console.log(url);
       let url = `/${All.allProducts[i].result._id}`;
       let target = 'product';
       Object.assign(urls, {[url] : target});
     }
-  
+
     // Call the right method
     let methodName = urls[url];
-    
-    
+
+
     if (methodName =='product') {
       let productId = url.substr(1);
       this[methodName](productId);
@@ -92,7 +91,7 @@ class PopStateHandler extends REST {
     //   methodName = 'product';
     // }
 
-    
+
 
     // Set the right menu item active
     this.app.header.setActive(url);

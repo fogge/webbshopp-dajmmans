@@ -18,7 +18,6 @@ class CartItem extends REST {
     } else {
       vat += Math.round((this.price * 0.2) * 10) / 10;
     }
-    console.log(vat);
     return vat += '0';
   }
 
