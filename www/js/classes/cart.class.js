@@ -6,8 +6,6 @@ class Cart extends REST {
     this.getCartItems();
   }
 
-
-
   async getCartItems() {
     let all = new All();
     for (let item of this.app.shoppingCart) {
@@ -15,9 +13,8 @@ class Cart extends REST {
       searchObj = searchObj[0].result;
       searchObj.quantity = item.quantity;
       if (searchObj.stockBalance - item.quantity < 0) searchObj.stockWarning = true;
-      this.cartItems.push(new CartItem(searchObj));
+      this.cartItems.push(new CartItem(searchObj, this));
     }
-    console.log(this.cartItems)
     return this.render();
   }
 
@@ -45,5 +42,6 @@ class Cart extends REST {
     return Math.round( totalVat * 10 ) / 10;
   }
 
-  
+
+
 }
