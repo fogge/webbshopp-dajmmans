@@ -1,5 +1,6 @@
 Object.assign(Cart.prototype, { template(){ return `
   <div class="mt-3">
+    ${this.getTotalPrice() > 0 ? `
     <div id="accordion-cart">
       <a class="" data-toggle="collapse" data-target="#cart-order-collapse" aria-expanded="true" aria-controls="cart-order-collapse">
       <div class="card cart-body">
@@ -76,7 +77,7 @@ Object.assign(Cart.prototype, { template(){ return `
         </div>
 
       </div>
-
+` : 'Du har inga varor i kundvagnen.'}
     </div>
   <!-- </form> -->
 
