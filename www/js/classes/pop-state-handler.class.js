@@ -65,7 +65,8 @@ class PopStateHandler extends REST {
       '/kassa' : 'cart',
       '/login': 'login',
       '/register': 'register',
-      '/mina_sidor': 'userPage'
+      '/mina_sidor': 'userPage',
+      '/mina_sidor2': 'userPage2'
     };
 
     //looping through ID
@@ -160,12 +161,29 @@ class PopStateHandler extends REST {
 
   userPage(){
     this.empty();
-    this.app.user = new User(this.app);
+    this.app.user = new Userpage(this.app);
+  }
+
+  userPage2(){
+    this.empty();
+    this.app.user = new Userpage2(this.app);
   }
 
   cart(){
     this.empty();
     this.app.cart = new Cart(this.app);
+  }
+
+  user(){
+    this.empty();
+    this.app.userPage = new Userpage(this);
+    this.app.userPage.render('main', '1');
+  }
+
+  user2(){
+    this.empty();
+    this.app.userPage = new Userpage(this);
+    this.app.userPage.render('main', '2');
   }
 
   empty() {
