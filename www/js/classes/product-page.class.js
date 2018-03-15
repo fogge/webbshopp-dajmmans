@@ -25,8 +25,8 @@ class ProductPage extends REST {
       if (this.app.shoppingCart == [] || checkShoppingCart(this.productSelected)) this.app.shoppingCart.push({_id: this.productSelected._id, quantity: this.productSelected.quantity});
 
       this.app.header.render();
-      $(event.target).addClass("bg-success").text('Tillagd').delay(1000).queue(function(next) {
-        $(this).removeClass('bg-success').text('Köp');
+      $(event.target).addClass("bg-danger").text('Tillagd').delay(1000).queue(function(next) {
+        $(this).removeClass('bg-danger').text('Köp');
         next();
       });
     }
