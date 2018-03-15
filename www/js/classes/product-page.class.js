@@ -8,6 +8,7 @@ class ProductPage extends REST {
     this.productId = productId;
     this.productSelected = All.allProducts.find( selectedProduct => selectedProduct.result._id === productId);
     this.productSelected = this.productSelected.result;
+    
     this.productSelected.quantity = 1;
   }
 

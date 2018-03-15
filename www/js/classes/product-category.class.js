@@ -6,15 +6,16 @@ class ProductCategory extends REST {
     this.getRightCategory(category);
     this.category = category;
     this.setupHandler();
+    
   }
 
   async getRightCategory(category){
     let collection = await category.find({});
-
-
+    let categoryName = collection[0].constructor.name.toLowerCase();
     try {
       collection.forEach( (product) => {
-        this.myProducts.push(new ProductAvatar(product.result, this.app));
+        this.myProducts.push(new ProductAvatar(product.result, this.app, categoryName));
+        
       });
     } catch(e){
       console.error('Problem med collections \n', e);
