@@ -9,6 +9,7 @@ class Admin extends REST {
       let orders = await Order.find(searchObj);      
       for (const order of orders) {
         this.order = order;
+        this.order.result.orderdate = this.order.result.orderdate.substring(0,10);
         this.render('.orderList',2);
       }
     }
