@@ -47,7 +47,7 @@ class PopStateHandler extends REST {
   changePage(){
     // React on page changed
     // (replace part of the DOM etc.)
-        
+
     // Get the current url
     let url = location.pathname;
     // Change which menu link that is active
@@ -65,21 +65,21 @@ class PopStateHandler extends REST {
       '/kassa' : 'cart',
       '/login': 'login',
       '/register': 'register',
-      '/mina_sidor': 'userPage'
+      '/mina_sidor': 'userPage',
+      '/mina_sidor2': 'userPage2'
     };
-    
+
     //looping through ID
     for (let i = 0; i < All.allProducts.length; i++){
-      //console.log(url);
       let url = `/${All.allProducts[i].result._id}`;
       let target = 'product';
       Object.assign(urls, {[url] : target});
     }
-  
+
     // Call the right method
     let methodName = urls[url];
-    
-    
+
+
     if (methodName =='product') {
       let productId = url.substr(1);
       this[methodName](productId);
@@ -92,10 +92,12 @@ class PopStateHandler extends REST {
     //   methodName = 'product';
     // }
 
-    
+
 
     // Set the right menu item active
     this.app.header.setActive(url);
+
+     window.scrollTo(0, 0);
 
   }
 
@@ -105,8 +107,6 @@ class PopStateHandler extends REST {
     this.empty();
     this.app.banner = new Banner();
     this.app.banner.render('.banner-row');
-
-
     this.app.startPage.render('main');
   }
 
@@ -163,12 +163,29 @@ class PopStateHandler extends REST {
 
   userPage(){
     this.empty();
-    this.app.user = new User(this.app);
+    this.app.user = new Userpage(this.app);
+  }
+
+  userPage2(){
+    this.empty();
+    this.app.user = new Userpage2(this.app);
   }
 
   cart(){
     this.empty();
     this.app.cart = new Cart(this.app);
+  }
+
+  user(){
+    this.empty();
+    this.app.userPage = new Userpage(this);
+    this.app.userPage.render('main', '1');
+  }
+
+  user2(){
+    this.empty();
+    this.app.userPage = new Userpage(this);
+    this.app.userPage.render('main', '2');
   }
 
   empty() {

@@ -5,7 +5,6 @@ class Register extends REST {
     let that = this;
 
     $(document).on('submit', '#registerForm', function(e) {
-      console.log('wsdfgh');
      e.preventDefault();
      that.registerUser();
    });

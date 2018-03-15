@@ -23,8 +23,8 @@ class ProductAvatar extends REST {
       if (this.app.shoppingCart == [] || checkShoppingCart(this)) this.app.shoppingCart.push({_id: this._id, quantity: this.quantity});
 
       this.app.header.render();
-      $(event.target).addClass("bg-success").text('Tillagd').delay(1000).queue(function(next) {
-        $(this).removeClass('bg-success').text('Köp');
+      $(event.target).addClass("btn-danger").text('Tillagd').delay(1000).queue(function(next) {
+        $(this).removeClass('btn-danger').text('Köp');
         next();
       });
     }
