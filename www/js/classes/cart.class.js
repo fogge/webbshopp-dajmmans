@@ -41,7 +41,11 @@ class Cart extends REST {
     }
     totalVat = Math.round( totalVat * 10 ) / 10;
     if (totalVat == 0){return totalVat;}
-    return totalVat += '0';
+    if (totalVat % 1 != 0) {
+      return totalVat += '0';
+    } else {
+      return totalVat;
+    }
   }
 
   approveCustomerData() {
@@ -65,7 +69,6 @@ class Cart extends REST {
       price: 123,
       vat: Number
     } );
-      console.log('din beställning är lagd', order);
       $('#confirmorder').modal('show');
     }
 
