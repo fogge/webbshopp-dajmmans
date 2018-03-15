@@ -1,9 +1,9 @@
-class PopStateHandler {
+class PopStateHandler extends REST {
 
   // Note: Only instantiate PopStateHandler once!
 
   constructor(app){
-
+    super();
     this.app = app;
     // Add event handlers for a.pop-links once
     this.addEventHandler();
@@ -14,10 +14,15 @@ class PopStateHandler {
     // from an arrow function to keep "this"
     // inside changePage pointing to the PopStateHandler object
     window.addEventListener('popstate', () => this.changePage());
-
   }
 
   addEventHandler(){
+    // Our search function
+    $(document).on('click', '.searchbtn', (event) => {
+      event.preventDefault();
+      this.search();
+      $('.inputsearch').val('');
+    });
 
     // make "that" the PopStateHandler object
     // (since this will be the a tag inside the click function)
@@ -28,7 +33,6 @@ class PopStateHandler {
       // Create a push state event
       let href = $(this).attr('href');
       history.pushState(null, null, href);
-
       // Call the changePage function
       that.changePage();
 
@@ -38,17 +42,17 @@ class PopStateHandler {
     });
   }
 
+
+
   changePage(){
     // React on page changed
     // (replace part of the DOM etc.)
 
     // Get the current url
     let url = location.pathname;
-
     // Change which menu link that is active
     $('header a').removeClass('active');
     $(`header a[href="${url}"]`).addClass('active');
-
     // A small "dictionary" of what method to call
     // on which url
     let urls = {
@@ -56,19 +60,38 @@ class PopStateHandler {
       '/materiel': 'materiel',
       '/ingredienser': 'ingredienser',
       '/bocker': 'bocker',
-      '/produkt': 'product',
       '/search': 'search',
       '/om_oss': 'about',
       '/kassa' : 'cart',
-      '/admin' : 'admin'
+      '/login': 'login',
+      '/register': 'register',
+      '/mina_sidor': 'userPage',
+      '/mina_sidor2': 'userPage2'
     };
+
+    //looping through ID
+    for (let i = 0; i < All.allProducts.length; i++){
+      let url = `/${All.allProducts[i].constructor.name.toLowerCase()}/produkt/${All.allProducts[i].result._id}`;
+      let target = 'product';
+      Object.assign(urls, {[url] : target});
+    }
 
     // Call the right method
     let methodName = urls[url];
-    this[methodName]();
+
+
+    if (methodName =='product') {
+      let productId = url.split('/')[3];
+      this[methodName](productId);
+    }
+    else{
+      this[methodName]();
+    }
 
     // Set the right menu item active
     this.app.header.setActive(url);
+
+     window.scrollTo(0, 0);
 
   }
 
@@ -78,56 +101,89 @@ class PopStateHandler {
     this.empty();
     this.app.banner = new Banner();
     this.app.banner.render('.banner-row');
-
-
+    $('.carousel').carousel({
+      interval: 3500,
+      pause: false
+    });
     this.app.startPage.render('main');
   }
 
   materiel(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Materiel);
     this.app.productcategory.render('main', '3');
-    
-    this.app.productcategoryItem = new ProductAvatar(this);
-    //this.app.productcategoryItem.render('.category-item');
   }
 
   ingredienser(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Ingredient);
     this.app.productcategory.render('main', '3');
   }
 
   bocker(){
     this.empty();
-    this.app.productcategory = new ProductCategory(this);
+    this.app.productcategory = new ProductCategory(this.app, Book);
     this.app.productcategory.render('main', '3');
 
   }
 
-  product(){
+  product(productId){
     this.empty();
-    //this.app.productPage.render('main');
+    this.app.productPage = new ProductPage(this.app);
+    this.app.productPage.getProduct(productId);
+    this.app.productPage.render('main');
   }
 
   about(){
     this.empty();
+    this.app.about = new About(this);
+    this.app.about.render('main')
   }
 
   search() {
-    console.log('hejhej');
     this.empty();
+    this.app.search = new Search($(document).find('.inputsearch').val(), this.app);
+    this.app.search.render();
+  }
+
+  login(){
+    this.empty();
+    this.app.login = new Login(this.app);
+    this.app.login.render();
+    this.app.logout = new Logout(this.app);
+  }
+
+  register(){
+    this.empty();
+    this.app.register = new Register(this.app);
+    this.app.register.render();
+  }
+
+  userPage(){
+    this.empty();
+    this.app.user = new Userpage(this.app);
+  }
+
+  userPage2(){
+    this.empty();
+    this.app.user = new Userpage2(this.app);
   }
 
   cart(){
     this.empty();
-    this.cart = new Cart();
-    this.cart.render();
+    this.app.cart = new Cart(this.app);
   }
 
-  admin(){
+  user(){
     this.empty();
-    this.app.admin.render('main');
+    this.app.userPage = new Userpage(this);
+    this.app.userPage.render('main', '1');
+  }
+
+  user2(){
+    this.empty();
+    this.app.userPage = new Userpage(this);
+    this.app.userPage.render('main', '2');
   }
 
   empty() {
