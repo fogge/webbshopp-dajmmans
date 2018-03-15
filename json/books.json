@@ -9,6 +9,7 @@
     "imageLink": "../img/darkside.jpg",
     "price": 199,
     "vatRate": 6,
+    "soldAmount": 0,
     "stockBalance": 8,
     "artNumber": 666101,
     "keyword": ["Svart, Sith, Serie"]
@@ -16,30 +17,32 @@
   {
     "title": "Mörka sidan vol. II",
     "author": "Darth Vader",
-    "description": "I andra boken fördjupar författaren sig i hur man kan kontrollera sin mörka sida för att åstadkomma mörker med hjälp av kraften.",
+    "description": "I andra boken fördjupar författaren sig i hur man kan kontrollera sin mörka sida för att åstadkomma mörkare mörker.",
     "pages": 422,
     "language": "Engelska",
     "magicType": ["Svart"],
     "imageLink": "../img/darkside.jpg",
     "price": 199,
     "vatRate": 6,
+    "soldAmount": 0,
     "stockBalance": 5,
     "artNumber": 666102,
     "keyword": ["Svart, Sith, Serie"]
   },
   {
-    "title": "Mörka sidan vol. III",
-    "author": "Darth Vader",
-    "description": "I sista boken beskriver författaren de sista stegen till komplett mörker.",
+    "title": "Påskharetjyrkogården",
+    "author": "Sylvanas",
+    "description": "Återuppväck din egen påskhare, här finns allt du behöver veta.",
     "pages": 501,
-    "language": "Engelska",
+    "language": "Gutterspeak",
     "magicType": ["Svart"],
-    "imageLink": "../img/darkside.jpg",
-    "price": 199,
+    "imageLink": "../img/easterbunny.png",
+    "price": 69,
     "vatRate": 6,
-    "stockBalance": 9,
+    "soldAmount": 0,
+    "stockBalance": 40,
     "artNumber": 666103,
-    "keyword": ["Svart, Sith, Serie"]
+    "keyword": ["Svart, Påsk"]
   },
   {
     "title": "Påskdräparen",
@@ -51,6 +54,7 @@
     "imageLink": "../img/easterslayer.jpg",
     "price": 95,
     "vatRate": 6,
+    "soldAmount": 0,
     "stockBalance": 17,
     "artNumber": 666104,
     "keyword": ["Svart, Påsk"]
@@ -65,6 +69,7 @@
     "imageLink": "../img/manipulator.jpg",
     "price": 350,
     "vatRate": 6,
+    "soldAmount": 0,
     "stockBalance": 3,
     "artNumber": 666105,
     "keyword": ["Svart, Besvärjelse"]
@@ -79,6 +84,7 @@
     "imageLink": "../img/duckinator.jpg",
     "price": 299,
     "vatRate": 6,
+    "soldAmount": 0,
     "stockBalance": 1,
     "artNumber": 666106,
     "keyword": ["Svart, Gul, Trolldryck, Besvärjelse"]
@@ -93,6 +99,7 @@
     "imageLink": "../img/ondskan.jpg",
     "price": 89,
     "vatRate": 6,
+    "soldAmount": 1,
     "stockBalance": 23,
     "artNumber": 666107,
     "keyword": ["Svart, Ritual, Besvärjelse"]
@@ -107,8 +114,39 @@
     "imageLink": "../img/satanic.jpg",
     "price": 129,
     "vatRate": 6,
+    "soldAmount": 2,
     "stockBalance": 6,
     "artNumber": 666108,
     "keyword": ["Svart, Röd, Ritual, Besvärjelse"]
   },
+  {
+    "title": "Skapa magi med Javascript",
+    "author": "Thomas Frank",
+    "description": "Frank går igenom diverse tricks för att bli en magisk ninja i JS den hårda vägen. Många har försökt men få har klarat att ta sig igenom hela boken.",
+    "pages": 5000,
+    "language": "Javascript",
+    "magicType": ["Svart"],
+    "imageLink": "../img/javascriptmagi.jpg",
+    "price": 666,
+    "vatRate": 6,
+    "soldAmount": 3,
+    "stockBalance": 35,
+    "artNumber": 666109,
+    "keyword": ["Svart, Ritual, Besvärjelse, Ironboy"]
+  },
+  {
+    "title": "Blod, svett och mer blod",
+    "author": "Drakula",
+    "description": "Vår favoritgreve är verkligen på bettet när han fördjupar sig i världen av blod och ritualer.",
+    "pages": 487,
+    "language": "Rumänska",
+    "magicType": ["Svart, Röd"],
+    "imageLink": "../img/satanic.jpg",
+    "price": 239,
+    "vatRate": 6,
+    "soldAmount": 4,
+    "stockBalance": 8,
+    "artNumber": 666110,
+    "keyword": ["Svart, Röd, Blod, Ritual"]
+  }
 ]
