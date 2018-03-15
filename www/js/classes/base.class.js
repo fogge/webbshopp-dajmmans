@@ -64,10 +64,66 @@ class Base{
     for(let type of types){
       let methodName = type + templateNo;
       if(this[methodName]){
-        console.log(this.baseEl);
         this.baseEl[type]((e) => this[methodName](e));
       }
     }
+  }
+
+  // Global methods
+  // Search-methods
+
+  sortPriceLow(arrayOfObjects) {
+    arrayOfObjects.sort((a,b) => {
+     return a.price - b.price;
+    });
+  }
+
+  sortPriceHigh(arrayOfObjects) {
+    arrayOfObjects.sort((a,b) => {
+     return b.price - a.price;
+    });
+  }
+
+  sortNameLow(arrayOfObjects) {
+    arrayOfObjects.sort((a,b) => {
+     if (a.title > b.title) {
+       return 1;
+     }
+     if (a.title < b.title) {
+       return -1;
+     }
+     return 0;
+    });
+  }
+
+  sortNameHigh(arrayOfObjects) {
+    arrayOfObjects.sort((a,b) => {
+     if (a.title < b.title) {
+       return 1;
+     }
+     if (a.title > b.title) {
+       return -1;
+     }
+     return 0;
+    });
+  }
+
+  sortSold(arrayOfObjects) {
+    arrayOfObjects.sort((a,b) => {
+     if (a.soldAmount < b.soldAmount) {
+       return 1;
+     }
+     if (a.soldAmount > b.soldAmount) {
+       return -1;
+     }
+     return 0;
+    });
+  }
+
+  // Product-pages
+  makeProductUrl(urlId){
+    urlId = urlId.substr(urlId.length - 10);
+    return urlId;
   }
 
 }

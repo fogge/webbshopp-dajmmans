@@ -7,6 +7,7 @@
     "imageLink": "../img/kittel.jpg",
     "price": 1998,
     "vatRate": 25,
+    "soldAmount": 0,
     "stockBalance": 18,
     "artNumber": 666201,
     "keyword": ["Häxkittel, Svart, Brun, Röd, Grön, Gul, Trolldryck, Trollformel, Ritual, Långkok"]   
@@ -19,6 +20,7 @@
     "imageLink": "../img/kvast-i-ek.jpg",
     "price": 1500,
     "vatRate": 25,
+    "soldAmount": 0,
     "stockBalance": 11,
     "artNumber": 666202,
     "keyword": ["Brun, Påsk, Ek, Trä"]   
@@ -31,6 +33,7 @@
     "imageLink": "../img/kvast-byggsats.jpg",
     "price": 899,
     "vatRate": 25,
+    "soldAmount": 0,
     "stockBalance": 24,
     "artNumber": 666203,
     "keyword": ["Brun, Påsk, Bok, Trä"]   
@@ -43,6 +46,7 @@
     "imageLink": "../img/kristallkula.jpg",
     "price": 590,
     "vatRate": 25,
+    "soldAmount": 0,
     "stockBalance": 37,
     "artNumber": 666204,
     "keyword": ["Brun, Kristall"]   
@@ -55,6 +59,7 @@
     "imageLink": "../img/flaskset.jpg",
     "price": 150,
     "vatRate": 25,
+    "soldAmount": 4,
     "stockBalance": 10,
     "artNumber": 666205,
     "keyword": ["Svart, Gul, Brun, Röd, Grön, Glas"]   
@@ -67,6 +72,7 @@
     "imageLink": "../img/amulet.jpg",
     "price": 850,
     "vatRate": 25,
+    "soldAmount": 3,
     "stockBalance": 45,
     "artNumber": 666206,
     "keyword": ["Svart, Gul, Brun, Röd, Grön, Järn"]   
@@ -79,6 +85,7 @@
     "imageLink": "../img/ring.jpg",
     "price": 15000,
     "vatRate": 25,
+    "soldAmount": 2,
     "stockBalance": 1,
     "artNumber": 666207,
     "keyword": ["Svart, Gul, Brun, Röd, Grön, Guld"]   
@@ -91,6 +98,7 @@
     "imageLink": "../img/invisibility_cloak.jpg",
     "price": 2500,
     "vatRate": 25,
+    "soldAmount": 1,
     "stockBalance": 5,
     "artNumber": 666208,
     "keyword": ["Gul, Osynlig, Ull, Tyg"]   
@@ -103,6 +111,7 @@
     "imageLink": "../img/trollstav.jpg",
     "price": 200,
     "vatRate": 25,
+    "soldAmount": 0,
     "stockBalance": 67,
     "artNumber": 666209,
     "keyword": ["Svart, Gul, Grön, Nybörjare, Trollformel, Ebenholtz, Trä"]   
@@ -115,6 +124,7 @@
     "imageLink": "../img/trollstav-erfaren.jpg",
     "price": 1000,
     "vatRate": 25,
+    "soldAmount": 0,
     "stockBalance": 22,
     "artNumber": 666210,
     "keyword": ["Svart, Gul, Grön, Röd, Brun, Erfaren, Trollformel, Blodbok, Trä"]   

@@ -1,16 +1,43 @@
 class Search extends REST {
-  constructor() {
+  constructor(query, app) {
     super();
-    this.searchResult = this.getSearchResult();
+    this.app = app;
+    this.query = query;
+    this.searchResult = [];
+    this.getSearchResult();
+    this.setupHandler();
   }
 
-  getSearchResult() {
-    let searchResultFromMongo = [{title: "Blodkiss", price: 129, stock: 23}, {title: "Fladdermuskiss", price: 549, stock: 23}, {title: "Spermakiss", price: 349, stock: 3}, {title: "Kiss från oskuld", price: 179, stock: 0}];
-    // Get import/searchresults from database, now only an hardcoded object return
-    let array = [];
-    searchResultFromMongo.forEach( (product) => {
-      array.push(new ProductAvatar(product));
-    })
-    return array;
+  async getSearchResult() {
+    // Hardcoded search on ingredients collection with title
+    // let searchResultFromMongo = await Ingredient.request('ingredients', 'GET', `title[$regex]=${Search.searchQuery}`);
+    const mongoCollection = String($('#search-in-category').val());
+    const searchObj = {title: {$regex: this.query, $options: 'i'}};
+    let mongoResult = [];
+    if(mongoCollection === 'Ingredient') mongoResult = await Ingredient.find(searchObj);
+    if(mongoCollection === 'Materiel') mongoResult = await Materiel.find(searchObj);
+    if(mongoCollection === 'Book') mongoResult = await Book.find(searchObj);
+    if(mongoCollection === 'All') {
+      let all = new All();
+      mongoResult = await all.getResult(searchObj);
+    }
+    try {
+      mongoResult.forEach( (product) => {
+        this.searchResult.push(new ProductAvatar(product.result, this.app));
+      });
+    } catch(e){
+      console.error('Problem med collections \n', e);
+    }
+
+    return await this.render();
+  }
+
+  setupHandler() {
+    $(document).on('click', '#sortPriceLow, #sortPriceHigh, #sortNameLow, #sortNameHigh, #sortSold', (e) => {
+      e.preventDefault();
+      let method = $(e.target).attr('id');
+      this[method](this.searchResult);
+      this.render();
+    });
   }
 }
