@@ -9,6 +9,7 @@ class ProductPage extends REST {
     this.productSelected = All.allProducts.find( selectedProduct => selectedProduct.result._id === productId);
     this.productSelected = this.productSelected.result;
     this.productSelected.quantity = 1;
+    
   }
 
   click() {

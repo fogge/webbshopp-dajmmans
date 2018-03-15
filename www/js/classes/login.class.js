@@ -3,8 +3,8 @@ class Login extends REST {
     super();
     let that = this;
 
+    // logged in
     $(document).on('submit', '#loginForm', function(e) {
-      console.log('Logged in');
      e.preventDefault();
      that.loginUser();
    });

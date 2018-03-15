@@ -71,7 +71,7 @@ class PopStateHandler extends REST {
 
     //looping through ID
     for (let i = 0; i < All.allProducts.length; i++){
-      let url = `/${All.allProducts[i].result._id}`;
+      let url = `/${All.allProducts[i].constructor.name.toLowerCase()}/produkt/${All.allProducts[i].result._id}`;
       let target = 'product';
       Object.assign(urls, {[url] : target});
     }
@@ -81,21 +81,17 @@ class PopStateHandler extends REST {
 
 
     if (methodName =='product') {
-      let productId = url.substr(1);
+      let productId = url.split('/')[3];
       this[methodName](productId);
     }
     else{
       this[methodName]();
     }
 
-    // if (url.split('/')[2] == 'product') {
-    //   methodName = 'product';
-    // }
-
-
-
     // Set the right menu item active
     this.app.header.setActive(url);
+
+     window.scrollTo(0, 0);
 
   }
 
@@ -105,6 +101,10 @@ class PopStateHandler extends REST {
     this.empty();
     this.app.banner = new Banner();
     this.app.banner.render('.banner-row');
+    $('.carousel').carousel({
+      interval: 3500,
+      pause: false
+    });
     this.app.startPage.render('main');
   }
 
