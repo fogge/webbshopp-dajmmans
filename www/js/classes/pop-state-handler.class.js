@@ -107,6 +107,10 @@ class PopStateHandler extends REST {
     this.empty();
     this.app.banner = new Banner();
     this.app.banner.render('.banner-row');
+    $('.carousel').carousel({
+      interval: 3500,
+      pause: false
+    });
     this.app.startPage.render('main');
   }
 
