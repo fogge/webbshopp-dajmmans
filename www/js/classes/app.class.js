@@ -27,7 +27,7 @@ class App extends REST {
     this.materiel = new Materiel(this);
     this.ingredienser = new Ingredient(this);
     this.Book = new Book(this);
-   
+    this.order = new Order();
     this.popState = new PopStateHandler(this);
   }
 
