@@ -12,10 +12,10 @@ class Userpage extends REST {
   async getOrders() {
   	let user = 'Dajmman Dajmmsson';
   	let orders = await Order.find({customerid: user});
-  	this.sortOrders(orders);
+  	this.renderOrders(orders);
   	}
 
-	sortOrders(orders){
+	/*sortOrders(orders){
   	let oldOrders = [];
   	
   	let nowDate = new Date();
@@ -29,9 +29,9 @@ class Userpage extends REST {
         }
         let dateString = `${nowDate.getFullYear()}-${month}-${day}`
         this.renderOrders(orders, dateString);
-	}
+	}*/
 
-	async renderOrders(orders, dateString){
+	async renderOrders(orders){
 		
     try {
 
