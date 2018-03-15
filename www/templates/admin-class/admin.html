@@ -1,4 +1,4 @@
-Object.assign(Admin.prototype, { template(){ return `
+Object.assign(Admin.prototype, { template1(){ return `
     <div class="row">
         <div class="col-12">
             <form class="form-inline d-flex justify-content-center my-4">
@@ -7,7 +7,7 @@ Object.assign(Admin.prototype, { template(){ return `
             </form>
         </div>
     </div>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush orderList">
         <li class="list-group-item bg-light">
             <div class="row">
                 <div class="col-3">
@@ -24,69 +24,5 @@ Object.assign(Admin.prototype, { template(){ return `
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
-            <div class="row" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                <div class="col-3">
-                    <p>#1</p>
-                </div>
-                <div class="col-3">
-                    <p>12/03/2018</p>
-                </div>
-                <div class="col-3">
-                    <p>Harry</p>
-                </div>
-                <div class="col-3">
-                    <p>Prepared</p>
-                </div>
-            </div>
-            <div class="collapse" id="collapseExample">
-                <p><u>Orderdetaljer</u></p>
-                <div class="row">
-                    <div class="col-3">
-                        <p>
-                            <b>Produkt typ:</b> Mehh
-                        </p>
-                    </div>
-                    <div class="col-3">
-                        <p>
-                            <b>Produkt titel:</b> VLjouagdofa
-                        </p>
-                    </div>
-                    <div class="col-3">
-                        <p>
-                            <b>Artikelnr:</b> AIFHaprih
-                        </p>
-                    </div>
-                    <div class="col-3">
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Change Status
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Ordered</a>
-                                <a class="dropdown-item" href="#">Prepared</a>
-                                <a class="dropdown-item" href="#">Sent</a>
-                                <a class="dropdown-item" href="#">Delivered</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="card card-body border-0 p-0">
-                            <div class="progress">
-                                <div class="progress-bar w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                    Ordered
-                                </div>
-                                <div class="progress-bar w-25 bg-info" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                    Prepared
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </li>
-        
-        
     </ul> 
 `;}});

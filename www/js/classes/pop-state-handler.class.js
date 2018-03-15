@@ -172,7 +172,7 @@ class PopStateHandler extends REST {
   admin(){
     this.empty;
     this.app.admin = new Admin(this.app);
-    this.app.admin.render('main');
+    this.app.admin.render('main',1);
   }
 
   cart(){
