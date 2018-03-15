@@ -26,6 +26,11 @@ class CartItem extends REST {
     }
   }
 
+  getTotalPrice(){
+    let totalprice = this.price * this.quantity;
+    return totalprice;
+  }
+
   renderCart(){
     $('main').empty();
     this.cart.render('main');
