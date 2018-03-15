@@ -69,7 +69,6 @@ class Cart extends REST {
       price: 123,
       vat: Number
     } );
-      console.log('din beställning är lagd', order);
       $('#confirmorder').modal('show');
     }
 
