@@ -19,7 +19,11 @@ class CartItem extends REST {
       vat += Math.round((this.price * 0.2) * 10) / 10;
     }
     if (vat == 0){return vat;}
-    return vat += '0';
+    if (vat % 1 != 0) {
+      return vat += '0';
+    } else {
+      return vat;
+    }
   }
 
   renderCart(){
@@ -75,7 +79,7 @@ class CartItem extends REST {
         this.renderCart();
         this.cart.app.header.render();
       }, 1000);
-      
+
     }
   }
 
