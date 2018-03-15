@@ -1,0 +1,32 @@
+Object.assign(Userpage.prototype, { template1(){ return `
+<div class="my-4">
+	<h5 class="card-title text-center">Du är inloggad som: ${this.user}</h5>
+  <div class="row justify-content-center">
+    <div class="card col-10">
+  		<div class="card-header">
+		    <ul class="nav nav-tabs card-header-tabs">
+		      <li class="nav-item">
+		        <a class="nav-link pop active" href="/mina_sidor">Ordrar</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link pop" href="/mina_sidor2">Användaruppgifter</a>
+		      </li>
+		    </ul>
+  		</div>
+	  	<div class="card-body">
+		  	<h5 class="mb-2 mt-3">Dina aktuella ordrar:</h5>
+		  	${this.activeOrders.length == 0 ? '' : 'Klicka på en order för mer info.'}
+		    <div id="accordion" class="active-orders mt-2">
+	      	${this.activeOrders.length == 0 ? 'Du har inga aktuella ordrar, beställ genast!' : this.activeOrders.render()}
+					<h5 class="mb-3 mt-5">Orderhistorik:</h5>
+					${this.oldOrders.length == 0 ? '' : 'Klicka på en order för mer info.'}
+		      <div id="accordion" class="history-orders mt-2">
+		      	${this.oldOrders.length == 0 ? 'Du har ingen orderhistorik än!' : this.oldOrders.render()}
+					</div>
+	    	</div>
+	  	</div>
+		</div>
+  </div>
+</div>
+`;}});
+

@@ -1,0 +1,47 @@
+[
+    {
+    "orderno": 222222,
+    "products": ["Spåkula"],
+    "status": "Skickad",
+    "orderdate": "2018-01-11",
+    "customerid": "Dajmman Dajmmsson",
+    "price": 500,
+    "vat": 125
+    },
+    {
+    "orderno": 333333,
+    "products": ["Blod-kiss"],
+    "status": "Skickad",
+    "orderdate": "2018-02-12",
+    "customerid": "Dajmman Dajmmsson",
+    "price": 500,
+    "vat": 125
+    },
+    {
+	"orderno": 123456,
+    "products": ["Ruttna ägg", " Mald kamelpung"],
+    "status": "Behandlad",
+    "orderdate": "2018-03-11",
+    "customerid": "Dajmman Dajmmsson",
+    "price": 500,
+    "vat": 125
+    },
+    {
+	"orderno": 555555,
+    "products": ["Tånaglar"],
+    "status": "Behandlad",
+    "orderdate": "2018-03-12",
+    "customerid": "Dajmman Dajmmsson",
+    "price": 500,
+    "vat": 125
+    },
+    {
+	"orderno": 999999,
+    "products": ["Trollstav"],
+    "status": "Mottagen",
+    "orderdate": "2018-03-13",
+    "customerid": "Dajmman Dajmmsson",
+    "price": 500,
+    "vat": 125
+    }
+]
