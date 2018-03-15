@@ -97,6 +97,8 @@ class PopStateHandler extends REST {
     // Set the right menu item active
     this.app.header.setActive(url);
 
+     window.scrollTo(0, 0);
+
   }
 
   //Methods for rendering in our templates in the SPA
