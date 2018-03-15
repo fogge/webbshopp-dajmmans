@@ -4,7 +4,7 @@ const ingredientJson = require('./json/ingredients.json');
 const booksJson = require('./json/books.json');
 const materielJson = require('./json/matriel.json');
 const dummybookingJson = require('./json/dummybooking.json');
-
+const dummyusersJson = require('./json/dummyusers.json');
 
 const express = require('express');
 const bodyParser = require('body-parser');
