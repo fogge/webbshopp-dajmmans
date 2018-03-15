@@ -7,13 +7,12 @@ class Startpage extends REST {
 		let result2 = All.allProducts.filter(materiel => 'Materiel' == materiel.constructor.name).splice(0, 4);
 		let result3 = All.allProducts.filter(book => 'Book' == book.constructor.name).splice(0, 4);
 		this.result = result1.concat(result2, result3);
-
   	this.renderAvatarsStartpage();
 	}
 
   renderAvatarsStartpage(){
-  	for(let product of this.result) {
-	  	this.homepageAvatars.push(new ProductAvatar(product.result, this.app));
+  	for(let product of this.result) {			
+	  	this.homepageAvatars.push(new ProductAvatar(product.result, this.app, product.constructor.name.toLowerCase()));
   	}
 	}
 

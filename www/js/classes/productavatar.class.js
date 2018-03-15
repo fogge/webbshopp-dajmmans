@@ -7,6 +7,7 @@ class ProductAvatar extends REST {
     for (let value in product) {
       this[value] = product[value];
     } 
+    
   }
 
   click() {
