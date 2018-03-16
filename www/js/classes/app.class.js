@@ -12,7 +12,7 @@ class App extends REST {
 
     this.all = new All;
     All.allProducts = await this.all.getResult({});
-    
+
     //Rendering the header
     this.header = new Header(this);
     $('header').empty();
