@@ -1,6 +1,7 @@
 class User extends REST {
-  constructor() {
+  constructor(result) {
     super();
+    this.result = result;
   }
 
 }

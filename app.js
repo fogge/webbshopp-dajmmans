@@ -57,6 +57,7 @@ ingredient.setupImportRoute(ingredientJson);
 book.setupImportRoute(booksJson);
 materiel.setupImportRoute(materielJson);
 order.setupImportRoute(dummybookingJson);
+u.setupImportRoute(dummyusersJson);
 
 app.get(/^[^\.]*$/, (req, res) => {
  res.sendFile(__dirname + '/www/index.html');
