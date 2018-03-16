@@ -3,15 +3,23 @@ class Userpage2 extends REST {
   	super();
   	this.app = app;
     this.getUsers({});
-    this.render('main', 1)
   }
-  
+
   async getUsers(searchObj) {
     let user = 'Dajmman';
-    let currentUser = await User.find(searchObj);
-    console.log(currentUser);
+    this.currentUserInfo = await User.find(searchObj);
+    this.currentUserInfo = this.currentUserInfo[0].result;
+    console.log(this.currentUserInfo  );
     //this.renderOrders(orders);
-    }
-  	
-}
+    this.loopUserToValues(this.currentUserInfo);
+  }
 
+  loopUserToValues(userObject){
+    for (let value in userObject) {
+      this[value] = userObject[value];
+    }
+    this.render('main', 1)
+  }
+
+
+}

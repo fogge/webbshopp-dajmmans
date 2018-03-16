@@ -36,6 +36,8 @@ app.use(new SessionHandler());
 app.use(new UserRouteProtector());
 app.use(express.static('www'));
 
+
+
 // but a Mongoose model + setting up routes
 const Ingredient = require('./classes/ingredient.class');
 const Book = require('./classes/book.class');
@@ -53,6 +55,8 @@ global.User = u.myModel;
 const LoginHandler = require('./classes/login-handler.class');
 new LoginHandler(app);
 
+
+
 ingredient.setupImportRoute(ingredientJson);
 book.setupImportRoute(booksJson);
 materiel.setupImportRoute(materielJson);
@@ -62,7 +66,6 @@ u.setupImportRoute(dummyusersJson);
 app.get(/^[^\.]*$/, (req, res) => {
  res.sendFile(__dirname + '/www/index.html');
 });
-
 
 
 app.listen(3000,()=>{
