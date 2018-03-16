@@ -3,10 +3,16 @@ class REST extends Base{
     super();
     Object.assign(this, obj);
   }
-  async save(){
+  async save(obj=null){
     let entity = (this.constructor.name + 's').toLowerCase();
-    let query = '_id=' + this._id;
-    return await REST.request(entity, 'PUT', query, this);
+    if (this._id){
+      let query = '_id=' + this._id;
+      return await REST.request(entity, 'PUT', query, obj || this);
+    } else {
+      let result = await this.constructor.create(obj || this);
+      this._id = result._id;
+      return result;
+    }
   }
   async delete(){
     let entity = (this.constructor.name + 's').toLowerCase();
@@ -32,7 +38,7 @@ class REST extends Base{
         return val;
       });
     }
-    
+
     let entity = (this.name + 's').toLowerCase();
     let results = await REST.request(entity,'GET',query,'');
 

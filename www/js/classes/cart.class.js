@@ -4,13 +4,14 @@ class Cart extends REST {
     this.app = app;
     this.cartItems = [];
     if (this.app instanceof App){
-    this.getCartItems();
+      this.getCartItems();
+      console.log(this.app)
     }
   }
 
   async getCartItems() {
     let all = new All();
-
+    await this.loadCart();
     for (let item of this.app.shoppingCart) {
       let searchObj = await all.getResult({_id: item._id});
       searchObj = searchObj[0].result;
@@ -20,6 +21,16 @@ class Cart extends REST {
   }
     this.render();
     this.saveCart();
+  }
+
+  async loadCart(){
+    let userId = (await UserHandler.check()).info.query;
+    let cart = (await Cart.findOne({userId: userId}));
+    console.log(cart, userId)
+    if (this.app.shoppingCart.length === 0 && cart){
+      this.app.shoppingCart = cart.app.items
+      this.app.header.render()
+    }
   }
 
   getTotalPrice(){
@@ -58,9 +69,10 @@ class Cart extends REST {
   }
 
   async saveCart() {
-    console.log(this.app.shoppingCart);
-     return await Cart.create({
-      userId: 'lollipopuserId',
+    let userId = await UserHandler.check();
+    userId = userId.info.query;
+    return await this.save({
+      userId: userId,
       items: this.app.shoppingCart
     });
   }
