@@ -7,10 +7,8 @@ class Userpage2 extends REST {
 
   async getUsers(searchObj) {
     let user = 'Dajmman';
-    this.currentUserInfo = await User.find(searchObj);
+    this.currentUserInfo = await UserInfo.find({firstName: user});
     this.currentUserInfo = this.currentUserInfo[0].result;
-    console.log(this.currentUserInfo  );
-    //this.renderOrders(orders);
     this.loopUserToValues(this.currentUserInfo);
   }
 
