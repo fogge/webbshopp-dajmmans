@@ -13,25 +13,25 @@ Object.assign(Userpage2.prototype, { template1(){ return `
 <div class="my-4">
   <h4 class="card-title text-center">Du är inloggad som: ${this.email}</h4>
   <div class="row justify-content-center">
-    <div class="card col-10">
+    <div class="card col-5 userinfo-area">
       <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
             <a class="nav-link pop" href="/mina_sidor">Ordrar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link pop active" href="/mina_sidor2">Användaruppgifter</a>
+            <a class="nav-link pop user-active" href="/mina_sidor2">Användaruppgifter</a>
           </li>
         </ul>
       </div>
       <div class="card-body">
-        <h4 class="mb-2 mt-3">Dina uppgifter:</h4>
+        <h4 class="mb-3 mt-3">Dina uppgifter:</h4>
         <h5 class="mb-3">Användarnamn: ${this.firstName} ${this.lastName}</h5>
         <h5 class="mb-3">Leveransadress: ${this.postOrt}</h5>
         <h5 class="mb-3">Postnummer: ${this.postnr}</h5>
         <h5 class="mb-3">Ort: ${this.postOrt}</h5>
         <h5 class="mb-3">Mailadress: ${this.email}</h5>
-        <h5 class="mb-3">Lösenord: ${this.password}</h5>
+        <h5 class="mb-3">Lösenord: <span id="password-area">******</span><button class="ml-5 btn-revealpassword btn-secondary"><span class="hide-show">Visa</span> lösenord</button></h5>
       </div>
     </div>
   </div>
