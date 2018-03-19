@@ -23,6 +23,10 @@ class App extends REST {
     $('footer').empty();
     this.footer.render('footer');
 
+    // Loading the cart
+    this.cart = new Cart(this);
+    this.cart.loadCart();
+
     this.startPage = new Startpage(this);
     this.materiel = new Materiel(this);
     this.ingredienser = new Ingredient(this);

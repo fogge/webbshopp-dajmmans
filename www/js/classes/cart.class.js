@@ -5,7 +5,6 @@ class Cart extends REST {
     this.cartItems = [];
     if (this.app instanceof App){
       this.getCartItems();
-      console.log(this.app)
     }
   }
 
@@ -26,7 +25,6 @@ class Cart extends REST {
   async loadCart(){
     let userId = (await UserHandler.check()).info.query;
     let cart = (await Cart.findOne({userId: userId}));
-    console.log(cart, userId)
     if (this.app.shoppingCart.length === 0 && cart){
       this.app.shoppingCart = cart.app.items
       this.app.header.render()
@@ -64,7 +62,6 @@ class Cart extends REST {
   }
 
   approveCustomerData() {
-
      return true;
   }
 

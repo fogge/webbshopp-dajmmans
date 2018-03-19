@@ -5,12 +5,14 @@ class REST extends Base{
   }
   async save(obj=null){
     let entity = (this.constructor.name + 's').toLowerCase();
-    if (this._id){
-      let query = '_id=' + this._id;
+    let query = {userId: obj.userId._id};
+    let alreadyExist = await Cart.findOne(query);
+    if (alreadyExist){
       return await REST.request(entity, 'PUT', query, obj || this);
     } else {
       let result = await this.constructor.create(obj || this);
       this._id = result._id;
+      console.log('created')
       return result;
     }
   }
