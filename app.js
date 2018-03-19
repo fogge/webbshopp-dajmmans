@@ -59,7 +59,9 @@ book.setupImportRoute(booksJson);
 materiel.setupImportRoute(materielJson);
 order.setupImportRoute(dummybookingJson);
 
+const mailer = require('./classes/sendmail.class'); 
 
+app.post('/send-mail', mailer)
 
 app.get(/^[^\.]*$/, (req, res) => {
  res.sendFile(__dirname + '/www/index.html');
