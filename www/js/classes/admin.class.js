@@ -4,15 +4,19 @@ class Admin extends REST {
       this.app = app;
       this.getOrders({});
       this.clickEvents();
+      this.changeOrderStatus();
     }
 
     async getOrders(searchObj) {
-      let orders = await Order.find(searchObj);      
+      let orders = await Order.find(searchObj);    
+      console.log(orders);
+        
       for (const order of orders) {
         this.order = order;
         this.order.result.orderdate = this.order.result.orderdate.substring(0,10);
         this.render('.orderList',2);
-        this.orderStatus();
+        this.render(`#progress-${this.order.result._id}`, 3);
+        this.orderStatus(this.order.result.status);
       }
     }
 
@@ -23,8 +27,8 @@ class Admin extends REST {
       });
     }
 
-    orderStatus(){
-      switch(this.order.result.status){
+    orderStatus(status){
+      switch(status){
         case 'Beordrade': 
           $(`#orderStatus-1-${this.order.result._id}`).addClass('d-block');
           break;
@@ -44,5 +48,25 @@ class Admin extends REST {
           $(`#orderStatus-4-${this.order.result._id}`).addClass('d-block');
           break;
       }
+    }
+
+    changeOrderStatus(){
+      let that = this;
+      $(document).on('click', '.changeOrderStatus', function( event ) {
+        let idToChange = $(event.target).attr('id').split('-')[1];
+        $(document).on('click', '#changeOrderStatusOption button', function( event ) {
+         let status = $(event.target).text();
+         $(`#progress-${idToChange}`).empty();
+         that.render(`#progress-${idToChange}`, 3);
+         that.orderStatus(status);
+        });
+      });
+
+      
+    }
+
+    orderUpdate(idToChange, status){
+       console.log(this.order.result);
+        
     }
   }
