@@ -20,6 +20,7 @@ class Cart extends REST {
   }
     // if statement to not render on startpage.
     if(location.pathname == '/kassa'){
+      $('main').empty();
       this.render();
     }
     this.saveCart();
@@ -62,6 +63,12 @@ class Cart extends REST {
     } else {
       return totalVat;
     }
+  }
+
+  getTotalPriceExVat(){
+    let totalPrice = this.getTotalPrice();
+    let totalVat = this.getTotalVat();
+    return totalPrice - totalVat;
   }
 
   approveCustomerData() {
