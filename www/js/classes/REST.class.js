@@ -3,19 +3,7 @@ class REST extends Base{
     super();
     Object.assign(this, obj);
   }
-  async save(obj=null){
-    let entity = (this.constructor.name + 's').toLowerCase();
-    let query = {userId: obj.userId._id};
-    let alreadyExist = await Cart.findOne(query);
-    if (alreadyExist){
-      return await REST.request(entity, 'PUT', query, obj || this);
-    } else {
-      let result = await this.constructor.create(obj || this);
-      this._id = result._id;
-      console.log('created')
-      return result;
-    }
-  }
+
   async delete(){
     let entity = (this.constructor.name + 's').toLowerCase();
     let query = '_id=' + this._id;
@@ -26,6 +14,18 @@ class REST extends Base{
     // Delete from server/DB
     return await REST.request(entity, 'DELETE', query, this);
   }
+  
+  async save(obj=null){
+    let entity = (this.constructor.name + 's').toLowerCase();
+    if (obj) {
+      let query = 'userId=' + obj.userId._id;
+      return await REST.request(entity, 'PUT', query, obj);
+    } else {
+      let query = '_id=' + this._id;
+      return await REST.request(entity, 'PUT', query, this);
+    }
+  }
+
   static async find(query){
     if(typeof query == 'object'){
       query = JSON.stringify(query,(key,val) => {

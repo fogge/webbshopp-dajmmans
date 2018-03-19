@@ -18,7 +18,10 @@ class Cart extends REST {
       if (searchObj.stockBalance - item.quantity < 0) searchObj.stockWarning = true;
       this.cartItems.push(new CartItem(searchObj, this));
   }
-    this.render();
+    // if statement to not render on startpage.
+    if(location.pathname == '/kassa'){
+      this.render();
+    }
     this.saveCart();
   }
 
@@ -68,10 +71,20 @@ class Cart extends REST {
   async saveCart() {
     let userId = await UserHandler.check();
     userId = userId.info.query;
-    return await this.save({
-      userId: userId,
-      items: this.app.shoppingCart
-    });
+    let alreadyExists = (await Cart.findOne({userId: userId}));
+    // Check if there is a cart with logged in user
+    if (alreadyExists) {
+      return await this.save({
+        userId: userId,
+        items: this.app.shoppingCart
+      });
+    } else {
+      return await Cart.create({
+        userId: userId,
+        items: this.app.shoppingCart
+      });
+    }
+
   }
 
   async confirmOrder() {
