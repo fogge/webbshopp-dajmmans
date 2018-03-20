@@ -1,20 +1,20 @@
 Object.assign(Admin.prototype, { template2(){ return `
-    <li class="list-group-item p-0" id="item-${this.order.result._id}">
-        <div class="row orderItem p-0 m-0">
-            <div class="col-2 itemContainer">
+    <li class="list-group-item p-0">
+        <div class="row orderItem admin-item p-0 m-0" data-toggle="collapse" data-target="#${this.order.result._id}" id="item-${this.order.result._id}" value="Open">
+            <div class="col-2 itemContainer muteContent">
                 <p class="itemContent">${this.order.result.orderno}</p>
             </div>
-            <div class="col-3 itemContainer">
+            <div class="col-3 itemContainer muteContent">
                 <p class="itemContent">${this.order.result.orderdate}</p>
             </div>
-            <div class="col-3 itemContainer">
+            <div class="col-3 itemContainer muteContent">
                 <p class="itemContent">${this.order.result.customerid}</p>
             </div>
-            <div class="col-2 itemContainer">
+            <div class="col-2 itemContainer muteContent">
                 <p class="itemContent" id="status-title-${this.order.result._id}">${this.order.result.status}</p>
             </div>
-            <div class="col-2 itemContainer d-flex align-items-center flex-row-reverse">
-                <button class="btn btn-sm" data-toggle="collapse" data-target="#${this.order.result._id}" id="orderDetails" value="Open">
+            <div class="col-2 itemContainer d-flex align-items-center flex-row-reverse p-0 mr-0 muteContent">
+                <button class="btn btn-dark btn-sm btnDetails" id="orderDetails-${this.order.result._id}" value="Open">
                     Öppna detaljer
                 </button>
             </div>

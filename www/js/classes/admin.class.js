@@ -3,7 +3,7 @@ class Admin extends REST {
       super();
       this.app = app;
       this.getOrders({});
-      this.clickEvents();
+      this.openDetails();
       this.changeOrderStatus();
       this.searchAdminOrders();
   
@@ -21,10 +21,15 @@ class Admin extends REST {
       }
     }
 
-    clickEvents(){
-      $(document).on('click', '#orderDetails', function( event ) {
+    openDetails(){
+      $(document).on('click', '.admin-item', function( event ) {
         let state = $(event.target).attr('value');
-        state == 'Open'? $(event.target).attr('value', 'Close').text('Stänga detaljer') : $(event.target).attr('value', 'Open').text('Öppna detaljer')
+        let detailId = $(event.target).attr('id').split('-')[1];
+        state == 'Open'? (
+          $(`#orderDetails-${detailId}`).attr('value', 'Close').text('Stänga detaljer').toggleClass('btn-dark'),
+          $(`#item-${detailId}`).attr('value', 'Close') ):(
+              $(`#orderDetails-${detailId}`).attr('value', 'Open').text('Öppna detaljer').toggleClass('btn-dark'),
+              $(`#item-${detailId}`).attr('value', 'Open'));
       });
     }
 
