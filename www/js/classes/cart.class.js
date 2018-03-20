@@ -5,6 +5,7 @@ class Cart extends REST {
     this.cartItems = [];
     if (this.app instanceof App){
       this.getCartItems();
+      this.hejhej();
     }
   }
 
@@ -121,4 +122,9 @@ class Cart extends REST {
     }
   }
 
+  hejhej(){
+  $(document).on('click', '.testmail', function( event ) {
+consol.log("test");
+}
+}
 }
