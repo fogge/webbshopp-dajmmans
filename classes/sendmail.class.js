@@ -21,57 +21,34 @@ module.exports = function (req, res) {
 
             from: '"Dajmans webbshop 👻"', // sender address 
             to: 'roger.greg@fjgj.com', // list of receivers 
-            subject: 'Din beställning', // Subject line 
-            text: "kk", // plain text body 
+            subject: 'Din beställning', // Subject line  
             html: '<h1>Du har beställt följande</h1>' // html body 
         };
 
         let message = {
             // Comma separated list of recipients
             to: 'kalleanka@anka.com',
-    
+
             // Subject of the message
-            subject: 'Din beställning är skickad ✔',
-    
-            // plaintext body
-            //text: 'Hello to myself!',
-    
+            subject: 'Din beställning från Dajmmans webbshop ✔',
+
             // HTML body
             html:
                 '<p><b>Hej</b></p>' +
-                '<p>Dina varor är skickade!:<br/><img src="cid:nyan@example.com"/></p>',
-    
+                '<p>Dina varor är skickade.:<br/><img src="cid:nyan@example.com"/></p>',
+
             // An array of attachments
             attachments: [
-                // String attachment
-                // {
-                //     filename: 'notes.txt',
-                //     content: 'Some notes about this e-mail',
-                //     contentType: 'text/plain' // optional, would be detected from the filename
-                // },
-    
-                // Binary Buffer attachment
-                // {
-                //     filename: 'image.png',
-                //     content: Buffer.from(
-                //         'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
-                //             '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
-                //             'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC',
-                //         'base64'
-                //     ),
-    
-                //     cid: 'note@example.com' // should be as unique as possible
-                // },
-    
+
                 // File Stream attachment
                 {
                     filename: 'hemlig_fil ✔.gif',
-                    path: __dirname + '../../www/img/amulet.jpg',
+                    path: __dirname + '../../www/img/amulet.jpg',   //testpicture to try that paths work
                     cid: 'nyan@example.com' // should be as unique as possible
                 }
             ]
         };
-    
+
 
         // send mail with defined transport object 
         transporter.sendMail(message, (error, info) => {
