@@ -152,7 +152,6 @@ class PopStateHandler extends REST {
     this.empty();
     this.app.login = new Login(this.app);
     this.app.login.render();
-    this.app.logout = new Logout(this.app);
   }
 
   register(){

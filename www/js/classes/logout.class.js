@@ -15,7 +15,6 @@ class Logout extends REST {
     $('#logoutSuccess').removeClass('d-none');
     setTimeout(() => {$('#logoutSuccess').addClass('d-none');}, 2000);
     app.header.button.loginCheck();
-    $('#headerButton').empty();
   }
 
 
