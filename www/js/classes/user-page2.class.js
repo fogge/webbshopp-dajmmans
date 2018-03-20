@@ -7,10 +7,8 @@ class Userpage2 extends REST {
 
   async getUsers(searchObj) {
     let user = 'Dajmman';
-    this.currentUserInfo = await User.find(searchObj);
+    this.currentUserInfo = await UserInfo.find({firstName: user});
     this.currentUserInfo = this.currentUserInfo[0].result;
-    console.log(this.currentUserInfo  );
-    //this.renderOrders(orders);
     this.loopUserToValues(this.currentUserInfo);
   }
 
@@ -19,7 +17,23 @@ class Userpage2 extends REST {
       this[value] = userObject[value];
     }
     this.render('main', 1)
+    this.revealPassword();
   }
 
+  revealPassword(){
+    let that = this;
+    $(document).on('click', '.btn-revealpassword', function(){
+     if($('#password-area').text() == '******'){
+      $('#password-area').empty();
+      $('#password-area').text(that.password);
+      $('.hide-show').text('Dölj');
+      }
+      else{
+        $('#password-area').text('******');
+        $('.hide-show').text('Visa');
+      }
+    })
+    
+  }
 
 }
