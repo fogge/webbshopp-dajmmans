@@ -29,7 +29,7 @@ class Admin extends REST {
 
     orderStatus(status){
       switch(status){
-        case 'Beordrade': 
+        case 'Mottagen': 
           $(`#orderStatus-1-${this.order.result._id}`).addClass('d-block');
           break;
         case 'Behandlad': 
@@ -41,7 +41,7 @@ class Admin extends REST {
           $(`#orderStatus-2-${this.order.result._id}`).addClass('d-block');
           $(`#orderStatus-3-${this.order.result._id}`).addClass('d-block');
           break;
-        case 'Mottagen': 
+        case 'Levererad': 
           $(`#orderStatus-1-${this.order.result._id}`).addClass('d-block');
           $(`#orderStatus-2-${this.order.result._id}`).addClass('d-block');
           $(`#orderStatus-3-${this.order.result._id}`).addClass('d-block');
@@ -59,6 +59,10 @@ class Admin extends REST {
          $(`#progress-${idToChange}`).empty();
          that.render(`#progress-${idToChange}`, 3);
          that.orderStatus(status);
+         that.order.result.status = status; 
+         console.log(that.order.result);
+         let test = Order.save();
+         
         });
       });
 
