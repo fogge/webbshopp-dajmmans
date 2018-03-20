@@ -123,8 +123,8 @@ class Cart extends REST {
   }
 
   hejhej(){
-  $(document).on('click', '.testmail', function( event ) {
-consol.log("test");
-}
-}
+    $(document).on('click', '.testmail', function( event ) {
+      console.log("test");
+    });
+  };
 }
