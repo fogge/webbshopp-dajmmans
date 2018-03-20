@@ -26,6 +26,11 @@ class CartItem extends REST {
     }
   }
 
+  getTotalPrice(){
+    let totalprice = this.price * this.quantity;
+    return totalprice;
+  }
+
   renderCart(){
     $('main').empty();
     this.cart.render('main');
@@ -54,6 +59,7 @@ class CartItem extends REST {
         shoppingCartGlobal.quantity += 1;
         this.quantity += 1;
         this.renderCart();
+        this.cart.app.cart.saveCart();
       }
     }
 
@@ -66,6 +72,7 @@ class CartItem extends REST {
         shoppingCartGlobal.quantity -= 1;
         this.quantity -= 1;
         this.renderCart();
+        this.cart.app.cart.saveCart();
       }
     }
 
@@ -79,12 +86,7 @@ class CartItem extends REST {
         this.renderCart();
         this.cart.app.header.render();
       }, 1000);
-
+      this.cart.app.cart.saveCart();
     }
   }
-
-
-
-
-
 }

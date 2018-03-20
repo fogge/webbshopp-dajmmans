@@ -5,6 +5,7 @@ const ingredientJson = require('./json/ingredients.json');
 const booksJson = require('./json/books.json');
 const materielJson = require('./json/matriel.json');
 const dummybookingJson = require('./json/dummybooking.json');
+const dummyusersJson = require('./json/dummyusers.json');
 
 const nodemailer = require('nodemailer');
 const express = require('express');
@@ -37,16 +38,20 @@ app.use(new SessionHandler());
 app.use(new UserRouteProtector());
 app.use(express.static('www'));
 
+
+
 // but a Mongoose model + setting up routes
 const Ingredient = require('./classes/ingredient.class');
 const Book = require('./classes/book.class');
 const Materiel = require('./classes/materiel.class');
 const Order = require('./classes/order.class');
+const Cart = require('./classes/cart.class')
 
 let ingredient = new Ingredient(app);
 let book = new Book(app);
 let materiel = new Materiel(app);
 let order = new Order(app);
+let cart = new Cart(app);
 
 const User = require('./classes/user.class');
 let u = new User(app);
@@ -54,10 +59,14 @@ global.User = u.myModel;
 const LoginHandler = require('./classes/login-handler.class');
 new LoginHandler(app);
 
+
+
 ingredient.setupImportRoute(ingredientJson);
 book.setupImportRoute(booksJson);
 materiel.setupImportRoute(materielJson);
 order.setupImportRoute(dummybookingJson);
+u.setupImportRoute(dummyusersJson);
+cart.setupImportRoute();
 
 const mailer = require('./classes/sendmail.class'); 
 
@@ -66,8 +75,6 @@ app.post('/send-mail', mailer)
 app.get(/^[^\.]*$/, (req, res) => {
  res.sendFile(__dirname + '/www/index.html');
 });
-
-
 
 
 app.listen(3000,()=>{

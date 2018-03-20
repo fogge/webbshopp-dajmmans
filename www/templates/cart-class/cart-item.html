@@ -13,7 +13,7 @@ Object.assign(CartItem.prototype, { template(){ return `
       <p class="fas fa-times align-self-start mr-2 mt-2 m-0 ml-auto delete-cart-item"></p>
     </div>
 
-    <div class="col-12 d-flex justify-content-between p-0 pl-md-4 mt-2 flex-column flex-md-row">
+    <div class="col-12 d-flex justify-content-between p-0 pl-md-4 mt-2 mb-2 flex-column flex-md-row">
       <div class="btn-group d-flex addminus" role="group" aria-label="">
         <button type="button" class="btn p-2 cart-item-button-minus fas fa-minus" data-id=${this._id}> </button>
         <input disabled type="text" class="form-control placeholder-cart" placeholder="${this.quantity}">
@@ -22,8 +22,9 @@ Object.assign(CartItem.prototype, { template(){ return `
       <div class="d-flex flex-column align-items-end mr-2">
         ${this.stockWarning ? `
         <div class="bg-warning alert-warning p-2">Obs! Endast ${this.stockBalance} kvar</div>` : `I lager ${this.stockBalance < 5 ? `${this.stockBalance}` : ''}`}
-        <h4 class="text-danger">${this.price} kr / st</h4>
-        <p class="text-muted">Varav moms: ${this.getVatPerItem()} kr</p>
+        <p class="m-0">${this.price} kr / st</p>
+        <p class="m-0 text-muted">Varav moms: ${this.getVatPerItem()} / st</p>
+        <h4 class="text-danger mb-0">Totalt: ${this.getTotalPrice()} kr</h4>
       </div>
     </div>
     </div>

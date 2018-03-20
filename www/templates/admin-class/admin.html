@@ -1,0 +1,35 @@
+Object.assign(Admin.prototype, { template1(){ return `
+    <div class="row">
+        <div class="col-12">
+            <form class="form-inline d-flex justify-content-center my-4">
+                <input class="form-control mr-sm-2 col-6" type="search" placeholder="Sökorder" aria-label="Sökorder">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Sökorder</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <ul class="list-group list-group-flush orderList">
+                <li class="list-group-item bg-dark">
+                    <div class="row">
+                        <div class="col-2">
+                            <h6>Order</h6>
+                        </div>
+                        <div class="col-3">
+                            <h6>Datum</h6>
+                        </div>
+                        <div class="col-3">
+                            <h6>Klient</h6>
+                        </div>
+                        <div class="col-2">
+                            <h6>Status</h6>
+                        </div>
+                        <div class="col-2">
+                            <h6 class="float-right">Edit</h6>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div> 
+`;}});

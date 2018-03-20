@@ -52,13 +52,13 @@
   	"keyword": ["Svart, Röd, Brun, Besvärjelse, Trolldryck, Eko"]
   },
   {
-		"title": "Tånaglar från äkta lärare i Javascript",
+		"title": "Tånaglar från hermiter",
   	"magicType": ["Svart, Röd, Gul"],
   	"imageLink": "../img/toenail.jpg",
   	"price": 19.90,
   	"vatRate": 12,
   	"country": "Sverige",
-		"description": "För att lyckas med syntaxen i trollformlerna är denna ingrediens helt ovärderlig. Varning, dessa är inte för nybörjare. Måste handskas med stor försiktighet för att undvika konflikter i GitKraken.",
+		"description": "För att få tag i denna ingrediens måste man vandra in i det djupaste Himalaya så dom är helt ovärderlig. Varning, dessa är inte för nybörjare. Måste handskas med stor försiktighet.",
 		"soldAmount": 0,
   	"stockBalance": 2,
   	"artNumber": 666005,
