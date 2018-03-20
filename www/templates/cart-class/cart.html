@@ -16,12 +16,12 @@ Object.assign(Cart.prototype, { template(){ return `
           <div class="card-body">
             ${this.cartItems.render()}
 
-
+            <hr class="mx-0 my-4">
 
             <div class="col-12 d-flex justify-content-between p-0 pl-3 mt-2">
               <div class="ml-auto d-flex flex-column align-items-end p-4">
-                <h5>Totalt ${this.getTotalPrice()} kr</h5>
-                <p>Varav moms: ${this.getTotalVat()} kr</p>
+                <h5>Pris exkl moms: ${this.getTotalPriceExVat()} kr</h5>
+                <p>Moms: ${this.getTotalVat()} kr</p>
                 <h5>Fri frakt</h5>
                 <h3>TOTALPRIS <span class="text-success">${this.getTotalPrice()} kr</span></h3>
                 <button class="btn btn-success p-2 pr-4 pl-4 mt-3" data-toggle="collapse" data-target="#cart-order-collapse">Till betalning</button>

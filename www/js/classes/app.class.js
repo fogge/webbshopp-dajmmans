@@ -12,7 +12,7 @@ class App extends REST {
 
     this.all = new All;
     All.allProducts = await this.all.getResult({});
-    
+
     //Rendering the header
     this.header = new Header(this);
     $('header').empty();
@@ -23,11 +23,15 @@ class App extends REST {
     $('footer').empty();
     this.footer.render('footer');
 
+    // Loading the cart
+    this.cart = new Cart(this);
+    this.cart.loadCart();
+
     this.startPage = new Startpage(this);
     this.materiel = new Materiel(this);
     this.ingredienser = new Ingredient(this);
     this.Book = new Book(this);
-   
+    this.order = new Order();
     this.popState = new PopStateHandler(this);
   }
 

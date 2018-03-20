@@ -2,8 +2,9 @@ class Logout extends REST {
   constructor() {
     super();
     let that = this;
+
+    // logged out
     $(document).on('click', '#logoutBtn', function(e) {
-      console.log('Logged out');
      e.preventDefault();
      that.logoutUser();
    });

@@ -1,0 +1,91 @@
+Object.assign(Admin.prototype, { template2(){ return `
+    <li class="list-group-item p-0" id="item-${this.order.result._id}">
+        <div class="row orderItem p-0 m-0">
+            <div class="col-2 itemContainer">
+                <p class="itemContent">${this.order.result.orderno}</p>
+            </div>
+            <div class="col-3 itemContainer">
+                <p class="itemContent">${this.order.result.orderdate}</p>
+            </div>
+            <div class="col-3 itemContainer">
+                <p class="itemContent">${this.order.result.customerid}</p>
+            </div>
+            <div class="col-2 itemContainer">
+                <p class="itemContent">${this.order.result.status}</p>
+            </div>
+            <div class="col-2 itemContainer d-flex align-items-center flex-row-reverse">
+                <button class="btn btn-sm" data-toggle="collapse" data-target="#${this.order.result._id}" id="orderDetails" value="Open">
+                    Öppna detaljer
+                </button>
+            </div>
+        </div>
+        <div class="collapse p-2 bg-dark" id="${this.order.result._id}">
+            <div class="row p-2">
+                <p class="col-6"><u>Orderdetaljer</u></p>
+            </div>
+            
+            <div class="row p-2">
+                <div class="col-3">
+                    <p>
+                        <b>Namn:</b>
+                        ${this.order.result.customerid}
+                    </p>
+                </div>
+                <div class="col-3">
+                    <p>
+                        <b>Pris:</b>
+                        ${this.order.result.price} SEK
+                    </p>
+                </div>
+                <div class="col-3">
+                    <p>
+                        <b>VAT:</b>
+                        ${this.order.result.vat} SEK
+                    </p>
+                </div>
+                <div class="col-3">
+                    <p>
+                        <b>Produkt titel:</b> ${this.order.result.products.toString()}
+                    </p>
+                </div>
+                <div class="col-3">
+                    <p>
+                        <b>Beordrade Datum:</b> ${this.order.result.orderdate}
+                    </p>
+                </div>
+                <div class="col-3">
+                    <p>
+                        <b>Behandlad Datum:</b> ${this.order.result.orderdate}
+                    </p>
+                </div>
+                <div class="col-3">
+                    <p>
+                        <b>Skickad Datum:</b> ${this.order.result.orderdate}
+                    </p>
+                </div>
+                <div class="col-12">
+                    <div class="card card-body border-0 p-0">
+                        <div class="progress" id="progress-${this.order.result._id}">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 text-center mt-2">
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-secondary dropdown-toggle changeOrderStatus" type="button" id="changeOrderStatus-${this.order.result._id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Ändra status
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="changeOrderStatus" id="changeOrderStatusOption">
+                            <button class="dropdown-item">Beordrade</button>
+                            <button class="dropdown-item">Behandlad</button>
+                            <button class="dropdown-item">Skickad</button>
+                            <button class="dropdown-item">Mottagen</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </li>
+     
+`;}});

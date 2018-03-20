@@ -3,19 +3,36 @@ class Cart extends REST {
     super();
     this.app = app;
     this.cartItems = [];
-    this.getCartItems();
+    if (this.app instanceof App){
+      this.getCartItems();
+    }
   }
 
   async getCartItems() {
     let all = new All();
+    await this.loadCart();
     for (let item of this.app.shoppingCart) {
       let searchObj = await all.getResult({_id: item._id});
       searchObj = searchObj[0].result;
       searchObj.quantity = item.quantity;
       if (searchObj.stockBalance - item.quantity < 0) searchObj.stockWarning = true;
       this.cartItems.push(new CartItem(searchObj, this));
+  }
+    // if statement to not render on startpage.
+    if(location.pathname == '/kassa'){
+      $('main').empty();
+      this.render();
     }
-    return this.render();
+    this.saveCart();
+  }
+
+  async loadCart(){
+    let userId = (await UserHandler.check()).info.query;
+    let cart = (await Cart.findOne({userId: userId}));
+    if (this.app.shoppingCart.length === 0 && cart){
+      this.app.shoppingCart = cart.app.items
+      this.app.header.render()
+    }
   }
 
   getTotalPrice(){
@@ -41,12 +58,40 @@ class Cart extends REST {
     }
     totalVat = Math.round( totalVat * 10 ) / 10;
     if (totalVat == 0){return totalVat;}
-    return totalVat += '0';
+    if (totalVat % 1 != 0) {
+      return totalVat += '0';
+    } else {
+      return totalVat;
+    }
+  }
+
+  getTotalPriceExVat(){
+    let totalPrice = this.getTotalPrice();
+    let totalVat = this.getTotalVat();
+    return totalPrice - totalVat;
   }
 
   approveCustomerData() {
-
      return true;
+  }
+
+  async saveCart() {
+    let userId = await UserHandler.check();
+    userId = userId.info.query;
+    let alreadyExists = (await Cart.findOne({userId: userId}));
+    // Check if there is a cart with logged in user
+    if (alreadyExists) {
+      return await this.save({
+        userId: userId,
+        items: this.app.shoppingCart
+      });
+    } else {
+      return await Cart.create({
+        userId: userId,
+        items: this.app.shoppingCart
+      });
+    }
+
   }
 
   async confirmOrder() {
@@ -65,7 +110,6 @@ class Cart extends REST {
       price: 123,
       vat: Number
     } );
-      console.log('din beställning är lagd', order);
       $('#confirmorder').modal('show');
     }
 
