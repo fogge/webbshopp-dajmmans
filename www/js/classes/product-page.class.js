@@ -9,7 +9,7 @@ class ProductPage extends REST {
     this.productSelected = All.allProducts.find( selectedProduct => selectedProduct.result._id === productId);
     this.productSelected = this.productSelected.result;
     this.productSelected.quantity = 1;
-    
+
   }
 
   click() {
@@ -21,6 +21,7 @@ class ProductPage extends REST {
             return false;
           }
         }
+        this.app.cart.saveCart();
         return true;
       }
       if (this.app.shoppingCart == [] || checkShoppingCart(this.productSelected)) this.app.shoppingCart.push({_id: this.productSelected._id, quantity: this.productSelected.quantity});

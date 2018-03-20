@@ -2,7 +2,7 @@ Object.assign(Userpage2.prototype, { template1(){ return `
 <div class="my-4">
   <div class="row">
     <div class="col-12">
-    	
+
     </div>
   </div>
 </div>
@@ -11,7 +11,7 @@ Object.assign(Userpage2.prototype, { template1(){ return `
 
 Object.assign(Userpage2.prototype, { template1(){ return `
 <div class="my-4">
-  <h5 class="card-title text-center">Du är inloggad som: ${this.user}</h5>
+  <h5 class="card-title text-center">Du är inloggad som: ${this.email}</h5>
   <div class="row justify-content-center">
     <div class="card col-10">
       <div class="card-header">
@@ -26,16 +26,14 @@ Object.assign(Userpage2.prototype, { template1(){ return `
       </div>
       <div class="card-body">
         <h3 class="mb-2 mt-3">Dina uppgifter:</h5>
-        <h5 class="mb-3">Användarnamn: $ {this.user.name}</h5>
-        <h5 class="mb-3">Leveransadress: $ {this.user.address}</h5>
-        <h5 class="mb-3">Postnummer: $ {this.user.zipcode}</h5>
-        <h5 class="mb-3">Ort: $ {this.user.ziparea}</h5>
-        <h5 class="mb-3">Mailadress: $ {this.user.email}</h5>
-        <h5 class="mb-3">Telefonnummer: $ {this.user.phone}</h5>
-        <h5 class="mb-3">Lösenord: $ {this.user.password}</h5>
+        <h5 class="mb-3">Användarnamn: ${this.firstName} ${this.lastName}</h5>
+        <h5 class="mb-3">Leveransadress: ${this.postOrt}</h5>
+        <h5 class="mb-3">Postnummer: ${this.postnr}</h5>
+        <h5 class="mb-3">Ort: ${this.postOrt}</h5>
+        <h5 class="mb-3">Mailadress: ${this.email}</h5>
+        <h5 class="mb-3">Lösenord: ${this.password}</h5>
       </div>
     </div>
   </div>
 </div>
 `;}});
-

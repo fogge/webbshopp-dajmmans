@@ -6,8 +6,8 @@ class ProductAvatar extends REST {
     this.quantity = 1;
     for (let value in product) {
       this[value] = product[value];
-    } 
-    
+    }
+
   }
 
   click() {
@@ -19,6 +19,7 @@ class ProductAvatar extends REST {
             return false;
           }
         }
+        this.app.cart.saveCart();
         return true;
       }
       if (this.app.shoppingCart == [] || checkShoppingCart(this)) this.app.shoppingCart.push({_id: this._id, quantity: this.quantity});
