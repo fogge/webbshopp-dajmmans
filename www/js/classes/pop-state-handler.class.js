@@ -79,6 +79,7 @@ class PopStateHandler extends REST {
 
     // Call the right method
     let methodName = urls[url];
+    this.app.header.button.loginCheck();
 
 
     if (methodName =='product') {
