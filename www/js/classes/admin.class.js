@@ -5,6 +5,8 @@ class Admin extends REST {
       this.getOrders({});
       this.clickEvents();
       this.changeOrderStatus();
+      this.searchAdminOrders();
+  
     }
 
     async getOrders(searchObj) {
@@ -78,5 +80,27 @@ class Admin extends REST {
       this.orderToUpdate.result.status = status;
       return await this.order.save(this.orderToUpdate);
         
+    }
+    
+    searchAdminOrders () {
+      let that = this;
+      $(document).on('click', '#adminSearch', function (event) {
+        event.preventDefault();
+        let keyword = $('#adminKeyword').val();
+        $('#adminKeyword').val('Sökorder');
+        that.searchEngineAdmin(keyword);
+      });  
+    }
+
+    async searchEngineAdmin (keyword) {
+      this.searchResult = await Order.find({orderno: keyword});
+      this.order.result = this.searchResult[0].result;
+      this.order.result.orderdate = this.order.result.orderdate.substring(0,10);
+      $('.orderList').empty();
+      $(`#progress-${this.searchResult[0].result._id}`);
+      this.render('.orderList',2);
+      this.render(`#progress-${this.searchResult[0].result._id}`, 3);
+      this.orderStatus(this.searchResult[0].result.status);
+      
     }
   }
