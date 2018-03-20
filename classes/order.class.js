@@ -5,12 +5,13 @@ module.exports = class Order extends ModelAndRoutes {
   static get schema(){ 
     return { 
       orderno: Number, 
-      products: [String], 
-      status: String, 
+      products: [{}], 
+      status: {type: String, default: "Mottagen"}, 
       orderdate: { type: Date, default: Date.now },
       customerid: String, 
       price: Number, 
-      vat: Number 
+      vat: Number,
+      adress: {}
     } 
   } 
  
