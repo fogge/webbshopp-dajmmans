@@ -8,10 +8,9 @@ class Admin extends REST {
     }
 
     async getOrders(searchObj) {
-      let orders = await Order.find(searchObj);    
-      console.log(orders);
+      this.orders = await Order.find(searchObj);    
         
-      for (const order of orders) {
+      for (const order of this.orders) {
         this.order = order;
         this.order.result.orderdate = this.order.result.orderdate.substring(0,10);
         this.render('.orderList',2);
@@ -59,9 +58,7 @@ class Admin extends REST {
          $(`#progress-${idToChange}`).empty();
          that.render(`#progress-${idToChange}`, 3);
          that.orderStatus(status);
-         that.order.result.status = status; 
-         console.log(that.order.result);
-         let test = Order.save();
+         that.orderUpdate(idToChange, status);
          
         });
       });
@@ -69,8 +66,12 @@ class Admin extends REST {
       
     }
 
-    orderUpdate(idToChange, status){
-       console.log(this.order.result);
+    async orderUpdate(idToChange, status){
+      this.orderToUpdate = this.orders.find( orderSelected => 
+        orderSelected.result._id == idToChange );
+
+      this.orderToUpdate.result.status = status;
+      return await this.order.save(this.orderToUpdate);
         
     }
   }

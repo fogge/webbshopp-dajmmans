@@ -17,9 +17,12 @@ class REST extends Base{
   
   async save(obj=null){
     let entity = (this.constructor.name + 's').toLowerCase();
-    if (obj) {
+    if (obj.hasOwnProperty('userId')) {
       let query = 'userId=' + obj.userId._id;
       return await REST.request(entity, 'PUT', query, obj);
+    } else if(obj.hasOwnProperty('result')){
+      let query = '_id=' + obj.result._id;
+      return await REST.request(entity, 'PUT', query, obj.result);
     } else {
       let query = '_id=' + this._id;
       return await REST.request(entity, 'PUT', query, this);
