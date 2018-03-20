@@ -45,7 +45,7 @@ Object.assign(Admin.prototype, { template2(){ return `
                 </div>
                 <div class="col-3">
                     <p>
-                        <b>Produkt titel:</b> ${this.order.result.products.toString()}
+                        <b>${this.order.result.products.length == 1 ? 'Produkt' : 'Produkter'}:</b> ${this.order.result.products.toString()}
                     </p>
                 </div>
                 <div class="col-3">
