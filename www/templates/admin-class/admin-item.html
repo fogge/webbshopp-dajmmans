@@ -75,7 +75,7 @@ Object.assign(Admin.prototype, { template2(){ return `
                         <button class="btn btn-sm btn-secondary dropdown-toggle changeOrderStatus" type="button" id="changeOrderStatus-${this.order.result._id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Ändra status
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="changeOrderStatus" id="changeOrderStatusOption">
+                        <div class="dropdown-menu" aria-labelledby="changeOrderStatus" id="changeOrderStatusOption-${this.order.result._id}">
                             <button class="dropdown-item">Mottagen</button>
                             <button class="dropdown-item">Behandlad</button>
                             <button class="dropdown-item">Skickad</button>

@@ -53,7 +53,11 @@ class Admin extends REST {
       let that = this;
       $(document).on('click', '.changeOrderStatus', function( event ) {
         let idToChange = $(event.target).attr('id').split('-')[1];
-        $(document).on('click', '#changeOrderStatusOption button', function( event ) {
+        console.log(idToChange);
+        
+        $(document).on('click', `#changeOrderStatusOption-${idToChange} button`, function( event ) {
+        console.log('woop');
+         that.order.result._id = idToChange;
          let status = $(event.target).text();
          $(`#progress-${idToChange}`).empty();
          that.render(`#progress-${idToChange}`, 3);
