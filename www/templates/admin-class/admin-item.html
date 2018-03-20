@@ -11,7 +11,7 @@ Object.assign(Admin.prototype, { template2(){ return `
                 <p class="itemContent">${this.order.result.customerid}</p>
             </div>
             <div class="col-2 itemContainer">
-                <p class="itemContent">${this.order.result.status}</p>
+                <p class="itemContent" id="status-title-${this.order.result._id}">${this.order.result.status}</p>
             </div>
             <div class="col-2 itemContainer d-flex align-items-center flex-row-reverse">
                 <button class="btn btn-sm" data-toggle="collapse" data-target="#${this.order.result._id}" id="orderDetails" value="Open">

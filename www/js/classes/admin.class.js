@@ -59,7 +59,8 @@ class Admin extends REST {
          that.render(`#progress-${idToChange}`, 3);
          that.orderStatus(status);
          that.orderUpdate(idToChange, status);
-         
+         $(`#status-title-${idToChange}`).empty();
+         $(`#status-title-${idToChange}`).text(status);
         });
       });
 
