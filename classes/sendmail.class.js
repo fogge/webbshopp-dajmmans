@@ -1,7 +1,17 @@
+const ModelAndRoutes = require('./model-and-routes.class');
 const nodemailer = require('nodemailer');
 const express = require('express');
 const bodyParser = require('body-parser');
-module.exports = function (req, res) {
+
+module.exports = class SendMail extends ModelAndRoutes {
+
+constructor(){
+    super();
+    this.sendMail();
+}
+
+
+sendMail (req, res) {
 
     nodemailer.createTestAccount((err, account) => {
         let transporter = nodemailer.createTransport({
@@ -22,7 +32,8 @@ module.exports = function (req, res) {
             from: '"Dajmans webbshop 👻"', // sender address 
             to: 'roger.greg@fjgj.com', // list of receivers 
             subject: 'Din beställning', // Subject line  
-            html: '<h1>Du har beställt följande</h1>' // html body 
+            html: ''
+        
         };
 
         let message = {
@@ -33,17 +44,30 @@ module.exports = function (req, res) {
             subject: 'Din beställning från Dajmmans webbshop ✔',
 
             // HTML body
-            html:
-                '<p><b>Hej</b></p>' +
-                '<p>Dina varor är skickade.:<br/><img src="cid:nyan@example.com"/></p>',
+            html:`
+                <img src="cid:nyan@example.com"/>
+                <p><strong>Hejsan</strong></p>
+                <h1>Orderbekräftelse</h1>
+                <p> (objekt text)<p>
+
+                
+                // attachments: [{
+                //     filename: 'image.png',
+                //     path: '/path/to/file',
+                //     cid: 'unique@kreata.ee' //same cid value as in the html img src
+                // }]
+
+
+
+                `,
 
             // An array of attachments
             attachments: [
 
                 // File Stream attachment
                 {
-                    filename: 'hemlig_fil ✔.gif',
-                    path: __dirname + '../../www/img/amulet.jpg',   //testpicture to try that paths work
+                    //filename: 'hemlig_fil ✔.gif',
+                    path: __dirname + '../../www/img/logo.png',   //testpicture to try that paths work
                     cid: 'nyan@example.com' // should be as unique as possible
                 }
             ]
@@ -65,4 +89,5 @@ module.exports = function (req, res) {
             // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou... 
         });
     });
+    }
 }
