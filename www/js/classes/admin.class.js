@@ -89,20 +89,22 @@ class Admin extends REST {
       $(document).on('click', '#adminSearch', function (event) {
         event.preventDefault();
         let keyword = $('#adminKeyword').val();
-        $('#adminKeyword').val('Sökorder');
+        $('#adminKeyword').val('');
         that.searchEngineAdmin(keyword);
       });  
     }
 
-    async searchEngineAdmin (keyword) {
-      this.searchResult = await Order.find({orderno: keyword});
-      this.order.result = this.searchResult[0].result;
+    async searchEngineAdmin (keyword) {  
+      this.searchResult = this.orders.find(searchResult =>
+        searchResult.result.orderno == keyword
+      );      
+      this.order.result = this.searchResult.result;
       this.order.result.orderdate = this.order.result.orderdate.substring(0,10);
       $('.orderList').empty();
-      $(`#progress-${this.searchResult[0].result._id}`);
+      $(`#progress-${this.searchResult.result._id}`);
       this.render('.orderList',2);
-      this.render(`#progress-${this.searchResult[0].result._id}`, 3);
-      this.orderStatus(this.searchResult[0].result.status);
+      this.render(`#progress-${this.searchResult.result._id}`, 3);
+      this.orderStatus(this.searchResult.result.status);
       
     }
   }
