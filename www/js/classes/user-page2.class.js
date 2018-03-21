@@ -10,14 +10,6 @@ class Userpage2 extends REST {
     this.revealPassword();
   }
 
-  // loopUserToValues(userObject){
-  //   for (let value in userObject) {
-  //     this[value] = userObject[value];
-  //   }
-  //   this.render('main', 1)
-  //   this.revealPassword();
-  // }
-
   revealPassword(){
     let that = this;
     $(document).on('click', '.btn-revealpassword', function(){

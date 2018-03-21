@@ -65,7 +65,7 @@ class PopStateHandler extends REST {
       '/login': 'login',
       '/register': 'register',
       '/mina_sidor': 'userPage',
-      '/mina_sidor2': 'userPage2',
+      '/mina_sidor_info': 'userPage2',
       '/admin': 'admin'
     };
 
