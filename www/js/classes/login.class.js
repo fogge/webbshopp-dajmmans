@@ -25,7 +25,7 @@ class Login extends REST {
       $('#loginFail').removeClass('d-none');
       app.header.button.loginCheck();
       $('#headerButton').empty();
-      setTimeout(() => {$('#loginFail').addClass('d-none');}, 2000);
+      setTimeout(() => {$('#loginFail').addClass('d-none');}, 3000);
 
 
     }

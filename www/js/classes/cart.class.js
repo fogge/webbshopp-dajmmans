@@ -10,6 +10,7 @@ class Cart extends REST {
   }
 
   async getCartItems() {
+    this.userId = await UserHandler.check();
     let all = new All();
     await this.loadCart();
     for (let item of this.app.shoppingCart) {
@@ -20,7 +21,7 @@ class Cart extends REST {
       this.cartItems.push(new CartItem(searchObj, this));
   }
     // if statement to not render on startpage.
-    if(location.pathname == '/kassa'){
+    if (location.pathname == '/kassa'){
       $('main').empty();
       this.render();
     }
@@ -78,14 +79,13 @@ class Cart extends REST {
 
   async saveCart() {
     let userId = await UserHandler.check();
+    let b = userId;
     userId = userId.info.query;
-    let alreadyExists = (await Cart.findOne({userId: userId}));
+    let cartObj = (await Cart.findOne({userId: userId}));
     // Check if there is a cart with logged in user
-    if (alreadyExists) {
-      return await this.save({
-        userId: userId,
-        items: this.app.shoppingCart
-      });
+    if (cartObj) {
+      cartObj.items = app.shoppingCart;
+      await cartObj.save();
     } else {
       return await Cart.create({
         userId: userId,
@@ -95,34 +95,125 @@ class Cart extends REST {
 
   }
 
+  bankcardCheck() {
+    let cardNumber = $('#cardNumber').val();
+    let expireDate = $('#expireDate').val();
+    let cvc = $('#cvc').val();
+
+    let re16digit = /^\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}$/
+    let reDate = /^\d{2}[- \/]?\d{2}/
+    let re3digit = /\d{3}/
+
+    if (!re16digit.test(cardNumber) ||
+        !reDate.test(expireDate) ||
+        !re3digit.test(cvc) )
+    {
+
+      $('.checkout-summery .alert').remove();
+      $('.checkout-summery').append(`
+
+        <div class="alert alert-danger alert-dismissible fade show mb-5 mt-3" role="alert">
+          <strong>Försök igen! Kolla över det du skrivit så det verkligen stämmer.</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        `);
+      clearTimeout(this.alertTimeoutStart);
+      this.alertTimeoutStart = setTimeout(()=> {
+        $('.checkout-summery .alert').alert('close');
+      }, 6000);
+      return false;
+    }
+    return true;
+  }
+
   async confirmOrder() {
 
-    if(this.app.shoppingCart.length !== 0 && this.approveCustomerData()) {
+    if(app.shoppingCart.length !== 0) {
+      let adresses = this.approveCustomerData();
+      let totalPrice = this.getTotalPrice();
+      let totalVat = this.getTotalVat();
+      let user = (await UserHandler.check());
 
       this.app.shoppingCart = [];
       this.cartItems = [];
 
       let order = await Order.create({
+      name: user[0].firstName + ' ' + user[0].lastName,
       orderno: 123,
       products: ["String"],
       status: "String",
       orderdate: Date.now(),
-      customerid: "String",
-      price: 123,
-      vat: Number
-    } );
+      customerid: this.userId[0]._id,
+      price: totalPrice,
+      vat: totalVat,
+      adress: adresses
+      });
+      this.adjustStock(order);
+      console.log(order);
       order.result.email = $('#user-email').val();
       order.result.orderdate = order.result.orderdate.substring(0,10);
       this.sendMail(order.result);
       this.sendMail(order);
       $('#confirmorder').modal('show');
+      app.shoppingCart = [];
+      this.cartItems = [];
+      this.saveCart();
     }
-
   }
 
-  click () {
+  async adjustStock(order) {
+    for(let product of order.products) {
+      let myProduct;
+      if (product.category == 'ingredient') {
+        myProduct = await Ingredient.findOne({_id: product._id});
+        myProduct.stockBalance -= product.quantity;
+        await myProduct.save();
+      } else if(product.category == 'book') {
+        myProduct = await Book.findOne({_id: product._id});
+        myProduct.stockBalance -= product.quantity;
+        await myProduct.save();
+      } else if(product.category == 'materiel') {
+        myProduct = await Materiel.findOne({_id: product._id});
+        myProduct.stockBalance -= product.quantity;
+        await myProduct.save();
+      }
+    }
+  }
+
+  async click() {
     if ($(event.target).hasClass('confirmorder')) {
-      this.confirmOrder();
+      this.user = await UserHandler.check();
+      console.log(this.user)
+      if(!this.user[0]){
+        $('.checkout-summery .alert').remove();
+        $('.checkout-summery').append(`
+
+          <div class="alert alert-danger alert-dismissible fade show mb-5 mt-3" role="alert">
+            <strong>Var god logga in för att fullfölja din order.</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          `);
+        clearTimeout(this.alertTimeoutStart);
+        this.alertTimeoutStart = setTimeout(()=> {
+          $('.checkout-summery .alert').alert('close');
+        }, 6000);
+      }
+      else {
+        if(this.bankcardCheck()){
+          await this.confirmOrder();
+          $('#confirmorder').on('hidden.bs.modal', async () => {
+            await $('main').empty();
+            this.render('main');
+            app.header.render();
+          })
+        }
+      }
     }
   }
 

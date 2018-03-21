@@ -65,7 +65,7 @@ class PopStateHandler extends REST {
       '/login': 'login',
       '/register': 'register',
       '/mina_sidor': 'userPage',
-      '/mina_sidor2': 'userPage2',
+      '/mina_sidor_info': 'userPage2',
       '/admin': 'admin'
     };
 
@@ -78,11 +78,10 @@ class PopStateHandler extends REST {
     }
     // Call the right method
     let methodName = urls[url];
-    app.header.button.loginCheck();
-
-
+    
     if (methodName =='product') {
       let productId = url.split('/')[3];
+      console.log(productId);
       this[methodName](productId);
     }
     else{
@@ -131,6 +130,7 @@ class PopStateHandler extends REST {
   product(productId){
     this.empty();
     app.productPage = new ProductPage();
+    console.log(productId)
     app.productPage.getProduct(productId);
     app.productPage.render('main');
   }
@@ -170,7 +170,7 @@ class PopStateHandler extends REST {
     app.user = new Userpage2();
   }
   admin(){
-    this.empty;
+    this.empty();
     app.admin = new Admin();
     app.admin.render('main',1);
   }

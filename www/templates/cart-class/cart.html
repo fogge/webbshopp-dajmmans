@@ -38,32 +38,32 @@ Object.assign(Cart.prototype, { template(){ return `
     <!-- <form> -->
       <div class="adress-form-container col-12 col-md-6">
         <h5>Adress</h5>
-        <input type="email" class="form-adress-cart col-12 border-bottom-0 top-form-rounded" id="user-email" placeholder="Epost" required>
+        <input type="email" class="form-adress-cart col-12 border-bottom-0 top-form-rounded" id="cartemail" placeholder="Epost" value="${this.user[0] ? this.user[0].email : ''}" required>
         <div class="form-group d-flex flex-nowrap col-12 m-0 p-0">
-          <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="" placeholder="Förnamn" required>
-          <input type="text" class="form-adress-cart col-6 border-bottom-0" id="" placeholder="Efternamn" required>
+          <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="cartfirstname" placeholder="Förnamn" value="${this.user[0] ? this.user[0].firstName : ''}" required>
+          <input type="text" class="form-adress-cart col-6 border-bottom-0" id="cartlastname" value="${this.user[0] ? this.user[0].lastName : ''}" placeholder="Efternamn" required>
         </div>
 
-        <input type="text" class="form-adress-cart col-12 border-bottom-0" id="" placeholder="Adress" required>
+        <input type="text" class="form-adress-cart col-12 border-bottom-0" id="cartadress" value="${this.user[0] ? this.user[0].adress : ''}" placeholder="Adress" required>
 
         <div class="form-group d-flex flex-nowrap col-12 m-0 p-0">
-          <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="" placeholder="Postnr" required>
-          <input type="text" class="form-adress-cart col-6 border-bottom-0" id="" placeholder="Ort" required>
+          <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="cartpostnr" placeholder="Postnr" value="${this.user[0] ? this.user[0].postnr : ''}" required>
+          <input type="text" class="form-adress-cart col-6 border-bottom-0" id="cartort" value="${this.user[0] ? this.user[0].postOrt : ''}" placeholder="Ort" required>
         </div>
 
         <input type="text" class="form-adress-cart col-12 border-bottom-0" id="" placeholder="Sverige" disabled>
 
         <div class="form-group m-0">
-          <input type="text" class="form-adress-cart border-bottom col-12 bottom-form-rounded" id="" placeholder="Telefon" required>
+          <input type="text" class="form-adress-cart border-bottom col-12 bottom-form-rounded" id="cartphone" placeholder="Telefon" value="${this.user[0] ? this.user[0].phone : ''}" required>
         </div>
 
       </div>
       <div class="checkout-summery col-12 mt-4 mt-md-0 col-md-6 mb-1">
         <h5>Betal-/kreditkort</h5>
-        <input type="text" class="form-adress-cart col-12 rounded" id="" placeholder="Kortnummer">
+        <input type="text" class="form-adress-cart col-12 rounded" id="cardNumber" maxlength=19 placeholder="Kortnummer" requiered>
         <div class="form-group d-flex flex-nowrap justify-content-between col-12 m-0 p-0 mt-2">
-          <input type="text" class="form-adress-cart col-5 rounded" id="" placeholder="Kortdatum mm/yy">
-          <input type="text" class="form-adress-cart col-5 rounded" id="" placeholder="CVC">
+          <input type="text" class="form-adress-cart col-5 rounded" id="expireDate" placeholder="Utgångsdatum MM/YY" required>
+          <input type="text" class="form-adress-cart col-5 rounded" id="cvc" placeholder="CVC" required>
         </div>
 
         <div class="mx-auto col-12 col-lg-6 d-flex justify-content-around mt-4 pl-0">
@@ -71,12 +71,13 @@ Object.assign(Cart.prototype, { template(){ return `
           <img src="/img/cart_images/mastercard.png" class="payment-card">
           <img src="/img/cart_images/amex.png" class="payment-card">
         </div>
+
         <div class="d-flex col-12 justify-content-end pr-0 checkout-buttons">
           <button class="btn btn-danger mr-3 pl-5 pr-5">Ångra</button>
           <button class="btn btn-success p-2 pl-5 pr-5 confirmorder" type="submit">Betala</button>
         </div>
-
       </div>
+      <p class="text-danger ml-md-auto ml-3 mr-3 mt-3 error-message-cart"></p>
 ` : 'Du har inga varor i kundvagnen.'}
     </div>
   <!-- </form> -->

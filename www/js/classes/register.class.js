@@ -1,14 +1,26 @@
 class Register extends REST {
   constructor() {
     super();
+    this.clickEvent();
+  }
 
+  clickEvent(){
     let that = this;
-
     $(document).on('submit', '#registerForm', function(e) {
      e.preventDefault();
-     that.userCheck();
      that.registerUser();
    });
+  }
+
+  validateZipCode(zipcode){
+    zipcode = (zipcode.replace(/ /g, '')) / 1;
+    if (!isNaN(zipcode) && (zipcode+'').length === 5) {
+      return true;
+    } else {
+      $('#regFail').html('Postnummer ifyllt fel').removeClass('d-none');
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+      return false;
+    }
   }
 
   async registerUser(){
@@ -20,12 +32,19 @@ class Register extends REST {
     let postnr = $('#registerpostnr').val();
     let postOrt = $('#registerPostOrt').val();
 
-    let result = await UserHandler.register(email, password, firstName, lastName, adress, postnr, postOrt);
-  }
+    if (this.validateZipCode(postnr)){
+      this.result = await UserHandler.register(email, password, firstName, lastName, adress, postnr, postOrt);
+    }
 
-  async userCheck(){
-    let test = $('#registerEmail').val();
-    $('#regFail').removeClass('d-none');
+     if(this.result.error){
+       $('#regFail').html('Användarnamnet är upptaget, fyll i ett nytt!').removeClass('d-none');
+       $("html, body").animate({ scrollTop: 0 }, "slow");
+     }
+     else{
+       $('#regFail').addClass('d-none');
+       $('#regSuccess').html('Registreringen lyckades! Du kan nu logga in och se "Mina sidor".').removeClass('d-none');
+       $("html, body").animate({ scrollTop: 0 }, "slow");
+     }
   }
 
 }

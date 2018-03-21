@@ -1,10 +1,15 @@
 //main: style.less
 
 .orderItem{
-    cursor: initial;
+    cursor: pointer;
     background-color: black;
+    .muteContent{
+        pointer-events: none;
+    }
     .itemContainer{
-
+        .btnDetails{
+            pointer-events: initial;
+        }
         .itemContent{
             position: relative;
             top: 50%;
