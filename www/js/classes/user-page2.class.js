@@ -6,23 +6,16 @@ class Userpage2 extends REST {
 
   async getUser(){
     this.user = await User.find();
-    this.render('main', 1)
+    this.render('main', 1);
+    this.revealPassword();
   }
-
-  // loopUserToValues(userObject){
-  //   for (let value in userObject) {
-  //     this[value] = userObject[value];
-  //   }
-  //   this.render('main', 1)
-  //   this.revealPassword();
-  // }
 
   revealPassword(){
     let that = this;
     $(document).on('click', '.btn-revealpassword', function(){
      if($('#password-area').text() == '******'){
       $('#password-area').empty();
-      $('#password-area').text(that.password);
+      $('#password-area').text(that.user[0].password);
       $('.hide-show').text('Dölj');
       }
       else{
