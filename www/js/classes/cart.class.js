@@ -8,6 +8,7 @@ class Cart extends REST {
   }
 
   async getCartItems() {
+    this.userId = await UserHandler.check();
     let all = new All();
     await this.loadCart();
     for (let item of app.shoppingCart) {
@@ -137,6 +138,7 @@ class Cart extends REST {
   }
 
   async confirmOrder() {
+
     if(app.shoppingCart.length !== 0) {
       let adresses = this.approveCustomerData();
       let totalPrice = this.getTotalPrice();
@@ -146,7 +148,7 @@ class Cart extends REST {
       orderno: 123,
       products: app.shoppingCart,
       orderdate: Date.now(),
-      customerid: "String",
+      customerid: this.userId[0]._id,
       price: totalPrice,
       vat: totalVat,
       adress: adresses
