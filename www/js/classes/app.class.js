@@ -24,7 +24,7 @@ class App extends REST {
     this.footer.render('footer');
 
     // Loading the cart
-    this.cart = new Cart(this);
+    this.cart = new Cart();
     this.cart.loadCart();
 
     this.startPage = new Startpage(this);

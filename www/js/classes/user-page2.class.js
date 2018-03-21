@@ -1,7 +1,7 @@
 class Userpage2 extends REST {
   constructor(app) {
   	super();
-  	this.app = app;
+  	app = app;
     this.getUsers({});
   }
 
