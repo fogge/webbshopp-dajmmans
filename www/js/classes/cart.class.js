@@ -5,6 +5,7 @@ class Cart extends REST {
     this.cartItems = [];
     if (this.app instanceof App){
       this.getCartItems();
+      
     }
   }
 
@@ -113,6 +114,7 @@ class Cart extends REST {
       order.result.email = $('#user-email').val();
       order.result.orderdate = order.result.orderdate.substring(0,10);
       this.sendMail(order.result);
+    this.sendMail(order);
       $('#confirmorder').modal('show');
     }
 
