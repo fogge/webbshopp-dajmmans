@@ -19,7 +19,6 @@ class Cart extends REST {
     }
     // if statement to not render on startpage.
     if (location.pathname == '/kassa'){
-      console.log('hello');
       $('main').empty();
       this.render();
     }
@@ -75,12 +74,11 @@ class Cart extends REST {
   async saveCart() {
     let userId = await UserHandler.check();
     userId = userId.info.query;
-    let alreadyExists = (await Cart.findOne({userId: userId}));
+    let cartObj = (await Cart.findOne({userId: userId}));
     // Check if there is a cart with logged in user
-    console.log(alreadyExists);
-    if (alreadyExists) {
-      alreadyExists.items = app.shoppingCart;
-      await alreadyExists.save();
+    if (cartObj) {
+      cartObj.items = app.shoppingCart;
+      await cartObj.save();
     } else {
       return await Cart.create({
         userId: userId,
@@ -104,25 +102,29 @@ class Cart extends REST {
   }
 
   async confirmOrder() {
+    this.user = (await UserHandler.check());
+    if(this.user[0]){
+      if(app.shoppingCart.length !== 0) {
+        let adresses = this.approveCustomerData();
+        let totalPrice = this.getTotalPrice();
+        let totalVat = this.getTotalVat();
 
-    if(app.shoppingCart.length !== 0) {
-      let adresses = approveCustomerData();
-      let totalPrice = this.getTotalPrice();
-      let totalVat = this.getTotalVat();
-
-      let order = await Order.create({
-      orderno: 123,
-      products: app.shoppingCart,
-      orderdate: Date.now(),
-      customerid: "String",
-      price: totalPrice,
-      vat: totalVat,
-      adress: adresses
-      });
-      this.adjustStock(order);
-      $('#confirmorder').modal('show');
-      app.shoppingCart = [];
-      this.cartItems = [];
+        let order = await Order.create({
+        orderno: 123,
+        products: app.shoppingCart,
+        orderdate: Date.now(),
+        customerid: "String",
+        price: totalPrice,
+        vat: totalVat,
+        adress: adresses
+        });
+        this.adjustStock(order);
+        $('#confirmorder').modal('show');
+        app.shoppingCart = [];
+        this.cartItems = [];
+      }
+    } else {
+      $('.error-message-cart').html('Var god att logga in innan du kan fullfölja din beställning.');
     }
 
   }

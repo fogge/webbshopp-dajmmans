@@ -3,9 +3,14 @@ class Userpage extends REST {
   	super();
   	this.activeOrders = [];
   	this.oldOrders = [];
+    this.getUser();
 		this.getOrders();
 		this.co = 0;
 
+  }
+
+  async getUser(){
+    this.user = await User.find();
   }
 
   async getOrders() {
