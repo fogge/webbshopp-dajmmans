@@ -1,39 +1,37 @@
 class Cart extends REST {
-  constructor(result) {
-    super(result);
+  constructor(app) {
+    super();
+    this.app = app;
     this.cartItems = [];
-    if(!result){
+    if (this.app instanceof App){
       this.getCartItems();
-      this.click();
     }
   }
 
   async getCartItems() {
     let all = new All();
     await this.loadCart();
-    for (let item of app.shoppingCart) {
+    for (let item of this.app.shoppingCart) {
       let searchObj = await all.getResult({_id: item._id});
-      searchObj = searchObj[0];
+      searchObj = searchObj[0].result;
       searchObj.quantity = item.quantity;
       if (searchObj.stockBalance - item.quantity < 0) searchObj.stockWarning = true;
       this.cartItems.push(new CartItem(searchObj, this));
-    }
+  }
     // if statement to not render on startpage.
-    if (location.pathname == '/kassa'){
-      console.log('hello');
+    if(location.pathname == '/kassa'){
       $('main').empty();
       this.render();
     }
-
-      this.saveCart();
+    this.saveCart();
   }
 
   async loadCart(){
-    this.user = (await UserHandler.check());
-    let cart = (await Cart.findOne({userId: this.user.info.query}));
-    if (app.shoppingCart.length === 0 && cart){
-      app.shoppingCart = cart.items;
-      app.header.render()
+    let userId = (await UserHandler.check()).info.query;
+    let cart = (await Cart.findOne({userId: userId}));
+    if (this.app.shoppingCart.length === 0 && cart){
+      this.app.shoppingCart = cart.app.items
+      this.app.header.render()
     }
   }
 
@@ -73,78 +71,51 @@ class Cart extends REST {
     return totalPrice - totalVat;
   }
 
+  approveCustomerData() {
+     return true;
+  }
+
   async saveCart() {
     let userId = await UserHandler.check();
     userId = userId.info.query;
     let alreadyExists = (await Cart.findOne({userId: userId}));
     // Check if there is a cart with logged in user
-    console.log(alreadyExists);
     if (alreadyExists) {
-      alreadyExists.items = app.shoppingCart;
-      await alreadyExists.save();
+      return await this.save({
+        userId: userId,
+        items: this.app.shoppingCart
+      });
     } else {
       return await Cart.create({
         userId: userId,
-        items: app.shoppingCart
+        items: this.app.shoppingCart
       });
     }
-  }
 
-  approveCustomerData() {
-    let adresses = {
-      firstname: $('#cartfirstname').val(),
-      lastname: $('#cartlastname').val(),
-      adress: $('#cartadress').val(),
-      postnr: $('#cartpostnr').val(),
-      postort: $('#cartort').val(),
-      phone: $('#cartphone').val(),
-      email: $('#cartemail').val(),
-      country: $('#cartcountry').val()
-    }
-    return adresses;
   }
 
   async confirmOrder() {
 
-    if(app.shoppingCart.length !== 0) {
-      let adresses = approveCustomerData();
-      let totalPrice = this.getTotalPrice();
-      let totalVat = this.getTotalVat();
+    if(this.app.shoppingCart.length !== 0 && this.approveCustomerData()) {
+
+      this.app.shoppingCart = [];
+      this.cartItems = [];
 
       let order = await Order.create({
       orderno: 123,
-      products: app.shoppingCart,
+      products: ["String"],
+      status: "String",
       orderdate: Date.now(),
       customerid: "String",
-      price: totalPrice,
-      vat: totalVat,
-      adress: adresses
-      });
-      this.adjustStock(order);
+      price: 123,
+      vat: Number
+    } );
+      order.result.email = $('#user-email').val();
+      order.result.orderdate = order.result.orderdate.substring(0,10);
+      this.sendMail(order.result);
       $('#confirmorder').modal('show');
-      app.shoppingCart = [];
-      this.cartItems = [];
     }
 
-  }
-
-  async adjustStock(order) {
-    for(let product of order.result.products) {
-      let myProduct;
-      if (product.category == 'ingredient') {
-        myProduct = await Ingredient.findOne({_id: product._id});
-        myProduct.stockBalance -= product.quantity;
-        await myProduct.save();
-      } else if(product.category == 'book') {
-        myProduct = await Book.findOne({_id: product._id});
-        myProduct.stockBalance -= product.quantity;
-        await myProduct.save();
-      } else if(product.category == 'materiel') {
-        myProduct = await Materiel.findOne({_id: product._id});
-        myProduct.stockBalance -= product.quantity;
-        await myProduct.save();
-      }
-    }
   }
 
   click () {
@@ -153,11 +124,15 @@ class Cart extends REST {
     }
   }
 
-  click(){
-    $(document).on('click', '.testmail', function( event ) {
-      console.log("testMailknapp");
+  sendMail(order){
+      console.log(order);
       let body = {
-        username: "ok"
+        orderdate: order.orderdate,
+        email: order.email,
+        orderno: order.orderno,
+        username: order.customerid,
+        products: order.products,
+        totalprice: order.price
       };
 
       let reqObj = {
@@ -169,6 +144,7 @@ class Cart extends REST {
         contentType: "application/json; charset=utf-8"
       };
       $.ajax(reqObj);
-    });
   }
+
+
 }

@@ -28,26 +28,18 @@ module.exports = function(req, res) {
 
         let message = {
             // Comma separated list of recipients
-            to: 'kalleanka@anka.com',
+            to: `${req.body.email}`,
 
             // Subject of the message
-            subject: 'Din beställning från Dajmmans webbshop ✔',
+            subject: `Din beställning från Dajmmans webbshop ✔`,
 
             // HTML body
             html:`
-                <img src="cid:nyan@example.com"/>
-                <p><strong>Hejsan</strong></p>
-                <h1>Orderbekräftelse</h1>
-                <p> (objekt text)<p>
-
-                
-                // attachments: [{
-                //     filename: 'image.png',
-                //     path: '/path/to/file',
-                //     cid: 'unique@kreata.ee' //same cid value as in the html img src
-                // }]
-
-
+                <img src="cid:dajmmanslogo@example.com"/>
+                <p><strong>Hejsan ${req.body.username}</strong></p>
+                <h1>Orderbekräftelse, order #${req.body.orderno}</h1>
+                <p>Du har beställt ${req.body.products}, för ${req.body.totalprice} kr. Ordern mottagen ${req.body.orderdate}<p>
+                <p>Tack för din beställning, välkommen att handla hos oss på Dajmmans igen!</p>
 
                 `,
 
@@ -58,7 +50,7 @@ module.exports = function(req, res) {
                 {
                     //filename: 'hemlig_fil ✔.gif',
                     path: __dirname + '../../www/img/logo.png',   //testpicture to try that paths work
-                    cid: 'nyan@example.com' // should be as unique as possible
+                    cid: 'dajmmanslogo@example.com' // should be as unique as possible
                 }
             ]
         };
