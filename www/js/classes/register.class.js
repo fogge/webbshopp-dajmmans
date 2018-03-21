@@ -11,7 +11,6 @@ class Register extends REST {
   }
 
   async registerUser(){
-
     let email = $('#registerEmail').val();
     let password = $('#registerPassword').val();
     let firstName = $('#registerFirstName').val();
@@ -20,8 +19,14 @@ class Register extends REST {
     let postnr = $('#registerpostnr').val();
     let postOrt = $('#registerPostOrt').val();
 
-    let result = await UserHandler.register(email, password, firstName, lastName, adress, postnr, postOrt);
-    $('#regSuccess').removeClass('d-none');
+     this.result = await UserHandler.register(email, password, firstName, lastName, adress, postnr, postOrt);
+     if(this.result.result.error){
+       $('#regFail').removeClass('d-none');
+       setTimeout(() => {$('#regFail').addClass('d-none');}, 3000);
+     }
+     else{
+        $('#regSuccess').removeClass('d-none');
+     }
   }
 
 }

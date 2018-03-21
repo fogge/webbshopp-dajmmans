@@ -1,22 +1,12 @@
 class Userpage2 extends REST {
-  constructor(app) {
+  constructor() {
   	super();
-  	this.app = app;
-    this.getUsers({});
+    this.getUser();
   }
 
-  async getUsers(searchObj) {
-    let user = 'Dajmman';
-    this.currentUserInfo = await UserInfo.find({firstName: user});
-    this.currentUserInfo = this.currentUserInfo[0].result;
-    this.loopUserToValues(this.currentUserInfo);
-  }
-
-  loopUserToValues(userObject){
-    for (let value in userObject) {
-      this[value] = userObject[value];
-    }
-    this.render('main', 1)
+  async getUser(){
+    this.user = await User.find();
+    this.render('main', 1);
     this.revealPassword();
   }
 
@@ -25,7 +15,7 @@ class Userpage2 extends REST {
     $(document).on('click', '.btn-revealpassword', function(){
      if($('#password-area').text() == '******'){
       $('#password-area').empty();
-      $('#password-area').text(that.password);
+      $('#password-area').text(that.user[0].password);
       $('.hide-show').text('Dölj');
       }
       else{
@@ -33,7 +23,7 @@ class Userpage2 extends REST {
         $('.hide-show').text('Visa');
       }
     })
-    
+
   }
 
 }

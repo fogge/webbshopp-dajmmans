@@ -14,8 +14,19 @@ class REST extends Base{
     // Delete from server/DB
     return await REST.request(entity, 'DELETE', query, this);
   }
-  
-  async save(obj=null){
+
+  // async save(obj=null){
+  //   let entity = (this.constructor.name + 's').toLowerCase();
+  //   if (obj) {
+  //     let query = 'userId=' + obj.userId._id;
+  //     return await REST.request(entity, 'PUT', query, obj);
+  //   } else {
+  //     let query = '_id=' + this._id;
+  //     return await REST.request(entity, 'PUT', query, this);
+  //   }
+  // }
+
+  async save(){
     let entity = (this.constructor.name + 's').toLowerCase();
     if (obj.hasOwnProperty('userId')) {
       let query = 'userId=' + obj.userId._id;
