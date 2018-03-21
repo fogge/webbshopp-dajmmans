@@ -104,6 +104,19 @@ class Cart extends REST {
     return adresses;
   }
 
+  async bankcardCheck() {
+    let cardNumber = $('#cardNumber').val();
+    let expireDate = $('#expireDate').val();
+    let cvc = $('#cvc').val();
+    let re16digit = /^\d{16}$/;
+
+    if (!re16digit.test(document.cardNumber)) {
+      alert("Please enter your 16 digit credit card numbers");
+      return false;
+    }
+
+  }
+
   async confirmOrder() {
 
     if(this.app.shoppingCart.length !== 0) {
@@ -149,6 +162,7 @@ class Cart extends REST {
 
   click () {
     if ($(event.target).hasClass('confirmorder')) {
+      this.bankcardCheck();
       this.confirmOrder();
     }
   }
