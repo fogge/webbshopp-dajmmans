@@ -18,9 +18,12 @@ class Cart extends REST {
       this.cartItems.push(new CartItem(searchObj, this));
     }
     // if statement to not render on startpage.
+    if (location.pathname == '/kassa'){
       console.log('hello');
       $('main').empty();
       this.render();
+    }
+
       this.saveCart();
   }
 
@@ -131,7 +134,7 @@ class Cart extends REST {
         myProduct = await Ingredient.findOne({_id: product._id});
         myProduct.stockBalance -= product.quantity;
         await myProduct.save();
-      } else if(product.category == 'book') { 
+      } else if(product.category == 'book') {
         myProduct = await Book.findOne({_id: product._id});
         myProduct.stockBalance -= product.quantity;
         await myProduct.save();
