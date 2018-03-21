@@ -5,7 +5,8 @@ module.exports = class Cart extends ModelAndRoutes {
   static get schema(){
     return {
       userId: String,
-      items: [{}]
+      items: [{}],
+      category: String
     }
   }
 
