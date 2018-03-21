@@ -10,6 +10,7 @@ class Header extends REST {
       new HeaderItem('Om oss', '/om_oss'),
       new HeaderItem('Kassa', '/kassa', this.app)
     ];
+    this.button = new HeaderButton();
   }
 
   async setActive(url) {
@@ -18,4 +19,5 @@ class Header extends REST {
     }
     this.app.header.render();
   }
+  
 }
