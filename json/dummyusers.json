@@ -16,5 +16,14 @@
     "adress": "Lernia",
     "postnr": 3,
     "postOrt": "Föreläsningssal"
-	}
+	},
+    {
+    "email": "admin@dajmman.se",
+    "firstName": "admin",
+    "lastName": "admin",
+    "password": "123",
+    "adress": "",
+    "postnr": 0,
+    "postOrt": ""
+    }
 ]

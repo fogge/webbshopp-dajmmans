@@ -6,7 +6,6 @@ class Register extends REST {
 
     $(document).on('submit', '#registerForm', function(e) {
      e.preventDefault();
-     that.userCheck();
      that.registerUser();
    });
   }
@@ -20,12 +19,14 @@ class Register extends REST {
     let postnr = $('#registerpostnr').val();
     let postOrt = $('#registerPostOrt').val();
 
-    let result = await UserHandler.register(email, password, firstName, lastName, adress, postnr, postOrt);
-  }
-
-  async userCheck(){
-    let test = $('#registerEmail').val();
-    $('#regFail').removeClass('d-none');
+     this.result = await UserHandler.register(email, password, firstName, lastName, adress, postnr, postOrt);
+     if(this.result.result.error){
+       $('#regFail').removeClass('d-none');
+       setTimeout(() => {$('#regFail').addClass('d-none');}, 3000);
+     }
+     else{
+        $('#regSuccess').removeClass('d-none');
+     }
   }
 
 }

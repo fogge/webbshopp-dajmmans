@@ -3,9 +3,14 @@ class Userpage extends REST {
   	super();
   	this.activeOrders = [];
   	this.oldOrders = [];
+    this.getUser();
 		this.getOrders();
 		this.co = 0;
 
+  }
+
+  async getUser(){
+    this.user = await User.find();
   }
 
   async getOrders() {
@@ -36,9 +41,9 @@ class Userpage extends REST {
 
 			orders.forEach( (product) => {
 				this.co++;
-				this.user = product.result.customerid;
-				let userpageItem = new UserpageItem(product.result, this.co);
-				if(product.result.status == 'Skickad'){
+				this.user = product.customerid;
+				let userpageItem = new UserpageItem(product, this.co);
+				if(product.status == 'Skickad'){
   				this.oldOrders.push(userpageItem);
 				} else {
   				this.activeOrders.push(userpageItem);

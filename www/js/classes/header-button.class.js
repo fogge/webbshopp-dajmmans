@@ -5,7 +5,7 @@ class HeaderButton extends REST {
   }
   async loginCheck(){
     let loggedInUser = await UserHandler.check();
-    loggedInUser = loggedInUser[0] && loggedInUser[0].result && loggedInUser[0].result._id;
+    loggedInUser = loggedInUser[0] && loggedInUser[0] && loggedInUser[0]._id;
     this.templateNo = loggedInUser?'2':'';
     $('#headerButton').empty();
     this.render('#headerButton', this.templateNo);
