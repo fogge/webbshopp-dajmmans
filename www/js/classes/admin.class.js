@@ -3,7 +3,7 @@ class Admin extends REST {
       super();
       this.app = app;
       this.getOrders({});
-      this.clickEvents();
+      this.openDetails();
       this.changeOrderStatus();
       this.searchAdminOrders();
   
@@ -21,10 +21,15 @@ class Admin extends REST {
       }
     }
 
-    clickEvents(){
-      $(document).on('click', '#orderDetails', function( event ) {
+    openDetails(){
+      $(document).on('click', '.admin-item', function( event ) {
         let state = $(event.target).attr('value');
-        state == 'Open'? $(event.target).attr('value', 'Close').text('Stänga detaljer') : $(event.target).attr('value', 'Open').text('Öppna detaljer')
+        let detailId = $(event.target).attr('id').split('-')[1];
+        state == 'Open'? (
+          $(`#orderDetails-${detailId}`).attr('value', 'Close').text('Stänga detaljer').toggleClass('btn-dark'),
+          $(`#item-${detailId}`).attr('value', 'Close') ):(
+              $(`#orderDetails-${detailId}`).attr('value', 'Open').text('Öppna detaljer').toggleClass('btn-dark'),
+              $(`#item-${detailId}`).attr('value', 'Open'));
       });
     }
 
@@ -55,10 +60,7 @@ class Admin extends REST {
       let that = this;
       $(document).on('click', '.changeOrderStatus', function( event ) {
         let idToChange = $(event.target).attr('id').split('-')[1];
-        console.log(idToChange);
-        
         $(document).on('click', `#changeOrderStatusOption-${idToChange} button`, function( event ) {
-        console.log('woop');
          that.order.result._id = idToChange;
          let status = $(event.target).text();
          $(`#progress-${idToChange}`).empty();
@@ -87,20 +89,22 @@ class Admin extends REST {
       $(document).on('click', '#adminSearch', function (event) {
         event.preventDefault();
         let keyword = $('#adminKeyword').val();
-        $('#adminKeyword').val('Sökorder');
+        $('#adminKeyword').val('');
         that.searchEngineAdmin(keyword);
       });  
     }
 
-    async searchEngineAdmin (keyword) {
-      this.searchResult = await Order.find({orderno: keyword});
-      this.order.result = this.searchResult[0].result;
+    async searchEngineAdmin (keyword) {  
+      this.searchResult = this.orders.find(searchResult =>
+        searchResult.result.orderno == keyword
+      );      
+      this.order.result = this.searchResult.result;
       this.order.result.orderdate = this.order.result.orderdate.substring(0,10);
       $('.orderList').empty();
-      $(`#progress-${this.searchResult[0].result._id}`);
+      $(`#progress-${this.searchResult.result._id}`);
       this.render('.orderList',2);
-      this.render(`#progress-${this.searchResult[0].result._id}`, 3);
-      this.orderStatus(this.searchResult[0].result.status);
+      this.render(`#progress-${this.searchResult.result._id}`, 3);
+      this.orderStatus(this.searchResult.result.status);
       
     }
   }
