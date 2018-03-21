@@ -105,25 +105,29 @@ class Cart extends REST {
   }
 
   async confirmOrder() {
+    this.user = (await UserHandler.check());
+    if(this.user[0]){
+      if(app.shoppingCart.length !== 0) {
+        let adresses = this.approveCustomerData();
+        let totalPrice = this.getTotalPrice();
+        let totalVat = this.getTotalVat();
 
-    if(app.shoppingCart.length !== 0) {
-      let adresses = approveCustomerData();
-      let totalPrice = this.getTotalPrice();
-      let totalVat = this.getTotalVat();
-
-      let order = await Order.create({
-      orderno: 123,
-      products: app.shoppingCart,
-      orderdate: Date.now(),
-      customerid: "String",
-      price: totalPrice,
-      vat: totalVat,
-      adress: adresses
-      });
-      this.adjustStock(order);
-      $('#confirmorder').modal('show');
-      app.shoppingCart = [];
-      this.cartItems = [];
+        let order = await Order.create({
+        orderno: 123,
+        products: app.shoppingCart,
+        orderdate: Date.now(),
+        customerid: "String",
+        price: totalPrice,
+        vat: totalVat,
+        adress: adresses
+        });
+        this.adjustStock(order);
+        $('#confirmorder').modal('show');
+        app.shoppingCart = [];
+        this.cartItems = [];
+      }
+    } else {
+      $('.error-message-cart').html('Var god att logga in innan du kan fullfölja din beställning.');
     }
 
   }
