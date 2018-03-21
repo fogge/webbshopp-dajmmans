@@ -1,7 +1,7 @@
 class ProductPage extends REST {
   constructor(app) {
     super();
-    this.app = app;
+    app = app;
   }
 
   async getProduct(productId){
@@ -16,22 +16,22 @@ class ProductPage extends REST {
     console.log(this)
     if ($(event.target).hasClass('addToCart') && this.productSelected.stockBalance) {
       const checkShoppingCart = (checkObj) => {
-        for (let product of this.app.shoppingCart) {
+        for (let product of app.shoppingCart) {
           if (product._id == checkObj._id) {
             product.quantity += 1;
             return false;
           }
         }
-        this.app.cart.saveCart();
+        app.cart.saveCart();
         return true;
       }
-      if (this.app.shoppingCart == [] || checkShoppingCart(this.productSelected)) this.app.shoppingCart.push({
+      if (app.shoppingCart == [] || checkShoppingCart(this.productSelected)) app.shoppingCart.push({
           _id: this.productSelected._id, 
           quantity: this.productSelected.quantity, 
           category: this.productSelected.category
         });
 
-      this.app.header.render();
+      app.header.render();
       $(event.target).addClass("bg-danger").text('Tillagd').delay(1000).queue(function(next) {
         $(this).removeClass('bg-danger').text('Köp');
         next();

@@ -1,12 +1,12 @@
 class ProductCategory extends REST {
   constructor(app, category){
     super();
-    this.app = app;
+    app = app;
     this.myProducts = [];
     this.getRightCategory(category);
     this.category = category;
     this.setupHandler();
-    
+
   }
 
   async getRightCategory(category){
@@ -14,8 +14,8 @@ class ProductCategory extends REST {
     let categoryName = collection[0].constructor.name.toLowerCase();
     try {
       collection.forEach( (product) => {
-        this.myProducts.push(new ProductAvatar(product, this.app, categoryName));
-        
+        this.myProducts.push(new ProductAvatar(product, app, categoryName));
+
       });
     } catch(e){
       console.error('Problem med collections \n', e);
