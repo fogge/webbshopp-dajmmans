@@ -1,7 +1,7 @@
 class Search extends REST {
   constructor(query, app) {
     super();
-    this.app = app;
+    app = app;
     this.query = query;
     this.searchResult = [];
     this.getSearchResult();
@@ -23,7 +23,7 @@ class Search extends REST {
     }
     try {
       mongoResult.forEach( (product) => {
-        this.searchResult.push(new ProductAvatar(product, this.app, product.constructor.name.toLowerCase()));        
+        this.searchResult.push(new ProductAvatar(product, app, product.constructor.name.toLowerCase()));        
       });
     } catch(e){
       console.error('Problem med collections \n', e);

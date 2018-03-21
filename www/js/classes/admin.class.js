@@ -1,7 +1,7 @@
 class Admin extends REST {
     constructor(app) {
       super();
-      this.app = app;
+      app = app;
       this.getOrders({});
       this.clickEvents();
       this.changeOrderStatus();

@@ -1,7 +1,7 @@
 class Userpage extends REST {
   constructor(app) {
   	super();
-  	this.app = app;
+  	app = app;
   	this.activeOrders = [];
   	this.oldOrders = [];
 		this.getOrders();
@@ -38,7 +38,7 @@ class Userpage extends REST {
 			orders.forEach( (product) => {
 				this.co++;
 				this.user = product.result.customerid;
-				let userpageItem = new UserpageItem(product.result, this.app, this.co);
+				let userpageItem = new UserpageItem(product.result, app, this.co);
 				if(product.result.status == 'Skickad'){
   				this.oldOrders.push(userpageItem);
 				} else {

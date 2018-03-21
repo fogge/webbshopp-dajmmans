@@ -1,12 +1,14 @@
 class Login extends REST {
-  constructor() {
+  constructor(app) {
     super();
+    this.app = app;
     let that = this;
 
     // logged in
     $(document).on('submit', '#loginForm', function(e) {
      e.preventDefault();
      that.loginUser();
+
    });
   }
 
@@ -15,6 +17,20 @@ class Login extends REST {
     let password = $('#loginPassword').val();
 
     let result = await UserHandler.login(email, password);
-    $('#loginSuccess').removeClass('d-none');
+    if (result.info.loginOk == true) {
+      $('#loginSuccess').removeClass('d-none');
+      app.header.button.loginCheck();
+      $('#headerButton').empty();
+    }
+    else{
+      $('#loginFail').removeClass('d-none');
+      app.header.button.loginCheck();
+      $('#headerButton').empty();
+      setTimeout(() => {$('#loginFail').addClass('d-none');}, 2000);
+
+
+    }
   }
+
+
 }

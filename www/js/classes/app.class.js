@@ -15,7 +15,6 @@ class App extends REST {
 
     //Rendering the header
     this.header = new Header(this);
-    $('header').empty();
     this.header.render('header');
 
     //Rendering the footer
@@ -24,7 +23,7 @@ class App extends REST {
     this.footer.render('footer');
 
     // Loading the cart
-    this.cart = new Cart(this);
+    this.cart = new Cart();
     this.cart.loadCart();
 
     this.startPage = new Startpage(this);
@@ -32,6 +31,7 @@ class App extends REST {
     this.ingredienser = new Ingredient(this);
     this.Book = new Book(this);
     this.order = new Order();
+    this.logout = new Logout(this);
     this.popState = new PopStateHandler(this);
   }
 
