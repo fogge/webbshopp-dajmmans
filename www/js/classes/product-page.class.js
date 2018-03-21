@@ -1,13 +1,13 @@
 class ProductPage extends REST {
-  constructor(app) {
+  constructor() {
     super();
-    app = app;
   }
 
   async getProduct(productId){
     this.productId = productId;
-    this.productSelected = All.allProducts.find( selectedProduct => selectedProduct.result._id === productId);
-    this.productSelected = this.productSelected.result;
+    console.log(productId)
+    this.productSelected = All.allProducts.find( selectedProduct => selectedProduct._id === productId);
+    console.log(this.productSelected.imageLink);
     this.productSelected.quantity = 1;
 
   }
@@ -26,8 +26,8 @@ class ProductPage extends REST {
         return true;
       }
       if (app.shoppingCart == [] || checkShoppingCart(this.productSelected)) app.shoppingCart.push({
-          _id: this.productSelected._id, 
-          quantity: this.productSelected.quantity, 
+          _id: this.productSelected._id,
+          quantity: this.productSelected.quantity,
           category: this.productSelected.category
         });
 

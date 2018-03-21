@@ -130,7 +130,7 @@ class Cart extends REST {
   }
 
   async adjustStock(order) {
-    for(let product of order.result.products) {
+    for(let product of order.products) {
       let myProduct;
       if (product.category == 'ingredient') {
         myProduct = await Ingredient.findOne({_id: product._id});
