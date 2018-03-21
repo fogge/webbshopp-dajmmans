@@ -13,6 +13,7 @@ class ProductPage extends REST {
   }
 
   click() {
+    console.log(this)
     if ($(event.target).hasClass('addToCart') && this.productSelected.stockBalance) {
       const checkShoppingCart = (checkObj) => {
         for (let product of this.app.shoppingCart) {
@@ -24,7 +25,11 @@ class ProductPage extends REST {
         this.app.cart.saveCart();
         return true;
       }
-      if (this.app.shoppingCart == [] || checkShoppingCart(this.productSelected)) this.app.shoppingCart.push({_id: this.productSelected._id, quantity: this.productSelected.quantity});
+      if (this.app.shoppingCart == [] || checkShoppingCart(this.productSelected)) this.app.shoppingCart.push({
+          _id: this.productSelected._id, 
+          quantity: this.productSelected.quantity, 
+          category: this.productSelected.category
+        });
 
       this.app.header.render();
       $(event.target).addClass("bg-danger").text('Tillagd').delay(1000).queue(function(next) {

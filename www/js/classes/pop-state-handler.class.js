@@ -72,11 +72,11 @@ class PopStateHandler extends REST {
 
     //looping through ID
     for (let i = 0; i < All.allProducts.length; i++){
-      let url = `/${All.allProducts[i].constructor.name.toLowerCase()}/produkt/${All.allProducts[i].result._id}`;
+      let url = `/${All.allProducts[i].constructor.name.toLowerCase()}/produkt/${All.allProducts[i]._id}`;
+      Object.assign(All.allProducts[i], {category: All.allProducts[i].constructor.name.toLowerCase()});
       let target = 'product';
       Object.assign(urls, {[url] : target});
     }
-
     // Call the right method
     let methodName = urls[url];
 
