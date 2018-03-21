@@ -25,10 +25,7 @@ class Register extends REST {
 
   async userCheck(){
     let test = $('#registerEmail').val();
-    let availableUser = await User.find({email: test});
     $('#regFail').removeClass('d-none');
-    console.log(availableUser);
-    console.log(test);
   }
 
 }
