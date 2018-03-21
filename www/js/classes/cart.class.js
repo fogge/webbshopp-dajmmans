@@ -157,6 +157,7 @@ class Cart extends REST {
       $('#confirmorder').modal('show');
       app.shoppingCart = [];
       this.cartItems = [];
+      this.saveCart();
     }
   }
 
@@ -202,7 +203,12 @@ class Cart extends REST {
       }
       else {
         if(this.bankcardCheck()){
-          this.confirmOrder();
+          await this.confirmOrder();
+          $('#confirmorder').on('hidden.bs.modal', async () => {
+            await $('main').empty();
+            this.render('main');
+            app.header.render();
+          })
         }
       }
     }

@@ -78,9 +78,7 @@ class PopStateHandler extends REST {
     }
     // Call the right method
     let methodName = urls[url];
-    app.header.button.loginCheck();
-
-
+    
     if (methodName =='product') {
       let productId = url.split('/')[3];
       console.log(productId);

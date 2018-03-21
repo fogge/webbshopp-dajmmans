@@ -10,7 +10,7 @@ Object.assign(Header.prototype, { template(){ return `
         </ul>
         <form class="form-inline ml-auto mt-3 mr-md-2">
           <div id="headerButton">
-          ${this.button.render('', this.button.templateNo)}
+          ${this.button.loginCheck()}
 
           </div>
             <div class="input-group m-0 mt-2 mt-md-0">
