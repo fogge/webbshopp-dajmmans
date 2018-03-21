@@ -1,9 +1,8 @@
 class Cart extends REST {
-  constructor(app) {
-    super();
-    this.app = app;
+  constructor(result) {
+    super(result);
     this.cartItems = [];
-    if (this.app instanceof App){
+    if(!result){
       this.getCartItems();
     }
   }
@@ -11,27 +10,29 @@ class Cart extends REST {
   async getCartItems() {
     let all = new All();
     await this.loadCart();
-    for (let item of this.app.shoppingCart) {
+    for (let item of app.shoppingCart) {
       let searchObj = await all.getResult({_id: item._id});
       searchObj = searchObj[0];
       searchObj.quantity = item.quantity;
       if (searchObj.stockBalance - item.quantity < 0) searchObj.stockWarning = true;
       this.cartItems.push(new CartItem(searchObj, this));
-  }
+    }
     // if statement to not render on startpage.
-    if(location.pathname == '/kassa'){
+    if (location.pathname == '/kassa'){
+      console.log('hello');
       $('main').empty();
       this.render();
     }
-    this.saveCart();
+
+      this.saveCart();
   }
 
   async loadCart(){
     this.user = (await UserHandler.check());
     let cart = (await Cart.findOne({userId: this.user.info.query}));
-    if (this.app.shoppingCart.length === 0 && cart){
-      this.app.shoppingCart = cart.app.items
-      this.app.header.render()
+    if (app.shoppingCart.length === 0 && cart){
+      app.shoppingCart = cart.items;
+      app.header.render()
     }
   }
 
@@ -76,18 +77,16 @@ class Cart extends REST {
     userId = userId.info.query;
     let alreadyExists = (await Cart.findOne({userId: userId}));
     // Check if there is a cart with logged in user
+    console.log(alreadyExists);
     if (alreadyExists) {
-      return await this.save({
-        userId: userId,
-        items: this.app.shoppingCart
-      });
+      alreadyExists.items = app.shoppingCart;
+      await alreadyExists.save();
     } else {
       return await Cart.create({
         userId: userId,
-        items: this.app.shoppingCart
+        items: app.shoppingCart
       });
     }
-
   }
 
   approveCustomerData() {
@@ -100,20 +99,20 @@ class Cart extends REST {
       phone: $('#cartphone').val(),
       email: $('#cartemail').val(),
       country: $('#cartcountry').val()
-    }  
+    }
     return adresses;
   }
 
   async confirmOrder() {
 
-    if(this.app.shoppingCart.length !== 0) {
-      let adresses = this.approveCustomerData();
+    if(app.shoppingCart.length !== 0) {
+      let adresses = approveCustomerData();
       let totalPrice = this.getTotalPrice();
       let totalVat = this.getTotalVat();
 
       let order = await Order.create({
       orderno: 123,
-      products: this.app.shoppingCart,
+      products: app.shoppingCart,
       orderdate: Date.now(),
       customerid: "String",
       price: totalPrice,
@@ -122,7 +121,7 @@ class Cart extends REST {
       });
       this.adjustStock(order);
       $('#confirmorder').modal('show');
-      this.app.shoppingCart = [];
+      app.shoppingCart = [];
       this.cartItems = [];
     }
 
@@ -135,7 +134,7 @@ class Cart extends REST {
         myProduct = await Ingredient.findOne({_id: product._id});
         myProduct.stockBalance -= product.quantity;
         await myProduct.save();
-      } else if(product.category == 'book') { 
+      } else if(product.category == 'book') {
         myProduct = await Book.findOne({_id: product._id});
         myProduct.stockBalance -= product.quantity;
         await myProduct.save();
