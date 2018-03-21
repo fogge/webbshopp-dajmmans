@@ -1,7 +1,7 @@
 class Admin extends REST {
-    constructor(app) {
+    constructor() {
       super();
-      app = app;
+      //app = app;
       this.getOrders({});
       this.openDetails();
       this.changeOrderStatus();
@@ -10,11 +10,19 @@ class Admin extends REST {
     }
 
     async getOrders(searchObj) {
-      this.orders = await Order.find(searchObj);            
+      this.orders = await Order.find(searchObj);   
+      
+               
       for (const order of this.orders) {
         this.order = order;
         this.order.orderdate = this.order.orderdate.substring(0,10);
-        
+        this.orderRef = this.order._id.substring(18,24);
+        this.order.products.forEach(orderProduct => {
+          this.orderProductQuantity = orderProduct.quantity;
+          this.product = All.allProducts.find(product =>
+            product._id == orderProduct._id );
+          
+        });
         this.render('.orderList',2);
         this.render(`#progress-${this.order._id}`, 3);
         this.orderStatus(this.order.status);
