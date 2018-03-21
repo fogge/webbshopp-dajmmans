@@ -59,7 +59,7 @@ class CartItem extends REST {
         shoppingCartGlobal.quantity += 1;
         this.quantity += 1;
         this.renderCart();
-        this.cart.app.cart.saveCart();
+        app.cart.saveCart();
       }
     }
 
@@ -72,21 +72,21 @@ class CartItem extends REST {
         shoppingCartGlobal.quantity -= 1;
         this.quantity -= 1;
         this.renderCart();
-        this.cart.app.cart.saveCart();
+        app.cart.saveCart();
       }
     }
 
     if ($(event.target).hasClass('delete-cart-item')) {
-      let globalShoppingIndex = this.cart.app.shoppingCart.findIndex(x => x._id==this._id);
+      let globalShoppingIndex = app.shoppingCart.findIndex(x => x._id==this._id);
       let cartShoppingIndex = this.cart.cartItems.findIndex(x => x._id==this._id);
-      this.cart.app.shoppingCart.splice(globalShoppingIndex, 1);
+      app.shoppingCart.splice(globalShoppingIndex, 1);
       this.cart.cartItems.splice(cartShoppingIndex, 1);
       $(event.target).parent().parent().parent().slideUp(1000);
       setTimeout(() => {
         this.renderCart();
-        this.cart.app.header.render();
+        app.header.render();
       }, 1000);
-      this.cart.app.cart.saveCart();
+      app.cart.saveCart();
     }
   }
 }

@@ -2,7 +2,7 @@ class Startpage extends REST {
   constructor(app) {
     super();
   	this.homepageAvatars = [];
-    this.app = app;
+    app = app;
 		let result1 = All.allProducts.filter(ingredients => 'Ingredient' == ingredients.constructor.name).splice(0, 4);
 		let result2 = All.allProducts.filter(materiel => 'Materiel' == materiel.constructor.name).splice(0, 4);
 		let result3 = All.allProducts.filter(book => 'Book' == book.constructor.name).splice(0, 4);
@@ -11,8 +11,8 @@ class Startpage extends REST {
 	}
 
   renderAvatarsStartpage(){
-  	for(let product of this.result) {			
-	  	this.homepageAvatars.push(new ProductAvatar(product, this.app, product.constructor.name.toLowerCase()));
+  	for(let product of this.result) {
+	  	this.homepageAvatars.push(new ProductAvatar(product, app, product.constructor.name.toLowerCase()));
   	}
 	}
 
