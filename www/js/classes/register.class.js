@@ -20,7 +20,7 @@ class Register extends REST {
     let postOrt = $('#registerPostOrt').val();
 
      this.result = await UserHandler.register(email, password, firstName, lastName, adress, postnr, postOrt);
-     if(this.result.result.error){
+     if(this.result.error){
        $('#regFail').removeClass('d-none');
        setTimeout(() => {$('#regFail').addClass('d-none');}, 3000);
      }
