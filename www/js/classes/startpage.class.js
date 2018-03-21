@@ -12,7 +12,7 @@ class Startpage extends REST {
 
   renderAvatarsStartpage(){
   	for(let product of this.result) {			
-	  	this.homepageAvatars.push(new ProductAvatar(product.result, this.app, product.constructor.name.toLowerCase()));
+	  	this.homepageAvatars.push(new ProductAvatar(product, this.app, product.constructor.name.toLowerCase()));
   	}
 	}
 
