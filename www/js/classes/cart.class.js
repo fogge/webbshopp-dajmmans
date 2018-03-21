@@ -73,6 +73,7 @@ class Cart extends REST {
 
   async saveCart() {
     let userId = await UserHandler.check();
+    let b = userId;
     userId = userId.info.query;
     let cartObj = (await Cart.findOne({userId: userId}));
     // Check if there is a cart with logged in user
@@ -99,6 +100,40 @@ class Cart extends REST {
       country: $('#cartcountry').val()
     }
     return adresses;
+  }
+
+  bankcardCheck() {
+    let cardNumber = $('#cardNumber').val();
+    let expireDate = $('#expireDate').val();
+    let cvc = $('#cvc').val();
+    
+    let re16digit = /^\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}$/
+    let reDate = /^\d{2}[- \/]?\d{2}/
+    let re3digit = /\d{3}/
+
+    if (!re16digit.test(cardNumber) || 
+        !reDate.test(expireDate) ||
+        !re3digit.test(cvc) )
+    {
+
+      $('.checkout-summery .alert').remove();
+      $('.checkout-summery').append(`
+
+        <div class="alert alert-danger alert-dismissible fade show mb-5 mt-3" role="alert">
+          <strong>Försök igen! Kolla över det du skrivit så det verkligen stämmer.</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        `);
+      clearTimeout(this.alertTimeoutStart);
+      this.alertTimeoutStart = setTimeout(()=> {
+        $('.checkout-summery .alert').alert('close');
+      }, 6000);
+      return false;
+    }
+    return true;
   }
 
   async confirmOrder() {
@@ -150,7 +185,9 @@ class Cart extends REST {
 
   click () {
     if ($(event.target).hasClass('confirmorder')) {
-      this.confirmOrder();
+      if(this.bankcardCheck()){
+        this.confirmOrder();  
+      }
     }
   }
 
