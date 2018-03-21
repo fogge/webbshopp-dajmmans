@@ -120,7 +120,6 @@ class Cart extends REST {
       vat: totalVat,
       adress: adresses
       });
-      console.log(order)
       this.adjustStock(order);
       $('#confirmorder').modal('show');
       this.app.shoppingCart = [];
@@ -130,15 +129,20 @@ class Cart extends REST {
   }
 
   async adjustStock(order) {
-
     for(let product of order.result.products) {
+      let myProduct;
       if (product.category == 'ingredient') {
-        let myProduct = await Ingredient.findOne({_id: product._id});
-        console.log(myProduct.stockBalance);
-        myProduct.stockBalance -= 1;
-        console.log(myProduct.stockBalance);
-        let r = await myProduct.save();
-        console.log(r);
+        myProduct = await Ingredient.findOne({_id: product._id});
+        myProduct.stockBalance -= product.quantity;
+        await myProduct.save();
+      } else if(product.category == 'book') { 
+        myProduct = await Book.findOne({_id: product._id});
+        myProduct.stockBalance -= product.quantity;
+        await myProduct.save();
+      } else if(product.category == 'materiel') {
+        myProduct = await Materiel.findOne({_id: product._id});
+        myProduct.stockBalance -= product.quantity;
+        await myProduct.save();
       }
     }
   }
