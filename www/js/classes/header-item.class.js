@@ -1,8 +1,7 @@
 class HeaderItem extends REST {
 
-  constructor(name, url, app){
+  constructor(name, url){
     super();
-    app = app;
     this.name = name;
     this.url = url;
     this.active = false;

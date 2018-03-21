@@ -1,7 +1,6 @@
 class Header extends REST {
-  constructor(app) {
+  constructor() {
     super();
-    app = app;
     this.items = [
       new HeaderItem('Start', '/'),
       new HeaderItem('Materiel', '/materiel'),
@@ -10,6 +9,7 @@ class Header extends REST {
       new HeaderItem('Om oss', '/om_oss'),
       new HeaderItem('Kassa', '/kassa', app)
     ];
+    this.button = new HeaderButton();
   }
 
   async setActive(url) {
@@ -18,4 +18,5 @@ class Header extends REST {
     }
     app.header.render();
   }
+
 }

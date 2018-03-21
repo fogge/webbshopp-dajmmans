@@ -6,12 +6,12 @@ class Register extends REST {
 
     $(document).on('submit', '#registerForm', function(e) {
      e.preventDefault();
+     that.userCheck();
      that.registerUser();
    });
   }
 
   async registerUser(){
-
     let email = $('#registerEmail').val();
     let password = $('#registerPassword').val();
     let firstName = $('#registerFirstName').val();
@@ -21,7 +21,11 @@ class Register extends REST {
     let postOrt = $('#registerPostOrt').val();
 
     let result = await UserHandler.register(email, password, firstName, lastName, adress, postnr, postOrt);
-    $('#regSuccess').removeClass('d-none');
+  }
+
+  async userCheck(){
+    let test = $('#registerEmail').val();
+    $('#regFail').removeClass('d-none');
   }
 
 }
