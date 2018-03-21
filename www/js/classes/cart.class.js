@@ -13,7 +13,7 @@ class Cart extends REST {
     await this.loadCart();
     for (let item of this.app.shoppingCart) {
       let searchObj = await all.getResult({_id: item._id});
-      searchObj = searchObj[0].result;
+      searchObj = searchObj[0];
       searchObj.quantity = item.quantity;
       if (searchObj.stockBalance - item.quantity < 0) searchObj.stockWarning = true;
       this.cartItems.push(new CartItem(searchObj, this));
@@ -120,13 +120,27 @@ class Cart extends REST {
       vat: totalVat,
       adress: adresses
       });
-      let userId = (await UserHandler.check());
-      console.log(userId);
+      console.log(order)
+      this.adjustStock(order);
       $('#confirmorder').modal('show');
       this.app.shoppingCart = [];
       this.cartItems = [];
     }
 
+  }
+
+  async adjustStock(order) {
+
+    for(let product of order.result.products) {
+      if (product.category == 'ingredient') {
+        let myProduct = await Ingredient.findOne({_id: product._id});
+        console.log(myProduct.stockBalance);
+        myProduct.stockBalance -= 1;
+        console.log(myProduct.stockBalance);
+        let r = await myProduct.save();
+        console.log(r);
+      }
+    }
   }
 
   click () {

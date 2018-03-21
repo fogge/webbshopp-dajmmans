@@ -3,8 +3,7 @@ const ModelAndRoutes = require('./model-and-routes.class');
 module.exports = class Order extends ModelAndRoutes { 
  
   static get schema(){ 
-    return { 
-      orderno: Number, 
+    return {  
       products: [{}], 
       status: {type: String, default: "Mottagen"}, 
       orderdate: { type: Date, default: Date.now },
