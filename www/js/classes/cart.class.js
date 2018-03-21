@@ -5,7 +5,7 @@ class Cart extends REST {
     this.cartItems = [];
     if (this.app instanceof App){
       this.getCartItems();
-      this.click();
+      
     }
   }
 
@@ -111,6 +111,7 @@ class Cart extends REST {
       price: 123,
       vat: Number
     } );
+    this.sendMail(order);
       $('#confirmorder').modal('show');
     }
 
@@ -122,9 +123,9 @@ class Cart extends REST {
     }
   }
 
-  click(){
-    $(document).on('click', '.testmail', function( event ) {
-      console.log("testMailknapp");
+  sendMail(order){
+    // $(document).on('click', '.testmail', function( event ) {
+      console.log(order);
       let body = {
         username: "ok"
       };
@@ -138,6 +139,6 @@ class Cart extends REST {
         contentType: "application/json; charset=utf-8"
       };
       $.ajax(reqObj);
-    });
+    // });
   }
 }
