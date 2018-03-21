@@ -1,7 +1,6 @@
 class Userpage2 extends REST {
-  constructor(app) {
+  constructor() {
   	super();
-  	app = app;
     this.getUsers({});
   }
 
@@ -33,7 +32,7 @@ class Userpage2 extends REST {
         $('.hide-show').text('Visa');
       }
     })
-    
+
   }
 
 }
