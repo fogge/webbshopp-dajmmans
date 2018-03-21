@@ -1,6 +1,7 @@
 Object.assign(Login.prototype, { template(){ return `
   <form class="mt-2" id="loginForm" role="form">
         <p id="loginSuccess" class="text-light text-center border border-success d-none">Inloggningen lyckades! Du når din profil under "Mina sidor".</p>
+        <p id="loginFail" class="text-light text-center border border-danger d-none">Användarnamn eller lösenord är fel!</p>
         <div class="form-group">
           <label for="exampleInputEmail1">E-postadress</label>
           <input type="email" class="form-control" required id="loginEmail" aria-describedby="emailHelp" placeholder="t.ex. svensson@gmail.com">
