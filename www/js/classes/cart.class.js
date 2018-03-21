@@ -5,7 +5,7 @@ class Cart extends REST {
     this.cartItems = [];
     if (this.app instanceof App){
       this.getCartItems();
-      this.hejhej();
+      this.click();
     }
   }
 
@@ -122,9 +122,22 @@ class Cart extends REST {
     }
   }
 
-  hejhej(){
+  click(){
     $(document).on('click', '.testmail', function( event ) {
-      console.log("test");
+      console.log("testMailknapp");
+      let body = {
+        username: "ok"
+      };
+
+      let reqObj = {
+        url: `/send-mail`,
+        method: 'POST',
+        data: JSON.stringify(body),
+        dataType: 'json',
+        processData: false,
+        contentType: "application/json; charset=utf-8"
+      };
+      $.ajax(reqObj);
     });
-  };
+  }
 }

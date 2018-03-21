@@ -1,17 +1,7 @@
-const ModelAndRoutes = require('./model-and-routes.class');
 const nodemailer = require('nodemailer');
-const express = require('express');
-const bodyParser = require('body-parser');
 
-module.exports = class SendMail extends ModelAndRoutes {
-
-constructor(){
-    super();
-    this.sendMail();
-}
-
-
-sendMail (req, res) {
+module.exports = function(req, res) {
+    console.log('hej');
 
     nodemailer.createTestAccount((err, account) => {
         let transporter = nodemailer.createTransport({
@@ -89,5 +79,4 @@ sendMail (req, res) {
             // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou... 
         });
     });
-    }
 }
