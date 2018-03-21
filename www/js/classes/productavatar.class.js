@@ -22,7 +22,7 @@ class ProductAvatar extends REST {
         this.app.cart.saveCart();
         return true;
       }
-      if (this.app.shoppingCart == [] || checkShoppingCart(this)) this.app.shoppingCart.push({_id: this._id, quantity: this.quantity});
+      if (this.app.shoppingCart == [] || checkShoppingCart(this)) this.app.shoppingCart.push({_id: this._id, quantity: this.quantity, category: this.category});
 
       this.app.header.render();
       $(event.target).addClass("btn-danger").text('Tillagd').delay(1000).queue(function(next) {
