@@ -10,7 +10,9 @@ class Userpage extends REST {
   }
 
   async getUser(){
-    this.user = await User.find();
+		this.userInfo = await User.find();
+		
+		
   }
 
   async getOrders() {
