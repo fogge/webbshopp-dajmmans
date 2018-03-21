@@ -107,9 +107,10 @@ class Cart extends REST {
     let cardNumber = $('#cardNumber').val();
     let expireDate = $('#expireDate').val();
     let cvc = $('#cvc').val();
+    cardNumber = cardNumber.replace(/[[:blank:]]/);
     let re16digit = /^\d{16}$/;
 
-    if (!re16digit.test(document.cardNumber)) {
+    if (!re16digit.test(cardNumber)) {
       alert("Please enter your 16 digit credit card numbers");
       return false;
     }
