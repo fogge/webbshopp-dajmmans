@@ -1,7 +1,6 @@
 class HeaderButton extends REST {
-  constructor(app) {
+  constructor() {
     super();
-    this.app = app;
     this.templateNo = '';
   }
   async loginCheck(){

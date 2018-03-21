@@ -1,7 +1,6 @@
 class ProductCategory extends REST {
-  constructor(app, category){
+  constructor(category){
     super();
-    app = app;
     this.myProducts = [];
     this.getRightCategory(category);
     this.category = category;
@@ -14,7 +13,7 @@ class ProductCategory extends REST {
     let categoryName = collection[0].constructor.name.toLowerCase();
     try {
       collection.forEach( (product) => {
-        this.myProducts.push(new ProductAvatar(product, app, categoryName));
+        this.myProducts.push(new ProductAvatar(product, categoryName));
 
       });
     } catch(e){

@@ -1,7 +1,6 @@
 class Login extends REST {
-  constructor(app) {
-    super();
-    this.app = app;
+  constructor(result) {
+    super(result);
     let that = this;
 
     // logged in
