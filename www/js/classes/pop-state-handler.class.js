@@ -2,7 +2,7 @@ class PopStateHandler extends REST {
 
   // Note: Only instantiate PopStateHandler once!
 
-  constructor(app){
+  constructor(){
     super();
     // Add event handlers for a.pop-links once
     this.addEventHandler();
@@ -111,26 +111,26 @@ class PopStateHandler extends REST {
 
   materiel(){
     this.empty();
-    app.productcategory = new ProductCategory(app, Materiel);
+    app.productcategory = new ProductCategory(Materiel);
     app.productcategory.render('main', '3');
   }
 
   ingredienser(){
     this.empty();
-    app.productcategory = new ProductCategory(app, Ingredient);
+    app.productcategory = new ProductCategory(Ingredient);
     app.productcategory.render('main', '3');
   }
 
   bocker(){
     this.empty();
-    app.productcategory = new ProductCategory(app, Book);
+    app.productcategory = new ProductCategory(Book);
     app.productcategory.render('main', '3');
 
   }
 
   product(productId){
     this.empty();
-    app.productPage = new ProductPage(app);
+    app.productPage = new ProductPage();
     app.productPage.getProduct(productId);
     app.productPage.render('main');
   }
@@ -143,35 +143,35 @@ class PopStateHandler extends REST {
 
   search() {
     this.empty();
-    app.search = new Search($(document).find('.inputsearch').val(), app);
+    app.search = new Search($(document).find('.inputsearch').val());
     app.search.render();
   }
 
   login(){
     this.empty();
-    app.login = new Login(app);
+    app.login = new Login();
     app.login.render();
-    app.logout = new Logout(app);
+    app.logout = new Logout();
   }
 
   register(){
     this.empty();
-    app.register = new Register(app);
+    app.register = new Register();
     app.register.render();
   }
 
   userPage(){
     this.empty();
-    app.user = new Userpage(app);
+    app.user = new Userpage();
   }
 
   userPage2(){
     this.empty();
-    app.user = new Userpage2(app);
+    app.user = new Userpage2();
   }
   admin(){
     this.empty;
-    app.admin = new Admin(app);
+    app.admin = new Admin();
     app.admin.render('main',1);
   }
 
