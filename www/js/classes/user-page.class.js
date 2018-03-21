@@ -1,7 +1,7 @@
 class Userpage extends REST {
   constructor(app) {
   	super();
-  	app = app;
+  	this.app = app;
   	this.activeOrders = [];
   	this.oldOrders = [];
 		this.getOrders();
@@ -15,22 +15,6 @@ class Userpage extends REST {
   	this.renderOrders(orders);
   	}
 
-	/*sortOrders(orders){
-  	let oldOrders = [];
-  	
-  	let nowDate = new Date();
-        let month = nowDate.getMonth() + 1;
-        if (month < 10) {
-            month = "0" + month;
-        }
-        let day = nowDate.getDate();
-        if (day < 10) {
-            day = "0" + day;
-        }
-        let dateString = `${nowDate.getFullYear()}-${month}-${day}`
-        this.renderOrders(orders, dateString);
-	}*/
-
 	async renderOrders(orders){
 		
     try {
@@ -38,7 +22,7 @@ class Userpage extends REST {
 			orders.forEach( (product) => {
 				this.co++;
 				this.user = product.result.customerid;
-				let userpageItem = new UserpageItem(product.result, app, this.co);
+				let userpageItem = new UserpageItem(product.result, this.app, this.co);
 				if(product.result.status == 'Skickad'){
   				this.oldOrders.push(userpageItem);
 				} else {
