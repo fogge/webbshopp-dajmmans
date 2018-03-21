@@ -30,6 +30,7 @@ class Cart extends REST {
   async loadCart(){
     this.user = (await UserHandler.check());
     let cart = (await Cart.findOne({userId: this.user.info.query}));
+    console.log(this.user);
     if (app.shoppingCart.length === 0 && cart){
       app.shoppingCart = cart.items;
       app.header.render()

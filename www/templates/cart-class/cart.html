@@ -40,21 +40,21 @@ Object.assign(Cart.prototype, { template(){ return `
         <h5>Adress</h5>
         <input type="email" class="form-adress-cart col-12 border-bottom-0 top-form-rounded" id="cartemail" placeholder="Epost" value="${this.user[0].email ? this.user[0].email : ''}" required>
         <div class="form-group d-flex flex-nowrap col-12 m-0 p-0">
-          <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="cartfirstname" placeholder="Förnamn" value="${this.user[0].result.firstName ? this.user[0].result.firstName : ''}" required>
-          <input type="text" class="form-adress-cart col-6 border-bottom-0" id="cartlastname" value="${this.user[0].result.lastName ? this.user[0].result.lastName : ''}" placeholder="Efternamn" required>
+          <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="cartfirstname" placeholder="Förnamn" value="${this.user[0].firstName ? this.user[0].firstName : ''}" required>
+          <input type="text" class="form-adress-cart col-6 border-bottom-0" id="cartlastname" value="${this.user[0].lastName ? this.user[0].lastName : ''}" placeholder="Efternamn" required>
         </div>
 
-        <input type="text" class="form-adress-cart col-12 border-bottom-0" id="cartadress" value="${this.user[0].result.adress ? this.user[0].result.adress : ''}" placeholder="Adress" required>
+        <input type="text" class="form-adress-cart col-12 border-bottom-0" id="cartadress" value="${this.user[0].adress ? this.user[0].adress : ''}" placeholder="Adress" required>
 
         <div class="form-group d-flex flex-nowrap col-12 m-0 p-0">
-          <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="cartpostnr" placeholder="Postnr" value="${this.user ? this.user[0].result.postnr : ''}" required>
-          <input type="text" class="form-adress-cart col-6 border-bottom-0" id="cartort" value="${this.user[0].result.postOrt ? this.user[0].result.postOrt : ''}" placeholder="Ort" required>
+          <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="cartpostnr" placeholder="Postnr" value="${this.user ? this.user[0].postnr : ''}" required>
+          <input type="text" class="form-adress-cart col-6 border-bottom-0" id="cartort" value="${this.user[0].postOrt ? this.user[0].postOrt : ''}" placeholder="Ort" required>
         </div>
 
         <input type="text" class="form-adress-cart col-12 border-bottom-0" id="cartcountry" value="Sverige" placeholder="Sverige" disabled>
 
         <div class="form-group m-0">
-          <input type="text" class="form-adress-cart border-bottom col-12 bottom-form-rounded" id="cartphone" placeholder="Telefon" value="${this.user[0].result.phone ? this.user[0].result.phone : ''}" required>
+          <input type="text" class="form-adress-cart border-bottom col-12 bottom-form-rounded" id="cartphone" placeholder="Telefon" value="${this.user[0].phone ? this.user[0].phone : ''}" required>
         </div>
 
       </div>
