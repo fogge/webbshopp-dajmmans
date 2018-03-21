@@ -1,23 +1,21 @@
 class Userpage2 extends REST {
   constructor() {
   	super();
-    this.getUsers({});
+    this.getUser();
   }
 
-  async getUsers(searchObj) {
-    let user = 'Dajmman';
-    this.currentUserInfo = await UserInfo.find({firstName: user});
-    this.currentUserInfo = this.currentUserInfo[0].result;
-    this.loopUserToValues(this.currentUserInfo);
-  }
-
-  loopUserToValues(userObject){
-    for (let value in userObject) {
-      this[value] = userObject[value];
-    }
+  async getUser(){
+    this.user = await User.find();
     this.render('main', 1)
-    this.revealPassword();
   }
+
+  // loopUserToValues(userObject){
+  //   for (let value in userObject) {
+  //     this[value] = userObject[value];
+  //   }
+  //   this.render('main', 1)
+  //   this.revealPassword();
+  // }
 
   revealPassword(){
     let that = this;

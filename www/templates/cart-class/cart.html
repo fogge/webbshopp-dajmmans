@@ -38,7 +38,7 @@ Object.assign(Cart.prototype, { template(){ return `
     <!-- <form> -->
       <div class="adress-form-container col-12 col-md-6">
         <h5>Adress</h5>
-        <input type="email" class="form-adress-cart col-12 border-bottom-0 top-form-rounded" id="cartemail" placeholder="Epost" value="${this.user[0].result.email ? this.user[0].result.email : ''}" required>
+        <input type="email" class="form-adress-cart col-12 border-bottom-0 top-form-rounded" id="cartemail" placeholder="Epost" value="${this.user[0].email ? this.user[0].email : ''}" required>
         <div class="form-group d-flex flex-nowrap col-12 m-0 p-0">
           <input type="text" class="form-adress-cart col-6 border-bottom-0 border-right-0" id="cartfirstname" placeholder="Förnamn" value="${this.user[0].result.firstName ? this.user[0].result.firstName : ''}" required>
           <input type="text" class="form-adress-cart col-6 border-bottom-0" id="cartlastname" value="${this.user[0].result.lastName ? this.user[0].result.lastName : ''}" placeholder="Efternamn" required>
