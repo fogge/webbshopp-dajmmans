@@ -15,29 +15,20 @@ class REST extends Base{
     return await REST.request(entity, 'DELETE', query, this);
   }
 
-  // async save(obj=null){
-  //   let entity = (this.constructor.name + 's').toLowerCase();
-  //   if (obj) {
-  //     let query = 'userId=' + obj.userId._id;
-  //     return await REST.request(entity, 'PUT', query, obj);
-  //   } else {
-  //     let query = '_id=' + this._id;
-  //     return await REST.request(entity, 'PUT', query, this);
-  //   }
-  // }
-
   async save(){
     let entity = (this.constructor.name + 's').toLowerCase();
-    if (obj.hasOwnProperty('userId')) {
-      let query = 'userId=' + obj.userId._id;
-      return await REST.request(entity, 'PUT', query, obj);
-    } else if(obj.hasOwnProperty('result')){
-      let query = '_id=' + obj.result._id;
-      return await REST.request(entity, 'PUT', query, obj.result);
-    } else {
-      let query = '_id=' + this._id;
-      return await REST.request(entity, 'PUT', query, this);
-    }
+    let query = '_id=' + this._id;
+    return await REST.request(entity, 'PUT', query, this);
+    // if (obj.hasOwnProperty('userId')) {
+    //   let query = 'userId=' + obj.userId._id;
+    //   return await REST.request(entity, 'PUT', query, obj);
+    // } else if(obj.hasOwnProperty('result')){
+    //   let query = '_id=' + obj.result._id;
+    //   return await REST.request(entity, 'PUT', query, obj.result);
+    // } else {
+    //   let query = '_id=' + this._id;
+    //   return await REST.request(entity, 'PUT', query, this);
+    // }
   }
 
   static async find(query){
