@@ -172,7 +172,7 @@ class PopStateHandler extends REST {
     app.user = new Userpage2();
   }
   admin(){
-    this.empty;
+    this.empty();
     app.admin = new Admin();
     app.admin.render('main',1);
   }

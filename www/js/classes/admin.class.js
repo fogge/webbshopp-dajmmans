@@ -14,6 +14,7 @@ class Admin extends REST {
       for (const order of this.orders) {
         this.order = order;
         this.order.orderdate = this.order.orderdate.substring(0,10);
+        
         this.render('.orderList',2);
         this.render(`#progress-${this.order._id}`, 3);
         this.orderStatus(this.order.status);
