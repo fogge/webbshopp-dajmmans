@@ -74,10 +74,11 @@ class Cart extends REST {
 
   async saveCart() {
     let userId = await UserHandler.check();
+    let b = userId;
     userId = userId.info.query;
     let alreadyExists = (await Cart.findOne({userId: userId}));
     // Check if there is a cart with logged in user
-    console.log(alreadyExists);
+    console.log(alreadyExists, b);    
     if (alreadyExists) {
       alreadyExists.items = app.shoppingCart;
       await alreadyExists.save();
@@ -103,24 +104,47 @@ class Cart extends REST {
     return adresses;
   }
 
-  async bankcardCheck() {
+  bankcardCheck() {
     let cardNumber = $('#cardNumber').val();
     let expireDate = $('#expireDate').val();
     let cvc = $('#cvc').val();
-    // cardNumber = cardNumber.replace(/[[:blank:]]/);
-    let re16digit = /^\d{16}$/;
+    
+    let re16digit = /^\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}$/
+    let reDate = /^\d{2}[- \/]?\d{2}/
+    let re3digit = /\d{3}/
 
-    if (!re16digit.test(cardNumber)) {
-      alert("Please enter your 16 digit credit card numbers");
+    console.log(re16digit.test(cardNumber));
+    console.log(reDate.test(expireDate));
+    console.log(re3digit.test(cvc));
+    if (!re16digit.test(cardNumber) || 
+        !reDate.test(expireDate) ||
+        !re3digit.test(cvc) )
+    {
+
+      $('.checkout-summery .alert').remove();
+      $('.checkout-summery').append(`
+
+        <div class="alert alert-danger alert-dismissible fade show mb-5 mt-3" role="alert">
+          <strong>Försök igen! Kolla över det du skrivit så det verkligen stämmer.</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        `);
+      clearTimeout(this.alertTimeoutStart);
+      this.alertTimeoutStart = setTimeout(()=> {
+        $('.checkout-summery .alert').alert('close');
+      }, 2500);
       return false;
     }
-
+    return true;
   }
 
   async confirmOrder() {
 
     if(app.shoppingCart.length !== 0) {
-      let adresses = approveCustomerData();
+      let adresses = this.approveCustomerData();
       let totalPrice = this.getTotalPrice();
       let totalVat = this.getTotalVat();
 
@@ -162,8 +186,9 @@ class Cart extends REST {
 
   click () {
     if ($(event.target).hasClass('confirmorder')) {
-      this.bankcardCheck();
-      this.confirmOrder();
+      if(this.bankcardCheck()){
+        this.confirmOrder();  
+      }
     }
   }
 
