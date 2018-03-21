@@ -111,9 +111,6 @@ class Cart extends REST {
     let reDate = /^\d{2}[- \/]?\d{2}/
     let re3digit = /\d{3}/
 
-    console.log(re16digit.test(cardNumber));
-    console.log(reDate.test(expireDate));
-    console.log(re3digit.test(cvc));
     if (!re16digit.test(cardNumber) || 
         !reDate.test(expireDate) ||
         !re3digit.test(cvc) )
@@ -133,7 +130,7 @@ class Cart extends REST {
       clearTimeout(this.alertTimeoutStart);
       this.alertTimeoutStart = setTimeout(()=> {
         $('.checkout-summery .alert').alert('close');
-      }, 2500);
+      }, 6000);
       return false;
     }
     return true;
