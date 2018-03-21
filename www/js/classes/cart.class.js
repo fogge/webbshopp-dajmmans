@@ -114,7 +114,7 @@ class Cart extends REST {
       order.result.email = $('#user-email').val();
       order.result.orderdate = order.result.orderdate.substring(0,10);
       this.sendMail(order.result);
-    this.sendMail(order);
+      this.sendMail(order);
       $('#confirmorder').modal('show');
     }
 
