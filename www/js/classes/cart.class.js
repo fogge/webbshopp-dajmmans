@@ -73,6 +73,7 @@ class Cart extends REST {
 
   async saveCart() {
     let userId = await UserHandler.check();
+    let b = userId;
     userId = userId.info.query;
     let cartObj = (await Cart.findOne({userId: userId}));
     // Check if there is a cart with logged in user
@@ -101,32 +102,60 @@ class Cart extends REST {
     return adresses;
   }
 
-  async confirmOrder() {
-    this.user = (await UserHandler.check());
-    if(this.user[0]){
-      if(app.shoppingCart.length !== 0) {
-        let adresses = this.approveCustomerData();
-        let totalPrice = this.getTotalPrice();
-        let totalVat = this.getTotalVat();
+  bankcardCheck() {
+    let cardNumber = $('#cardNumber').val();
+    let expireDate = $('#expireDate').val();
+    let cvc = $('#cvc').val();
 
-        let order = await Order.create({
-        orderno: 123,
-        products: app.shoppingCart,
-        orderdate: Date.now(),
-        customerid: "String",
-        price: totalPrice,
-        vat: totalVat,
-        adress: adresses
-        });
-        this.adjustStock(order);
-        $('#confirmorder').modal('show');
-        app.shoppingCart = [];
-        this.cartItems = [];
-      }
-    } else {
-      $('.error-message-cart').html('Var god att logga in innan du kan fullfölja din beställning.');
+    let re16digit = /^\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}$/
+    let reDate = /^\d{2}[- \/]?\d{2}/
+    let re3digit = /\d{3}/
+
+    if (!re16digit.test(cardNumber) ||
+        !reDate.test(expireDate) ||
+        !re3digit.test(cvc) )
+    {
+
+      $('.checkout-summery .alert').remove();
+      $('.checkout-summery').append(`
+
+        <div class="alert alert-danger alert-dismissible fade show mb-5 mt-3" role="alert">
+          <strong>Försök igen! Kolla över det du skrivit så det verkligen stämmer.</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        `);
+      clearTimeout(this.alertTimeoutStart);
+      this.alertTimeoutStart = setTimeout(()=> {
+        $('.checkout-summery .alert').alert('close');
+      }, 6000);
+      return false;
     }
+    return true;
+  }
 
+  async confirmOrder() {
+    if(app.shoppingCart.length !== 0) {
+      let adresses = this.approveCustomerData();
+      let totalPrice = this.getTotalPrice();
+      let totalVat = this.getTotalVat();
+
+      let order = await Order.create({
+      orderno: 123,
+      products: app.shoppingCart,
+      orderdate: Date.now(),
+      customerid: "String",
+      price: totalPrice,
+      vat: totalVat,
+      adress: adresses
+      });
+      this.adjustStock(order);
+      $('#confirmorder').modal('show');
+      app.shoppingCart = [];
+      this.cartItems = [];
+    }
   }
 
   async adjustStock(order) {
@@ -148,9 +177,32 @@ class Cart extends REST {
     }
   }
 
-  click () {
+  async click() {
     if ($(event.target).hasClass('confirmorder')) {
-      this.confirmOrder();
+      this.user = await UserHandler.check();
+      console.log(this.user)
+      if(!this.user[0]){
+        $('.checkout-summery .alert').remove();
+        $('.checkout-summery').append(`
+
+          <div class="alert alert-danger alert-dismissible fade show mb-5 mt-3" role="alert">
+            <strong>Var god logga in för att fullfölja din order.</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          `);
+        clearTimeout(this.alertTimeoutStart);
+        this.alertTimeoutStart = setTimeout(()=> {
+          $('.checkout-summery .alert').alert('close');
+        }, 6000);
+      }
+      else {
+        if(this.bankcardCheck()){
+          this.confirmOrder();
+        }
+      }
     }
   }
 
