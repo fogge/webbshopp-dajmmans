@@ -19,16 +19,6 @@ class REST extends Base{
     let entity = (this.constructor.name + 's').toLowerCase();
     let query = '_id=' + this._id;
     return await REST.request(entity, 'PUT', query, this);
-    // if (obj.hasOwnProperty('userId')) {
-    //   let query = 'userId=' + obj.userId._id;
-    //   return await REST.request(entity, 'PUT', query, obj);
-    // } else if(obj.hasOwnProperty('result')){
-    //   let query = '_id=' + obj.result._id;
-    //   return await REST.request(entity, 'PUT', query, obj.result);
-    // } else {
-    //   let query = '_id=' + this._id;
-    //   return await REST.request(entity, 'PUT', query, this);
-    // }
   }
 
   static async find(query){
