@@ -4,7 +4,6 @@ class PopStateHandler extends REST {
 
   constructor(app){
     super();
-    app = app;
     // Add event handlers for a.pop-links once
     this.addEventHandler();
     // Call changePage on initial page load
@@ -79,7 +78,7 @@ class PopStateHandler extends REST {
     }
     // Call the right method
     let methodName = urls[url];
-    this.app.header.button.loginCheck();
+    app.header.button.loginCheck();
 
 
     if (methodName =='product') {
