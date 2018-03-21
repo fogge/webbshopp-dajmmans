@@ -45,12 +45,14 @@ const Ingredient = require('./classes/ingredient.class');
 const Book = require('./classes/book.class');
 const Materiel = require('./classes/materiel.class');
 const Order = require('./classes/order.class');
+const UserInfo = require('./classes/userinfo.class')
 const Cart = require('./classes/cart.class')
 
 let ingredient = new Ingredient(app);
 let book = new Book(app);
 let materiel = new Materiel(app);
 let order = new Order(app);
+let userinfo = new UserInfo(app);
 let cart = new Cart(app);
 
 const User = require('./classes/user.class');
@@ -65,6 +67,7 @@ ingredient.setupImportRoute(ingredientJson);
 book.setupImportRoute(booksJson);
 materiel.setupImportRoute(materielJson);
 order.setupImportRoute(dummybookingJson);
+userinfo.setupImportRoute(dummyusersJson);
 u.setupImportRoute(dummyusersJson);
 cart.setupImportRoute();
 

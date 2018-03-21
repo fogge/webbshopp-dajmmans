@@ -14,7 +14,7 @@ class Cart extends REST {
     await this.loadCart();
     for (let item of this.app.shoppingCart) {
       let searchObj = await all.getResult({_id: item._id});
-      searchObj = searchObj[0].result;
+      searchObj = searchObj[0];
       searchObj.quantity = item.quantity;
       if (searchObj.stockBalance - item.quantity < 0) searchObj.stockWarning = true;
       this.cartItems.push(new CartItem(searchObj, this));
@@ -28,8 +28,8 @@ class Cart extends REST {
   }
 
   async loadCart(){
-    let userId = (await UserHandler.check()).info.query;
-    let cart = (await Cart.findOne({userId: userId}));
+    this.user = (await UserHandler.check());
+    let cart = (await Cart.findOne({userId: this.user.info.query}));
     if (this.app.shoppingCart.length === 0 && cart){
       this.app.shoppingCart = cart.app.items
       this.app.header.render()
@@ -72,10 +72,6 @@ class Cart extends REST {
     return totalPrice - totalVat;
   }
 
-  approveCustomerData() {
-     return true;
-  }
-
   async saveCart() {
     let userId = await UserHandler.check();
     userId = userId.info.query;
@@ -95,25 +91,61 @@ class Cart extends REST {
 
   }
 
+  approveCustomerData() {
+    let adresses = {
+      firstname: $('#cartfirstname').val(),
+      lastname: $('#cartlastname').val(),
+      adress: $('#cartadress').val(),
+      postnr: $('#cartpostnr').val(),
+      postort: $('#cartort').val(),
+      phone: $('#cartphone').val(),
+      email: $('#cartemail').val(),
+      country: $('#cartcountry').val()
+    }  
+    return adresses;
+  }
+
   async confirmOrder() {
 
-    if(this.app.shoppingCart.length !== 0 && this.approveCustomerData()) {
-
-      this.app.shoppingCart = [];
-      this.cartItems = [];
+    if(this.app.shoppingCart.length !== 0) {
+      let adresses = this.approveCustomerData();
+      let totalPrice = this.getTotalPrice();
+      let totalVat = this.getTotalVat();
 
       let order = await Order.create({
       orderno: 123,
-      products: ["String"],
-      status: "String",
+      products: this.app.shoppingCart,
       orderdate: Date.now(),
       customerid: "String",
-      price: 123,
-      vat: Number
-    } );
+      price: totalPrice,
+      vat: totalVat,
+      adress: adresses
+      });
+      this.adjustStock(order);
       $('#confirmorder').modal('show');
+      this.app.shoppingCart = [];
+      this.cartItems = [];
     }
 
+  }
+
+  async adjustStock(order) {
+    for(let product of order.result.products) {
+      let myProduct;
+      if (product.category == 'ingredient') {
+        myProduct = await Ingredient.findOne({_id: product._id});
+        myProduct.stockBalance -= product.quantity;
+        await myProduct.save();
+      } else if(product.category == 'book') { 
+        myProduct = await Book.findOne({_id: product._id});
+        myProduct.stockBalance -= product.quantity;
+        await myProduct.save();
+      } else if(product.category == 'materiel') {
+        myProduct = await Materiel.findOne({_id: product._id});
+        myProduct.stockBalance -= product.quantity;
+        await myProduct.save();
+      }
+    }
   }
 
   click () {

@@ -23,7 +23,7 @@ class Search extends REST {
     }
     try {
       mongoResult.forEach( (product) => {
-        this.searchResult.push(new ProductAvatar(product.result, this.app, product.constructor.name.toLowerCase()));        
+        this.searchResult.push(new ProductAvatar(product, this.app, product.constructor.name.toLowerCase()));        
       });
     } catch(e){
       console.error('Problem med collections \n', e);
